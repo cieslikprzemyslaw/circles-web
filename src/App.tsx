@@ -14,7 +14,7 @@ function App() {
     <StoreProvider>
       <ThemeProvider theme={theme}>
         <LitteraProvider language={language} setLanguage={setLanguage} preset={preset}>
-          <Router basename={process.env?.REACT_APP_BASENAME ?? "/"}>
+          <Router basename={process.env?.PUBLIC_URL ?? "/"}>
             <Routes />
           </Router>
         </LitteraProvider>
