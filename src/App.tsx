@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from "@material-ui/core";
 import LitteraProvider from "react-littera";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import Routes from './Routes';
 import theme from "./theme";
 import { useLocale } from './utils/hooks/locale';
@@ -14,7 +14,7 @@ function App() {
     <StoreProvider>
       <ThemeProvider theme={theme}>
         <LitteraProvider language={language} setLanguage={setLanguage} preset={preset}>
-          <Router basename={process.env?.PUBLIC_URL ?? "/"}>
+          <Router>
             <Routes />
           </Router>
         </LitteraProvider>
