@@ -1,5 +1,5 @@
 export interface IStorage {
-    currentAccountId?: string;
+    accountIdToken?: string;
 }
 
 export const getLocalStorageValue = (key: keyof IStorage) => {

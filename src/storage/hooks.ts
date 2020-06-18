@@ -1,5 +1,5 @@
-import { IStorage, getLocalStorage, setLocalStorageValue } from "./storage";
-import { useRef } from "react";
+import { IStorage, setLocalStorageValue } from "./storage";
+import React, { useRef } from "react";
 import { useSignal } from "utils/hooks/general";
 
 /**
@@ -8,9 +8,9 @@ import { useSignal } from "utils/hooks/general";
  * @example const myValue = useStorage(storage => storage.myValue);
  */
 export const useStorage = <T>(storageFn: (storage: IStorage) => T) => {
-    const storage = getLocalStorage();
 
-    return storageFn(storage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return React.useCallback(() => storageFn(localStorage as IStorage), [localStorage]);
 }
 
 /**

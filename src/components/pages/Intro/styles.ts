@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
       
     },
     introViewRoot:{
-        maxWidth: "1200px",
+        maxWidth: theme.breakpoints.values.md,
         margin: "0 auto",
     },
     introViewContentWrapper:{
