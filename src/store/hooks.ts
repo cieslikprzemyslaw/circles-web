@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import { StoreContext, IState } from "./context";
 import { reduceState } from "./reducer";
 
@@ -25,8 +25,10 @@ export type StoreAction<T=any> = { type: string, payload?: T }
 export const useDispatch = () => {
     const context = useContext(StoreContext);
 
-    return <T=any>(action: StoreAction<T>) => {
+    const ref = useRef(<T=any>(action: StoreAction<T>) => {
         console.log("📁", action.type, "=>", action.payload);
         reduceState(context[1], action)
-    };
+    });
+
+    return ref.current;
 }

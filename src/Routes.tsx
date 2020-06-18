@@ -1,24 +1,18 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
-import { Home, Splash, Intro, Profile, Login, Signup, Welcome } from 'components/pages';
-import { useStore } from 'store/hooks';
+import { Home, Splash, Intro, Profile, Login, Signup, Welcome, Room } from 'components/pages';
 import { Button } from '@material-ui/core';
-
-const allowPaths = (path: string, ...paths: string[]) => {
-  return !!paths.find(p => path === p);
-}
 
 function Routes() {
   const history = useHistory();
   const location = useLocation();
-  const currentAccount = useStore(state => state.currentAccount);
 
   useEffect(() => {
-    if(!currentAccount && !allowPaths(location.pathname, "/", "/intro", "/login", "/signup")) {
-      history.push("/");
+    if(location.pathname !== "/") {
+      history.push({pathname: "/", state:{ initialPath: location.pathname }});
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname, currentAccount]);
+  }, []);
   
   return (
     <Switch>
@@ -29,8 +23,9 @@ function Routes() {
       <Route exact path="/login"  component={Login} />
       <Route exact path="/home"   component={Home} />
       <Route exact path="/profile"  component={Profile} />
+      <Route path="/room/:id"  component={Room} />
       {/* TODO: Move to a file... */}
-      <Route exact component={() => <div>Error page <br/> <Button onClick={() => history.push("/")}>Reload</Button></div>} />
+      <Route exact component={() => <div>Error page <br/> <Button variant="contained" onClick={() => history.push("/")}>Reload</Button></div>} />
     </Switch>
   );
 }

@@ -7,13 +7,12 @@ import { useHistory } from "react-router-dom";
 import Flex from "components/utils/Flex";
 import loginImage from "assets/verifed.svg";
 import waveAsset from "assets/wave.svg";
-import { signInWithCredentials, getCurrentUserIdToken, signInWithPopup } from "api/auth";
+import { signInWithCredentials, signInWithPopup } from "api/auth";
 import { Alert, AlertTitle } from '@material-ui/lab';
-import { useDispatchCommand } from "api/methods";
+import { useDispatchCommand } from "api/hooks";
 import { AccountInfo } from "api/commands";
 import { useDispatch } from "store/hooks";
 import { setCurrentAccount } from "store/actions";
-import { useStorageSetter } from "storage/hooks";
 
 // TODO: Translations...?
 
@@ -25,7 +24,6 @@ const Login = () => {
     const [translated] = useLittera(translations);
     const classes = useStyles();
     const dispatchCommand = useDispatchCommand();
-    const storageSetter = useStorageSetter();
     const dispatchStore = useDispatch();
 
     const [emailInput, setEmailInput] = useState("");
@@ -36,10 +34,10 @@ const Login = () => {
         const account = await dispatchCommand(AccountInfo, result?.user?.uid || "", true);
 
         if(account.status === 200) {
-            const accountIdToken = await getCurrentUserIdToken();
+            //const accountIdToken = await getCurrentUserIdToken();
         
             // ! Remember account id token.
-            storageSetter("accountIdToken", accountIdToken ?? "");
+            //storageSetter("accountIdToken", accountIdToken ?? "");
             dispatchStore(setCurrentAccount(account.data));
 
             if(account.data?.flags?.includes("needs_init")) 
@@ -119,7 +117,7 @@ const Login = () => {
 
                     
                 </form>
-                <Button onClick={handlePopupLogin}>Login with Google!</Button>
+                <Button onClick={handlePopupLogin} type="button">Login with Google!</Button>
             </div>
         </Flex>
         <Flex className={classes.footerWrapper} alignItems="center" justifyContent="flex-end" height="42px">

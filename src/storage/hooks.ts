@@ -1,5 +1,5 @@
-import { IStorage, setLocalStorageValue } from "./storage";
-import React, { useRef } from "react";
+import { IStorage, setLocalStorageValue, resetLocalStorageValue } from "./storage";
+import { useRef } from "react";
 import { useSignal } from "utils/hooks/general";
 
 /**
@@ -10,7 +10,7 @@ import { useSignal } from "utils/hooks/general";
 export const useStorage = <T>(storageFn: (storage: IStorage) => T) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    return React.useCallback(() => storageFn(localStorage as IStorage), [localStorage]);
+    return storageFn(localStorage as IStorage)
 }
 
 /**
@@ -22,9 +22,12 @@ export const useStorage = <T>(storageFn: (storage: IStorage) => T) => {
  */
 export const useStorageSetter = () => {
     const signal = useSignal();
-    const ref = useRef((key: keyof IStorage, value: string) => {
-        
-        setLocalStorageValue(key, value);
+    const ref = useRef((key: keyof IStorage, value?: string | null) => {
+        if(value === undefined || value === null) {
+            resetLocalStorageValue(key);
+        } else {
+            setLocalStorageValue(key, value);
+        }
         signal();
     });
 

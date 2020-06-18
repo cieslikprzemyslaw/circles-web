@@ -15,3 +15,7 @@ export const getLocalStorage = () => {
 export const setLocalStorageValue = (key: keyof IStorage, value: string) => {
     localStorage.setItem(key, value);
 }
+
+export const resetLocalStorageValue = (key: keyof IStorage) => {
+    localStorage.removeItem(key);
+}

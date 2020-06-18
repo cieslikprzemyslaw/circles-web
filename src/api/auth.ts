@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import { setLocalStorageValue } from "storage/storage";
 
 export const signInWithPopup = async () => {
     return new Promise((resolve, reject) => {
@@ -7,6 +8,7 @@ export const signInWithPopup = async () => {
         
         firebase.auth().signInWithPopup(provider).then(function(result) {
             resolve(result);
+            fetchAccountIdToken();
           }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -23,6 +25,7 @@ export const signInWithCredentials = async (email: string, password: string) => 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((result) => {
                 resolve(result);
+                fetchAccountIdToken();
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -34,9 +37,37 @@ export const signInWithCredentials = async (email: string, password: string) => 
     });
 }
 
+export const fetchAccountIdToken = () => {
+    const currentUser = firebase?.auth()?.currentUser ?? null;
+    if(currentUser)
+        currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+            setLocalStorageValue("accountIdToken", idToken);
+        }).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log("🔒 Authorization =>", errorCode, errorMessage);
+        });
+}
+
 export const signUpWithCredentials = async (email: string, password: string) => {
     return new Promise((resolve, reject) => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+                resolve(result);
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log("🔒 Authorization =>", errorCode, errorMessage);
+                reject(error);
+                // ...
+            });
+    });
+}
+
+export const signOut = async () => {
+    return new Promise((resolve, reject) => {
+        firebase.auth().signOut()
             .then((result) => {
                 resolve(result);
             })

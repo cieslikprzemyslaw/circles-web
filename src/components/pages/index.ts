@@ -5,3 +5,4 @@ export { default as Signup } from "./Signup";
 export { default as Welcome } from "./Welcome";
 export { default as Home } from "./Home";
 export { default as Profile } from "./Profile";
+export { default as Room } from "./Room";
