@@ -1,29 +1,30 @@
 {
   "files": {
     "main.css": "/circles-web/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/circles-web/static/js/main.c0e86939.chunk.js",
-    "main.js.map": "/circles-web/static/js/main.c0e86939.chunk.js.map",
+    "main.js": "/circles-web/static/js/main.89dfc1d9.chunk.js",
+    "main.js.map": "/circles-web/static/js/main.89dfc1d9.chunk.js.map",
     "runtime-main.js": "/circles-web/static/js/runtime-main.79c9e779.js",
     "runtime-main.js.map": "/circles-web/static/js/runtime-main.79c9e779.js.map",
-    "static/js/2.10435b19.chunk.js": "/circles-web/static/js/2.10435b19.chunk.js",
-    "static/js/2.10435b19.chunk.js.map": "/circles-web/static/js/2.10435b19.chunk.js.map",
+    "static/js/2.32a8e1d9.chunk.js": "/circles-web/static/js/2.32a8e1d9.chunk.js",
+    "static/js/2.32a8e1d9.chunk.js.map": "/circles-web/static/js/2.32a8e1d9.chunk.js.map",
     "index.html": "/circles-web/index.html",
-    "precache-manifest.4d061041f07d350487c50a7bbb11dac8.js": "/circles-web/precache-manifest.4d061041f07d350487c50a7bbb11dac8.js",
+    "precache-manifest.36289e323dee40885926c23a9cdeb9e5.js": "/circles-web/precache-manifest.36289e323dee40885926c23a9cdeb9e5.js",
     "service-worker.js": "/circles-web/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/circles-web/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.10435b19.chunk.js.LICENSE.txt": "/circles-web/static/js/2.10435b19.chunk.js.LICENSE.txt",
+    "static/js/2.32a8e1d9.chunk.js.LICENSE.txt": "/circles-web/static/js/2.32a8e1d9.chunk.js.LICENSE.txt",
     "static/media/celebration.svg": "/circles-web/static/media/celebration.bc0c3204.svg",
     "static/media/circles-logo.svg": "/circles-web/static/media/circles-logo.b212bb26.svg",
     "static/media/intro00.svg": "/circles-web/static/media/intro00.563800af.svg",
     "static/media/intro01.svg": "/circles-web/static/media/intro01.37601bb1.svg",
     "static/media/intro02.svg": "/circles-web/static/media/intro02.1847156e.svg",
+    "static/media/personal.svg": "/circles-web/static/media/personal.ce3bc716.svg",
     "static/media/verifed.svg": "/circles-web/static/media/verifed.1d3d7325.svg",
     "static/media/wave.svg": "/circles-web/static/media/wave.21665015.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.79c9e779.js",
-    "static/js/2.10435b19.chunk.js",
+    "static/js/2.32a8e1d9.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.c0e86939.chunk.js"
+    "static/js/main.89dfc1d9.chunk.js"
   ]
 }
