@@ -1,9 +1,7 @@
 import React from "react";
-import { useLittera } from "react-littera";
 import useStyles from "./styles"
-import translations from "./trans"
 import { Typography, CircularProgress } from "@material-ui/core";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useStore } from "store/hooks";
 import { useRoom, useAccount } from "api/hooks";
 
@@ -15,7 +13,7 @@ const Room = () => {
     const params = useParams<{id: string}>();
     const classes = useStyles();
 
-    const currentAccount = useStore(state => state.currentAccount);
+    // const currentAccount = useStore(state => state.currentAccount);
     const room = useRoom(params.id);
 
     if(!room) return <CircularProgress />
