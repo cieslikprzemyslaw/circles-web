@@ -2,7 +2,7 @@ import React from "react";
 import useStyles from "./styles"
 import { Typography, CircularProgress } from "@material-ui/core";
 import { useParams } from "react-router-dom";
-import { useStore } from "store/hooks";
+//import { useStore } from "store/hooks";
 import { useRoom, useAccount } from "api/hooks";
 
 
