@@ -23,8 +23,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run Workflow
-        id: write_file
+      - name: Setup .env
+        id: encode_env
         uses: timheuer/base64-to-file@v1.0.3
         with:
           fileName: '.env'
@@ -34,6 +34,7 @@ jobs:
         run: |
           yarn install
           yarn build
+          echo ${{steps.encode_env.outputs.filePath}}
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
