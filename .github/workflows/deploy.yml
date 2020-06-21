@@ -24,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup .env
-        id: encode_env
+        id: write_encode_env
         uses: timheuer/base64-to-file@v1.0.3
         with:
           fileName: '.env'
@@ -32,7 +32,7 @@ jobs:
 
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
-          cp ${{steps.encode_env.outputs.filePath}} ./.env
+          base64 -d ${{steps.write_encode_env.outputs.filePath}} > './.env'
           yarn install
           yarn build
       - name: Deploy 🚀
