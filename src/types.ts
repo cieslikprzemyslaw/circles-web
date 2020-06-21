@@ -25,4 +25,10 @@ export interface IRoom {
     accounts?: IAccount[];
 }
 
+export interface IMessage {
+    value: string;
+    author: string;
+    timestamp: Date;
+}
+
 export type Dictionary<T> = { [key: string]: T };

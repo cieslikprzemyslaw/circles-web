@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Client } from './client';
 import { useSignal } from '../utils/hooks/general';
 import config from '../config';
@@ -13,8 +13,8 @@ const cli = new Client(HOST_URL);
 export const useCommand = (command: any, ...args: any[]) => {
     const ref = useRef(null as unknown as { status: number, data?: any, message?: string });
     const signal = useSignal();
-    
-    if(ref.current === null) {
+
+    useEffect(() => {
         ref.current = { status: 102 };
         
         const fn = async () => {
@@ -25,7 +25,8 @@ export const useCommand = (command: any, ...args: any[]) => {
             signal();
         }
         fn();
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
     return ref.current;
 }
@@ -63,22 +64,24 @@ export const useAccount = (account_id?: string, updateStore: boolean = false, op
     const ref = useRef<IAccount | null | undefined>(!account_id ? currentAccount ?? undefined : undefined);
     const dispatchStore = useDispatch();
     const dispatchCommand = useDispatchCommand();
-    //const signal = useSignal();
+    const signal = useSignal();
 
-    if(ref.current === undefined) {
+    useEffect(() => {
         const fn = async () => {
             const accountInfoRq = (await dispatchCommand(AccountInfo, account_id || currentAccount?.id, options?.flags, options?.rooms, options?.contacts ));
-
+    
             if(accountInfoRq.status === 200) {
                 ref.current = accountInfoRq.data as IAccount | null;
                 if(updateStore) dispatchStore(setCurrentAccount(accountInfoRq.data));
-                //signal();
+                signal();
             }
         }
-
+    
         if(account_id || currentAccount?.id)
             fn();
-    }
+            
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [account_id]);
     
     return ref.current ?? null;
 }
@@ -86,21 +89,21 @@ export const useAccount = (account_id?: string, updateStore: boolean = false, op
 export const useRoom = (room_id: string, accounts?: boolean) => {
     const ref = useRef<IRoom | null | undefined>();
     const dispatchCommand = useDispatchCommand();
-    //const signal = useSignal();
+    const signal = useSignal();
 
-    if(ref.current === undefined) {
+    useEffect(() => {
         const fn = async () => {
             const roomInfoRq = (await dispatchCommand(RoomInfo, room_id, !!accounts));
 
             if(roomInfoRq.status === 200) {
                 ref.current = roomInfoRq.data as IRoom | null;
-                //signal();
+                signal();
             }
         }
 
-        if(room_id)
-            fn();
-    }
+        if(room_id) fn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [room_id]);
     
     return ref.current ?? null;
 }
