@@ -27,10 +27,12 @@ const Signup = () => {
     const [passwordInput, setPasswordInput] = useState("");
     const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const [isActive, setIsActive] = useState(true)
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setErrorMsg("");
+        setIsActive(false);
 
         const email = emailInput;
         const password = passwordInput;
@@ -38,11 +40,13 @@ const Signup = () => {
         
         if(confirmPassword !== password) {
             setErrorMsg("Passwords are not identical.");
+            setIsActive(true);
             return;
         }
 
         if(password.length < 13) {
             setErrorMsg("Password is too short.");
+            setIsActive(true);
             return;
         }
 
@@ -66,6 +70,7 @@ const Signup = () => {
 
          }).catch(err => {
              setErrorMsg(err.message);
+             setIsActive(true);
          });
     }
 
@@ -106,6 +111,7 @@ const Signup = () => {
                         <AlertTitle>Upps...</AlertTitle>
                         {errorMsg}
                     </Alert>}
+                    {isActive ? null:<p>Loading...</p>}
 
 
                     <Flex justifyContent="space-between"> 

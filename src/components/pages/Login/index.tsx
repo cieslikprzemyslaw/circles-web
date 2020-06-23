@@ -58,7 +58,6 @@ const Login = () => {
         event.preventDefault();
         setErrorMsg("");
         setIsActive(false)
-        console.log("unclickable")
 
         const email = emailInput;
         const password = passwordInput;
