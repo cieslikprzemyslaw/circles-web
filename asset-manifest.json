@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/circles-web/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/circles-web/static/js/main.f41eab8b.chunk.js",
-    "main.js.map": "/circles-web/static/js/main.f41eab8b.chunk.js.map",
-    "runtime-main.js": "/circles-web/static/js/runtime-main.79c9e779.js",
-    "runtime-main.js.map": "/circles-web/static/js/runtime-main.79c9e779.js.map",
-    "static/js/2.ed1f2bf2.chunk.js": "/circles-web/static/js/2.ed1f2bf2.chunk.js",
-    "static/js/2.ed1f2bf2.chunk.js.map": "/circles-web/static/js/2.ed1f2bf2.chunk.js.map",
-    "index.html": "/circles-web/index.html",
-    "precache-manifest.1e8daeb3a89c937bb1a9a553a9bf4162.js": "/circles-web/precache-manifest.1e8daeb3a89c937bb1a9a553a9bf4162.js",
-    "service-worker.js": "/circles-web/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/circles-web/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.ed1f2bf2.chunk.js.LICENSE.txt": "/circles-web/static/js/2.ed1f2bf2.chunk.js.LICENSE.txt",
-    "static/media/celebration.svg": "/circles-web/static/media/celebration.bc0c3204.svg",
-    "static/media/circles-logo.svg": "/circles-web/static/media/circles-logo.b212bb26.svg",
-    "static/media/intro00.svg": "/circles-web/static/media/intro00.563800af.svg",
-    "static/media/intro01.svg": "/circles-web/static/media/intro01.37601bb1.svg",
-    "static/media/intro02.svg": "/circles-web/static/media/intro02.1847156e.svg",
-    "static/media/personal.svg": "/circles-web/static/media/personal.ce3bc716.svg",
-    "static/media/verifed.svg": "/circles-web/static/media/verifed.1d3d7325.svg",
-    "static/media/wave.svg": "/circles-web/static/media/wave.21665015.svg"
+    "main.css": "/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/static/js/main.fe1da7bc.chunk.js",
+    "main.js.map": "/static/js/main.fe1da7bc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.778594d6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.778594d6.js.map",
+    "static/js/2.483764a0.chunk.js": "/static/js/2.483764a0.chunk.js",
+    "static/js/2.483764a0.chunk.js.map": "/static/js/2.483764a0.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.ebcc9f9489fd7dac0d4f8fb4d95edb68.js": "/precache-manifest.ebcc9f9489fd7dac0d4f8fb4d95edb68.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.483764a0.chunk.js.LICENSE.txt": "/static/js/2.483764a0.chunk.js.LICENSE.txt",
+    "static/media/celebration.svg": "/static/media/celebration.bc0c3204.svg",
+    "static/media/circles-logo.svg": "/static/media/circles-logo.b212bb26.svg",
+    "static/media/intro00.svg": "/static/media/intro00.563800af.svg",
+    "static/media/intro01.svg": "/static/media/intro01.37601bb1.svg",
+    "static/media/intro02.svg": "/static/media/intro02.1847156e.svg",
+    "static/media/personal.svg": "/static/media/personal.ce3bc716.svg",
+    "static/media/verifed.svg": "/static/media/verifed.1d3d7325.svg",
+    "static/media/wave.svg": "/static/media/wave.21665015.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.79c9e779.js",
-    "static/js/2.ed1f2bf2.chunk.js",
+    "static/js/runtime-main.778594d6.js",
+    "static/js/2.483764a0.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.f41eab8b.chunk.js"
+    "static/js/main.fe1da7bc.chunk.js"
   ]
 }
