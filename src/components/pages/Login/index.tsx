@@ -121,8 +121,7 @@ const Login = () => {
                             <Icon style={{color: "white"}}>keyboard_arrow_right</Icon>
                         </Fab>
                     </Flex>
-
-                    
+                   
                 </form>
                 <Button onClick={handlePopupLogin} type="button">Login with Google!</Button>
             </div>

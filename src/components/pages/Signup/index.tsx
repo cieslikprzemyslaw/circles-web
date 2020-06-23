@@ -121,7 +121,6 @@ const Signup = () => {
                         </Fab>
                     </Flex>
 
-                    
                 </form>
             </div>
         </Flex>
