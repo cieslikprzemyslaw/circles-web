@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useLittera } from "react-littera";
 import useStyles from "./styles"
 import translations from "./trans"
@@ -29,12 +29,14 @@ const Login = () => {
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const [isActive, setIsActive] = useState(true)
 
     const handleLogin = async (result: any) => {
         const account = await dispatchCommand(AccountInfo, result?.user?.uid || "", true);
 
         if(account.status === 200) {
             //const accountIdToken = await getCurrentUserIdToken();
+            setIsActive(true);
         
             // ! Remember account id token.
             //storageSetter("accountIdToken", accountIdToken ?? "");
@@ -46,6 +48,7 @@ const Login = () => {
                 history.push("/home");
         } else if(account.status === 404) {
             // TODO: Account not found! What shall be done then?
+            setIsActive(true);
             setErrorMsg("Account not found!");
         }
 
@@ -54,11 +57,14 @@ const Login = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setErrorMsg("");
+        setIsActive(false)
+        console.log("unclickable")
 
         const email = emailInput;
         const password = passwordInput;
         signInWithCredentials(email, password).then(handleLogin).catch(err => {
             setErrorMsg(err.message);
+            setIsActive(true)
         });
     }
 
@@ -83,6 +89,7 @@ const Login = () => {
         history.push("/signup");
     }
 
+
     return <div style={{width: "100%"}}>
 
         <div className={classes.imgContainer}>
@@ -96,16 +103,17 @@ const Login = () => {
                 <Typography variant="h3" paragraph>
                     {translated.title}
                 </Typography>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={isActive ? handleSubmit:()=>{}}>
                     <Flex className={classes.inputWrapper} flexDirection="column">
-                        <TextField style={{ marginBottom: "15px" }} id="email-input" value={emailInput} onChange={handleInputChange("email")} type="email" label="E-Mail" variant="outlined" />
-                        <TextField style={{ marginBottom: "15px" }} id="password-input" value={passwordInput} onChange={handleInputChange("password")} type="password" label="Password" variant="outlined" />
+                        <TextField style={{ marginBottom: "15px"}} id="email-input" value={emailInput}onChange={isActive ? handleInputChange("email"):()=>{}} type="email" label="E-Mail" variant="outlined" />
+                        <TextField style={{ marginBottom: "15px"}} id="password-input" value={passwordInput} onChange={isActive ? handleInputChange("password"):()=>{}} type="password" label="Password" variant="outlined" />
                     </Flex>
 
                     {errorMsg && <Alert style={{margin: "10px 0"}} severity="error">
                         <AlertTitle>Upps...</AlertTitle>
                         {errorMsg}
                     </Alert>}
+                    {isActive ? null : <p>Loading...</p>}
 
 
                     <Flex justifyContent="space-between"> 
