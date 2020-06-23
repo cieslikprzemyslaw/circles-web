@@ -6,6 +6,7 @@ export interface IAccount {
     email: string;
     name: string;
     surname: string;
+    tokens: string[];
 
     flags?: string[];
     rooms?: IRoom[];

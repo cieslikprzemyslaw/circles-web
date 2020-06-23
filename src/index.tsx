@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
  
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/messaging';
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -18,6 +19,8 @@ firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APPID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 });
+
+firebase.messaging().usePublicVapidKey("BFpEHR0UHDMxqVkWLbe884ukhegFUVl-SPUGpDaG2PG9BaQMr5BmNeq3BAyzMfqMD-kiJV-dwQKEDcubgNMRozw");
 
 ReactDOM.render(
   <React.StrictMode>

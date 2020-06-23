@@ -55,8 +55,9 @@ const Flex = (props: FlexProps) => {
   const reducedProps = reduceProps(props, "children", "className");
 
   const style = Object.freeze({
-    display: "flex",
+      display: "flex",
       ...reducedProps,
+      ...props.style
   });
 
   return <div style={style} className={props.className}>{props.children}</div>

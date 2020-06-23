@@ -88,8 +88,30 @@ export const getCurrentUserIdToken = async () => {
           }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log("🔒 Authorization =>", errorCode, errorMessage);
+            console.log("🔒 User Id Token =>", errorCode, errorMessage);
             reject(error);
           });
+    });
+}
+
+// TODO: Implement!
+export const getDeviceToken = async () => {
+    return new Promise<string>((resolve, reject) => {
+        // Get Instance ID token. Initially this makes a network call, once retrieved
+        // subsequent calls to getToken will return from cache.
+        firebase.messaging().getToken().then((currentToken) => {
+            if (currentToken) {
+                resolve(currentToken)
+            } else {
+                console.log("🔒 Device Token =>", "No Instance ID token available. Request permission to generate one.");
+                reject(new Error("No Instance ID token available. Request permission to generate one."));
+            }
+        }).catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log("🔒 Device Token =>", errorCode, errorMessage);
+            reject(error);
+        });
+  
     });
 }

@@ -34,16 +34,16 @@ const Login = () => {
         const account = await dispatchCommand(AccountInfo, result?.user?.uid || "", true);
 
         if(account.status === 200) {
-            //const accountIdToken = await getCurrentUserIdToken();
         
-            // ! Remember account id token.
-            //storageSetter("accountIdToken", accountIdToken ?? "");
             dispatchStore(setCurrentAccount(account.data));
 
-            if(account.data?.flags?.includes("needs_init")) 
+            if(account.data?.flags?.includes("needs_init")) {
                 history.push("/welcome");
-            else
+            } else {
+                // TODO: Save device_token.
+                // const device_token = await getDeviceToken();
                 history.push("/home");
+            }
         } else if(account.status === 404) {
             // TODO: Account not found! What shall be done then?
             setErrorMsg("Account not found!");
