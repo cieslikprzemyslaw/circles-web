@@ -6,14 +6,26 @@ const useStyles = makeStyles((theme) => ({
       position: "relative",
       flexBasis: "70%",
       width: "70%",
+      
+      [theme.breakpoints.down("sm")]: {
+        flexBasis: "100%",
+        width: "100%",
+
+      }
     },
     messagesRoot: {
       minWidth: "70vw",
       width: "100%",
       position: "relative",
-      height: "calc(100vh - 36px)",
+      maxHeight: "calc(100vh - 36px)",
+      height: "90%",
+      flexGrow: 1,
       overflow: "auto",
-      display: "flex"
+      display: "flex",
+      [theme.breakpoints.down("sm")]: {
+        minWidth: "99vw" // TODO: Change to more static value.
+
+      }
     },
 
     messageRoot: {

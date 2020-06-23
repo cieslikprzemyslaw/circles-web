@@ -35,11 +35,18 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
 const Message = ({ message, author, isOwned }: { message: IMessage, author: IAccount | null, isOwned: boolean }) => {
     const classes = useStyles();
 
+    let value = message.value;
+    try {
+        value = atob(message.value);
+    } catch(err) {
+        console.log(err);
+    }
+
     const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned });
 
-    const valEl = validURL(message.value) ? 
-                    <a href={message.value} target="_blank" rel="noopener noreferrer">{message.value}</a> 
-                    : message.value;
+    const valEl = validURL(value) ? 
+                    <a href={value} target="_blank" rel="noopener noreferrer">{value}</a> 
+                    : value;
 
     return <Flex alignItems="flex-end" className={classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start" }}>
         { !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
