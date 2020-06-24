@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import { auth, messaging } from "firebase";
 import { setLocalStorageValue } from "storage/storage";
 
 export const signInWithPopup = async () => {
@@ -6,7 +7,7 @@ export const signInWithPopup = async () => {
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
         
-        firebase.auth().signInWithPopup(provider).then(function(result) {
+        auth.signInWithPopup(provider).then(function(result) {
             resolve(result);
             fetchAccountIdToken();
           }).catch(function(error) {
@@ -22,7 +23,7 @@ export const signInWithPopup = async () => {
 
 export const signInWithCredentials = async (email: string, password: string) => {
     return new Promise((resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        auth.signInWithEmailAndPassword(email, password)
             .then((result) => {
                 resolve(result);
                 fetchAccountIdToken();
@@ -38,7 +39,7 @@ export const signInWithCredentials = async (email: string, password: string) => 
 }
 
 export const fetchAccountIdToken = () => {
-    const currentUser = firebase?.auth()?.currentUser ?? null;
+    const currentUser = auth?.currentUser ?? null;
     if(currentUser)
         currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
             setLocalStorageValue("accountIdToken", idToken);
@@ -51,7 +52,7 @@ export const fetchAccountIdToken = () => {
 
 export const signUpWithCredentials = async (email: string, password: string) => {
     return new Promise((resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email, password)
             .then((result) => {
                 resolve(result);
             })
@@ -67,7 +68,7 @@ export const signUpWithCredentials = async (email: string, password: string) => 
 
 export const signOut = async () => {
     return new Promise((resolve, reject) => {
-        firebase.auth().signOut()
+        auth.signOut()
             .then((result) => {
                 resolve(result);
             })
@@ -83,7 +84,7 @@ export const signOut = async () => {
 
 export const getCurrentUserIdToken = async () => {
     return new Promise<string>((resolve, reject) => {
-        firebase.auth()?.currentUser?.getIdToken(true).then(function(idToken) {
+        auth?.currentUser?.getIdToken(true).then(function(idToken) {
             resolve(idToken);
           }).catch(function(error) {
             var errorCode = error.code;
@@ -99,7 +100,7 @@ export const getDeviceToken = async () => {
     return new Promise<string>((resolve, reject) => {
         // Get Instance ID token. Initially this makes a network call, once retrieved
         // subsequent calls to getToken will return from cache.
-        firebase.messaging().getToken().then((currentToken) => {
+        messaging.getToken().then((currentToken) => {
             if (currentToken) {
                 resolve(currentToken)
             } else {

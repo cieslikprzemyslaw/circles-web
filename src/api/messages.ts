@@ -2,6 +2,7 @@ import * as firebase from "firebase/app";
 import { useState, useEffect, useCallback } from "react";
 import { IMessage } from "types";
 import { useAudio } from "utils/hooks/sound";
+import { database } from "firebase";
 
 const makeRefPath = (room_id: string) => {
     return `rooms/${room_id}/messages`;
@@ -12,7 +13,7 @@ export const useMessages = (room_id: string) => {
     const [messages, setMessages] = useState<any>(null);
 
     useEffect(() => {
-        const messagesRef = firebase.database().ref(makeRefPath(room_id));
+        const messagesRef = database.ref(makeRefPath(room_id));
 
         messagesRef.on('value', (snapshot) => {
             const msgs = snapshot.val() ?? [];
@@ -39,8 +40,7 @@ export const useMessageSubmit = (room_id: string, account_id: string) => {
             timestamp: new Date().toString()
         }
 
-        //firebase.database().ref(makeRefPath(room_id)).set(message);
-        var newMsgKey = firebase.database().ref().child('rooms').child(room_id).child("messages").push().key;
+        var newMsgKey = database.ref().child('rooms').child(room_id).child("messages").push().key;
 
         var updates: any = {};
         updates[`/rooms/${room_id}/messages/${newMsgKey}`] = message;
