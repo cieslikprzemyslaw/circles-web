@@ -1,44 +1,22 @@
 import React from "react";
-import useStyles from "./styles"
-import { Typography, CircularProgress } from "@material-ui/core";
+import Flex from "components/utils/Flex";
+import RoomView from "./RoomView";
+import RecentRooms from "./RecentRooms";
 import { useParams } from "react-router-dom";
-//import { useStore } from "store/hooks";
-import { useRoom, useAccount } from "api/hooks";
-
+import { useMediaQuery, useTheme } from "@material-ui/core";
 
 /**
  * Room page component.
  */
 const Room = () => {
+    const theme = useTheme();
+    const isMobileOnly = useMediaQuery(theme.breakpoints.down('sm'));
     const params = useParams<{id: string}>();
-    const classes = useStyles();
 
-    // const currentAccount = useStore(state => state.currentAccount);
-    const room = useRoom(params.id);
-
-    if(!room) return <CircularProgress />
-
-    
-
-    return <div className={classes.root}>
-        <Typography variant="h3">{room.label}</Typography>
-
-
-        <Typography variant="h4">People in room:</Typography>
-        {
-            room?.access?.map(account_id => <AccountLabel key={account_id} account_id={account_id} />)
-        }
-        <br/>
-        Room messages down here =<br/>
-    </div>
-}
-
-const AccountLabel = (props: { account_id: string }) => {
-    const account = useAccount(props.account_id, false);
-
-    if(!account) return <>...</>
-
-    return <Typography>{account.label}</Typography>
+    return <Flex width="100%" height="100vh">
+        {!isMobileOnly && <RecentRooms currentRoomId={params.id} />}
+        <RoomView />
+    </Flex>
 }
 
 export default Room;

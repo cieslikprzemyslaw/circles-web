@@ -100,3 +100,17 @@ export class RoomInfo extends Command {
         return data;
     }
 }
+
+export class RoomCreate extends Command {
+    constructor(account_id: string, label: string, invite: string[]) {
+        super(["roomCreate", { label, invite: [...invite, account_id] }]);
+    }
+
+    parse(status: number, data: any) {
+        if(status !== 200) return data;
+
+        // TODO: Ensure types.
+        
+        return data;
+    }
+}

@@ -6,6 +6,7 @@ export interface IAccount {
     email: string;
     name: string;
     surname: string;
+    tokens: string[];
 
     flags?: string[];
     rooms?: IRoom[];
@@ -23,6 +24,12 @@ export interface IRoom {
     created_at: Date;
     access: string[];
     accounts?: IAccount[];
+}
+
+export interface IMessage {
+    value: string;
+    author: string;
+    timestamp: Date;
 }
 
 export type Dictionary<T> = { [key: string]: T };

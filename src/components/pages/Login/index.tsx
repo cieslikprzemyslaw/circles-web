@@ -43,10 +43,15 @@ const Login = () => {
             dispatchStore(setCurrentAccount(account.data));
 
             if (account.data?.flags?.includes("needs_init"))
+            {
                 history.push("/welcome");
-            else
+            } else {
+                // TODO: Save device_token.
+                // const device_token = await getDeviceToken();
                 history.push("/home");
-        } else if (account.status === 404) {
+
+            }
+        } else if(account.status === 404) {
             // TODO: Account not found! What shall be done then?
             setIsLoading(false);
             setErrorMsg("Account not found!");
@@ -70,6 +75,8 @@ const Login = () => {
     }
 
     const handlePopupLogin = () => {
+        setErrorMsg("");
+        setIsLoading(true)
         signInWithPopup()
             .then(handleLogin)
             .catch((error) => {
