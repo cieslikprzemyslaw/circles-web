@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLittera } from "react-littera";
 import useStyles from "./styles"
 import translations from "./trans"
-import { Button, TextField, Typography, Fab, Icon, CircularProgress } from "@material-ui/core";
+import { Button, TextField, Typography, Fab, Icon, Backdrop, CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Flex from "components/utils/Flex";
 import signImage from "assets/celebration.svg";
@@ -73,8 +73,6 @@ const Signup = () => {
                 setErrorMsg(err.message);
                 setIsLoading(false);
             });
-        } else if (isLoading) {
-            return () => { }
         }
     }
 
@@ -85,9 +83,8 @@ const Signup = () => {
             if (inputName === "email") setEmailInput(newValue);
             if (inputName === "password") setPasswordInput(newValue);
             if (inputName === "password-confirm") setConfirmPasswordInput(newValue);
-        } else if (isLoading) {
-            return () => { }
         }
+
     }
 
     const handleBack = () => {
@@ -118,11 +115,6 @@ const Signup = () => {
                         <AlertTitle>Upps...</AlertTitle>
                         {errorMsg}
                     </Alert>}
-                    {!isLoading ? null :
-                        <Typography variant="subtitle1" paragraph>
-                            Loading...<CircularProgress />
-                        </Typography>}
-
 
                     <Flex justifyContent="space-between">
                         <Button onClick={handleBack} color="primary" type="button">Login</Button>
@@ -137,6 +129,11 @@ const Signup = () => {
         <Flex className={classes.footerWrapper} alignItems="center" justifyContent="flex-end" height="42px">
             <Typography align="right"></Typography>
         </Flex>
+        {!isLoading ? null :
+            <Backdrop open={true} style={{ zIndex: 5 }}>
+                <CircularProgress color="primary" />
+            </Backdrop>}
+
     </div>
 }
 
