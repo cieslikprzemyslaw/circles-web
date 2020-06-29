@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Dialog, DialogTitle, DialogContent, Typography, DialogActions, TextField } from '@material-ui/core';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@material-ui/core';
 import AccountPicker from 'components/common/AccountPicker';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'store/hooks';

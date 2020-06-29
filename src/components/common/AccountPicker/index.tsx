@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import useStyles from "./styles";
 import { useCommand } from "api/hooks";
-import { AccountList, AccountInfo } from "api/commands";
+import { AccountInfo } from "api/commands";
 import { useForkedState } from "utils/hooks/general";
 import { isLoaded } from "api/utils";
 import { TContact } from "types";
