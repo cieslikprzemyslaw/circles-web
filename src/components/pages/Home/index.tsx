@@ -10,6 +10,8 @@ import { useStorageSetter } from "storage/hooks";
 import { setCurrentAccount } from "store/actions";
 import Flex from "components/utils/Flex";
 import { IRoom } from "types";
+import CreateRoom from "./CreateRoom";
+
 
 
 /**
@@ -43,6 +45,7 @@ const Home = () => {
         {
             currentAccount?.rooms && currentAccount.rooms.map(room => <RoomLabel key={room.id} {...room} />)
         }
+    <CreateRoom />
     </div>
 }
 
