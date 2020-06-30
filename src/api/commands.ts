@@ -1,5 +1,6 @@
 import { Command } from "./client";
 import { IAccount } from "types";
+import { checkType } from "./utils";
 
 export class AccountInfo extends Command {
     constructor(account_id: string, flags?: boolean, rooms?: boolean, contacts?: boolean) {
@@ -30,8 +31,12 @@ export class AccountChange extends Command {
 }
 
 export class AccountList extends Command {
-    constructor(volume?: number) {
-        super(["accountList", { volume }]);
+    constructor(included?: string[], volume?: number) {
+        super(["accountList", { volume, included }]);
+
+        checkType("volume", volume, "number", "undefined");
+        // TODO: Support arrays. Replace "object" with "array".
+        checkType("included", included, "object", "undefined");
     }
 
     parse(status: number, data: any) {
