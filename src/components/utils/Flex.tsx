@@ -31,6 +31,8 @@ type FlexProperties = {
 type FlexProps = {
   children: React.ReactNode
   className?: string
+  onClick?: () => void
+  rootComponent?: React.Component
   style?: object
   width?: number | string
   height?: number | string
@@ -60,7 +62,9 @@ const Flex = (props: FlexProps) => {
       ...props.style
   });
 
-  return <div style={style} className={props.className}>{props.children}</div>
+  const rootEl = props.rootComponent ?? React.createElement("div");
+
+  return React.cloneElement(rootEl as React.ReactElement<any>, { onClick: props.onClick, style, className: props.className, children: props.children });
 }
 
 export default Flex;

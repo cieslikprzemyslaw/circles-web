@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Typography } from "@material-ui/core";
 import { useMessages } from "api/messages";
 import { IAccount, IMessage } from "types";
 import { useStore } from "store/hooks";
@@ -16,6 +16,8 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
     const currentAccount = useStore(state => state.currentAccount ?? null);
 
     if(!messages) return <CircularProgress />
+
+    if(Object.keys(messages).length === 0) return <Typography variant="h2">Say Hi!</Typography>
 
     return <Flex flexDirection="column-reverse" className={classes.messagesRoot}>
         {
