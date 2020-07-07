@@ -13,6 +13,7 @@ import { useDispatchCommand } from "api/hooks";
 import { AccountInfo } from "api/commands";
 import { useDispatch } from "store/hooks";
 import { setCurrentAccount } from "store/actions";
+import { useRestrictedPageForCurrentAccount } from 'utils/hooks/general';
 
 // TODO: Translations...?
 
@@ -30,6 +31,8 @@ const Login = () => {
     const [passwordInput, setPasswordInput] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false)
+
+    useRestrictedPageForCurrentAccount();
 
     const handleLogin = async (result: any) => {
         const account = await dispatchCommand(AccountInfo, result?.user?.uid || "", true);
@@ -93,7 +96,7 @@ const Login = () => {
             if (inputName === "password") setPasswordInput(newValue);
         }
     }
-
+    
     const handleBack = () => {
         history.push("/signup");
     }
@@ -144,5 +147,7 @@ const Login = () => {
 
     </div>
 }
+
+
 
 export default Login;
