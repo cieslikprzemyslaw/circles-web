@@ -10,6 +10,7 @@ import waveAsset from "assets/wave.svg";
 import { signUpWithCredentials } from "api/auth";
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { useStorageSetter } from "storage/hooks";
+import { useRestrictedPageForCurrentAccount } from "utils/hooks/general";
 
 // TODO: Translations...?
 
@@ -28,6 +29,7 @@ const Signup = () => {
     const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false)
+    useRestrictedPageForCurrentAccount();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
