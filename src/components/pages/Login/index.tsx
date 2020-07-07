@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLittera } from "react-littera";
 import useStyles from "./styles"
 import translations from "./trans"
@@ -11,7 +11,7 @@ import { signInWithCredentials, signInWithPopup } from "api/auth";
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { useDispatchCommand } from "api/hooks";
 import { AccountInfo } from "api/commands";
-import { useDispatch, useStore } from "store/hooks";
+import { useDispatch } from "store/hooks";
 import { setCurrentAccount } from "store/actions";
 import { useRestrictedPageForCurrentAccount } from 'utils/hooks/general';
 
