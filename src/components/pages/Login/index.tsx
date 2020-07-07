@@ -39,7 +39,6 @@ const Login = () => {
 
         if (account.status === 200) {
             //const accountIdToken = await getCurrentUserIdToken();
-            setIsLoading(false);
 
             // ! Remember account id token.
             //storageSetter("accountIdToken", accountIdToken ?? "");
@@ -56,10 +55,9 @@ const Login = () => {
             }
         } else if(account.status === 404) {
             // TODO: Account not found! What shall be done then?
-            setIsLoading(false);
             setErrorMsg("Account not found!");
         }
-
+        if(account.status !== 0) setIsLoading(false);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -72,18 +70,19 @@ const Login = () => {
             const password = passwordInput;
             signInWithCredentials(email, password).then(handleLogin).catch(err => {
                 setErrorMsg(err.message);
-                setIsLoading(false)
+                setIsLoading(false);
             });
         }
     }
 
     const handlePopupLogin = () => {
         setErrorMsg("");
-        setIsLoading(true)
+        setIsLoading(true);
         signInWithPopup()
             .then(handleLogin)
             .catch((error) => {
                 setErrorMsg(error.message);
+                setIsLoading(false);
             });
 
     }
