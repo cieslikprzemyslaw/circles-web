@@ -34,7 +34,7 @@ export const useRestrictedPage = (condition: boolean, path: string = "/home" ) =
         if (condition) 
             history.push(path)
         
-    }, [condition, path]);
+    }, [condition, path, history]);
 }
 
 /**
