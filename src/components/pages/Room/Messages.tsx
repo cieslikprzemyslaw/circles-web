@@ -6,7 +6,6 @@ import { useStore } from "store/hooks";
 import useStyles from "./styles";
 import Flex from "components/utils/Flex";
 import cx from "classnames";
-import { validURL } from "utils/general";
 import ReactMarkdown from "react-markdown";
 
 
