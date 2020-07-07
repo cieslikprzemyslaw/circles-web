@@ -7,6 +7,8 @@ import useStyles from "./styles";
 import Flex from "components/utils/Flex";
 import cx from "classnames";
 import { validURL } from "utils/general";
+import ReactMarkdown from "react-markdown";
+
 
 const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }) => {
     const classes = useStyles();
@@ -46,13 +48,11 @@ const Message = ({ message, author, isOwned }: { message: IMessage, author: IAcc
 
     const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned });
 
-    const valEl = validURL(value) ? 
-                    <a href={value} target="_blank" rel="noopener noreferrer">{value}</a> 
-                    : value;
-
     return <Flex alignItems="flex-end" className={classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start" }}>
         { !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
-        <div className={rootClasses}>{valEl}</div>
+        <div className={rootClasses}>
+            <ReactMarkdown source={value} />
+        </div>
     </Flex>
 }
 
