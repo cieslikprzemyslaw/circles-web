@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react"
+import { useContext, useRef, useMemo } from "react"
 import { StoreContext, IState } from "./context";
 import { reduceState } from "./reducer";
 
@@ -10,7 +10,7 @@ import { reduceState } from "./reducer";
 export const useStore = <T>(stateFn: (state: IState) => T) => {
     const context = useContext(StoreContext);
 
-    return stateFn(context[0]);
+    return useMemo(() => stateFn(context[0]), [context, stateFn]);
 }
 
 export type StoreAction<T=any> = { type: string, payload?: T }

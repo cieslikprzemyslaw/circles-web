@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
       position: "relative",
       flexBasis: "70%",
       width: "70%",
+      minHeight: "100vh",
       
       [theme.breakpoints.down("sm")]: {
         flexBasis: "100%",

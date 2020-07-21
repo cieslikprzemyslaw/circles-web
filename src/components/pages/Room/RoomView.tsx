@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useStyles from "../Splash/styles";
 import { useStore } from "store/hooks";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Typography } from "@material-ui/core";
 import Messages from "./Messages";
 import MessageForm from "./MessageForm";
 import { useRoom } from "api/hooks";
@@ -19,12 +19,8 @@ const RoomView = () => {
     if(!room || !room.id) return <CircularProgress />
 
     return <div className={classes.root}>
+        <Typography variant="h4">{room.label}</Typography>
         
-        {/* <Flex justifyContent="flex-start">
-                <Typography variant="h4">{room.label}</Typography>
-        </Flex>
-        <hr style={{width: "70vw"}}/>
-        <br/>*/}
         <Messages accounts={room?.accounts ?? []} roomId={room.id} />
         <MessageForm onSubmit={submitMessage} />
     </div>

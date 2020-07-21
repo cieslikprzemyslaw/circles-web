@@ -2,7 +2,7 @@ import React from "react";
 import useStyles from "./styles";
 
 // TODO: ref type.
-const MessageInput = (props: { ref?: any, value: string, onChange: (event: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>) => void, onSubmit?: () => void }) => {
+const MessageInput = (props: { inputRef?: any, value: string, onChange: (event: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>) => void, onSubmit?: () => void }) => {
     const classes = useStyles();
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -13,7 +13,7 @@ const MessageInput = (props: { ref?: any, value: string, onChange: (event: React
     }
 
     return <div className={classes.root}>
-        <textarea onKeyPress={handleKeyPress} ref={props.ref} value={props.value} onChange={props.onChange} placeholder="Write your message..." className={classes.inputElement} />
+        <textarea onKeyPress={handleKeyPress} ref={props.inputRef} value={props.value} onChange={props.onChange} placeholder="Write your message..." className={classes.inputElement} />
     </div>
 }
 
