@@ -13,6 +13,7 @@ import { useDispatchCommand } from "api/hooks";
 import { AccountInfo } from "api/commands";
 import { useDispatch } from "store/hooks";
 import { setCurrentAccount } from "store/actions";
+import { useRestrictedPageForCurrentAccount } from 'utils/hooks/general';
 
 // TODO: Translations...?
 
@@ -31,12 +32,13 @@ const Login = () => {
     const [errorMsg, setErrorMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false)
 
+    useRestrictedPageForCurrentAccount();
+
     const handleLogin = async (result: any) => {
         const account = await dispatchCommand(AccountInfo, result?.user?.uid || "", true);
 
         if (account.status === 200) {
             //const accountIdToken = await getCurrentUserIdToken();
-            setIsLoading(false);
 
             // ! Remember account id token.
             //storageSetter("accountIdToken", accountIdToken ?? "");
@@ -53,10 +55,9 @@ const Login = () => {
             }
         } else if(account.status === 404) {
             // TODO: Account not found! What shall be done then?
-            setIsLoading(false);
             setErrorMsg("Account not found!");
         }
-
+        if(account.status !== 0) setIsLoading(false);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -69,18 +70,19 @@ const Login = () => {
             const password = passwordInput;
             signInWithCredentials(email, password).then(handleLogin).catch(err => {
                 setErrorMsg(err.message);
-                setIsLoading(false)
+                setIsLoading(false);
             });
         }
     }
 
     const handlePopupLogin = () => {
         setErrorMsg("");
-        setIsLoading(true)
+        setIsLoading(true);
         signInWithPopup()
             .then(handleLogin)
             .catch((error) => {
                 setErrorMsg(error.message);
+                setIsLoading(false);
             });
 
     }
@@ -94,7 +96,7 @@ const Login = () => {
             if (inputName === "password") setPasswordInput(newValue);
         }
     }
-
+    
     const handleBack = () => {
         history.push("/signup");
     }
@@ -145,5 +147,7 @@ const Login = () => {
 
     </div>
 }
+
+
 
 export default Login;
