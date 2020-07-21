@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 import { useStore } from "store/hooks";
 import { TContact } from "types";
 
@@ -18,8 +17,6 @@ const People = () => {
 }
 
 const ContactLabel = (props: TContact) => {
-    const history = useHistory();
-
     return <Typography color={props.favorite ? "primary" : "initial"}>{props.account_id}</Typography>
 }
 
