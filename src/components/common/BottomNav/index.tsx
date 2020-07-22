@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     const history = useHistory();
     const location = useLocation();
     const classes = useStyles();
-    const [value, setValue] = React.useState(TABS.indexOf(location.pathname.split("/")[2]) || 0);
+    const [value, setValue] = React.useState(TABS.indexOf(location.pathname.split("/")[2]??"highlights") || 0);
     if (!visible) return null
 
     return <div>
