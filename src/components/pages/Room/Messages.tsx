@@ -7,7 +7,6 @@ import useStyles from "./styles";
 import Flex from "components/utils/Flex";
 import cx from "classnames";
 import ReactMarkdown from "react-markdown";
-import _, { result } from 'lodash';
 
 
 const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }) => {
@@ -25,24 +24,14 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
     // console.log(messages instanceof Object)
     console.log(messages)
 
-    {result} = Object
-        .entries(messages)
-        .reduce((r,[key,o]) => {
-          !r.currentAuthor || r.currentAuthor != o.author ?
-          (r.currentAuthor = o.author, r.result.push({[key]:o})) :
-          Object.assign(r.result[r.result.length-1], {[key]:o})
-          return r
-        }, {currentAuthor:null, result: []})
-        
-console.log(result) 
-
-    console.log(result)
+    // Object.keys(messages).
 
     return <Flex flexDirection="column-reverse" className={classes.messagesRoot}>
         {
             Object.keys(messages).reverse().map((message_id: string) => {
 
                 const message = messages[message_id];
+
                 return <Message
                     key={message_id}
                     message={message}
@@ -55,6 +44,7 @@ console.log(result)
 
 const Message = ({ message, author, isOwned }: { message: IMessage, author: IAccount | null, isOwned: boolean }) => {
     const classes = useStyles();
+    const [height, setHeight] = useState(0)
 
     let value = message.value;
     try {
@@ -65,7 +55,7 @@ const Message = ({ message, author, isOwned }: { message: IMessage, author: IAcc
 
     const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned });
 
-    return <Flex alignItems="flex-end" className={classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start" }}>
+    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start" }}>
         {!isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
         <div className={rootClasses}>
             <ReactMarkdown source={value} />
