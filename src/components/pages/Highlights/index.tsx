@@ -1,7 +1,5 @@
 import React from "react";
-import { useLittera } from "react-littera";
 import useStyles from "./styles"
-import translations from "./trans"
 import { Button, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useStore, useDispatch } from "store/hooks";
@@ -17,7 +15,6 @@ import { useTimeGreeting } from "utils/hooks/general";
  */
 const Highlights = () => {
     const history = useHistory();
-    const translated = useLittera(translations);
     const classes = useStyles();
     const storageSetter = useStorageSetter();
     const storeDispatch = useDispatch();
