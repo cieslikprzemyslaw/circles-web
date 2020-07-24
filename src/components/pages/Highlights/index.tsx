@@ -27,7 +27,6 @@ const Highlights = () => {
     storageSetter("accountIdToken");
     storeDispatch(setCurrentAccount(null));
     window.location.reload(true);
-    history.push("/login");
   };
 
   return (
