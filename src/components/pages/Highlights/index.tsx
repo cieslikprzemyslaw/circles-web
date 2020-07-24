@@ -9,6 +9,7 @@ import { signOut } from "api/auth";
 import { useStorageSetter } from "storage/hooks";
 import { setCurrentAccount } from "store/actions";
 import Flex from "components/utils/Flex";
+import RecentContacts from "./RecentContacts";
 import { useTimeGreeting } from "utils/hooks/general";
 
 /**
@@ -31,12 +32,18 @@ const Highlights = () => {
         history.push("/login");
     }
 
+
     return <div className={classes.root}>
         <Flex flexDirection="row" alignItems="center" justifyContent="space-between">
             {currentAccount && <Button onClick={() => history.push("/profile")}>{currentAccount.label} Profile</Button>}
             {currentAccount && <Button variant="contained" onClick={handleSignOut}>Sign out</Button>}
         </Flex>
+
         <Typography variant="h2">{greeting}<br/>{currentAccount?.label}</Typography>
+
+       
+            <RecentContacts />    
+           
     </div>
 
 
