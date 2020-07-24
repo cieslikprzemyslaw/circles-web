@@ -15,7 +15,7 @@ import Flex from "components/utils/Flex";
  */
 const Highlights = () => {
     const history = useHistory();
-    const [translated] = useLittera(translations);
+    const translated = useLittera(translations);
     const classes = useStyles();
     const storageSetter = useStorageSetter();
     const storeDispatch = useDispatch();

@@ -19,7 +19,7 @@ import { useRestrictedPageForCurrentAccount } from "utils/hooks/general";
  */
 const Signup = () => {
     const history = useHistory();
-    const [translated] = useLittera(translations);
+    const translated = useLittera(translations);
     const classes = useStyles();
 
     const storageSetter = useStorageSetter();

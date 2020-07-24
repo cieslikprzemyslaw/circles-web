@@ -22,7 +22,7 @@ import { useRestrictedPageForCurrentAccount } from 'utils/hooks/general';
  */
 const Login = () => {
     const history = useHistory();
-    const [translated] = useLittera(translations);
+    const translated = useLittera(translations);
     const classes = useStyles();
     const dispatchCommand = useDispatchCommand();
     const dispatchStore = useDispatch();

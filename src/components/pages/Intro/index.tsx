@@ -16,7 +16,7 @@ import { useHistory } from "react-router-dom";
 const Intro = () => {
     // history.push("/path");
     const history = useHistory();
-    const [translated] = useLittera(translations);
+    const translated = useLittera(translations);
     const classes = useStyles();
 
     // Controls the active part.

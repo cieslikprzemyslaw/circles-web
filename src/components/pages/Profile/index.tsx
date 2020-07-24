@@ -10,7 +10,7 @@ import { useAccount } from "api/hooks";
  * Profile page component.
  */
 const Profile = () => {
-    const [translated] = useLittera(translations);
+    const translated = useLittera(translations);
     const classes = useStyles();
 
     const currentAccount = useAccount(undefined, true);

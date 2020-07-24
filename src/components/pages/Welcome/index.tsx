@@ -21,7 +21,7 @@ type EditableField = "label" | "name" | "surname";
  */
 const Welcome = () => {
     const history = useHistory();
-    const [translated] = useLittera(translations);
+    const translated = useLittera(translations);
     const classes = useStyles();
 
     const dispatchStore = useDispatch();
