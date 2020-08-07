@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "15px 0",
     borderRadius: "10%",
   },
+  messageManyLinesRoot: {
+    margin: "8px 0",
+    borderRadius: "10%",
+  },
   ownedMessage: {
     margin: "3px ",
     alignSelf: "flex-end",
