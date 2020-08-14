@@ -22,12 +22,7 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
 
     if (Object.keys(messages).length === 0) return <Typography variant="h2">Say Hi!</Typography>
 
-    // console.log(messages instanceof Array)
-    // console.log(messages instanceof Object)
-    console.log(messages)
-
-    // Object.keys(messages).
-    const messagesClasses = cx(classes.messagesRoot, "messages-container")
+    const messagesClasses = cx(classes.messagesRoot)
 
     return <Flex flexDirection="column-reverse" className={messagesClasses}>
         {
@@ -47,7 +42,8 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
 
 const Message = ({ message, author, isOwned }: { message: IMessage, author: IAccount | null, isOwned: boolean }) => {
     const classes = useStyles();
-    const [isHeightMessage, setIsHeightMessage] = useState(false)
+    const [height, setHeight] = useState(0);
+    const ref = useRef(null);
 
     let value = message.value;
     try {
@@ -59,24 +55,15 @@ const Message = ({ message, author, isOwned }: { message: IMessage, author: IAcc
     const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned });
 
     useEffect(() => {
-        let elements = document.querySelectorAll(".messages-container > div");
-        let height = elements.forEach(message => {
-            //When we fix bug with roll text we know exacly how higher shuld be element with 4 lines then we can change px
-            if(message.clientHeight >= 150) {
-                message.className = classes.messageManyLinesRoot
-            }
-        })
-        return height;
-    })
+        setHeight((ref as any).current.offsetHeight);
+    }, [])
 
-    // margin: isHeightMessage ? "8px": "15px"
-
-    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start"}}>
-    {!isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
-    <div className={rootClasses}>
-        <ReactMarkdown source={value} />
-    </div>
-</Flex>
+    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", margin: height > 150 ? "8px":"15px" }}>
+        {!isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
+        <div className={rootClasses} ref={ref}>
+            <ReactMarkdown source={value} />
+        </div>
+    </Flex>
 }
 
 export default Messages;

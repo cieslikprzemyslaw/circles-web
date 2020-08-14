@@ -32,7 +32,6 @@ const Home = () => {
         storeDispatch(setCurrentAccount(null));
         history.push("/login");
     }
-    console.log(handleSignOut)
 
     return <div className={classes.root}>
         {translated.title}
