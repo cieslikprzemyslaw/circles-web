@@ -22,7 +22,7 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
 
     if (Object.keys(messages).length === 0) return <Typography variant="h2">Say Hi!</Typography>
 
-    return <Flex flexDirection="column-reverse" className={messagesClasses}>
+    return <Flex flexDirection="column-reverse">
         {
             Object.keys(messages).reverse().map((message_id: string) => {
 
