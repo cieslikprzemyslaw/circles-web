@@ -11,7 +11,6 @@ import ReactMarkdown from "react-markdown";
 
 
 const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }) => {
-    const classes = useStyles();
     const messages = useMessages(roomId);
 
 
@@ -56,7 +55,7 @@ const Message = ({ message, author, isOwned }: { message: IMessage, author: IAcc
         setHeight((ref as any).current.offsetHeight);
     }, [])
 
-    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", margin: height > 150 ? "8px":"15px" }}>
+    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", margin: height > 200 ? "8px":null }}>
         {!isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />
