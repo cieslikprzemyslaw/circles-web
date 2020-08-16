@@ -49,13 +49,13 @@ const Message = ({ message, author, isOwned }: { message: IMessage, author: IAcc
         console.log(err);
     }
 
-    const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned });
+    const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned, [classes.messageWithManyLines]: height>150 });
 
     useEffect(() => {
         setHeight((ref as any).current.offsetHeight);
     }, [])
 
-    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", margin: height > 150 ? "8px":undefined }}>
+    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start"}}>
         {!isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />

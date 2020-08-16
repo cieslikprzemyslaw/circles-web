@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   messageRoot: {
-    margin: "15px 0",
     borderRadius: "10%",
   },
   ownedMessage: {
@@ -47,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   notOwnedMessage: {
     alignSelf: "flex-start",
+    margin: "15px 0",
     color: "#FFF",
     background: theme.palette.primary.main,
     '& > p': {
@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
     '& > pre': {
       margin: 0,
     },
+  },
+  messageWithManyLines:{
+    margin: "8px 0",
   },
   message: {
     maxWidth: "450px",
