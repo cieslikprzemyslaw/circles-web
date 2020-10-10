@@ -44,7 +44,7 @@ export const useMessageSubmit = (room_id: string, account_id: string) => {
 
         var updates: any = {};
         updates[`/rooms/${room_id}/messages/${newMsgKey}`] = message;
-      
+
         return firebase.database().ref().update(updates);
 
     }, [account_id, room_id]) as SubmitFunction;
