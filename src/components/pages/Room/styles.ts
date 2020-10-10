@@ -39,9 +39,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "25px",
     '& > p': {
       margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
     },
     '& > pre': {
       margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
     },
   },
   notOwnedMessage: {
@@ -51,10 +57,19 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     '& > p': {
       margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
     },
     '& > pre': {
       margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
     },
+    '& > pre > code': {
+      width: "240px",
+    }
   },
   messageWithManyLines:{
     margin: "8px 0",
