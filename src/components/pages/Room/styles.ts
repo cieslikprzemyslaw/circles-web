@@ -2,22 +2,10 @@ import { makeStyles } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
-<<<<<<< HEAD
   root: {
     position: "relative",
     flexBasis: "70%",
     width: "70%",
-=======
-    root: {
-      position: "relative",
-      flexBasis: "70%",
-      width: "70%",
-      minHeight: "100vh",
-      
-      [theme.breakpoints.down("sm")]: {
-        flexBasis: "100%",
-        width: "100%",
->>>>>>> 239ca0333aa034cfd86df659a2c5c8c5127cf9b9
 
     [theme.breakpoints.down("sm")]: {
       flexBasis: "100%",
