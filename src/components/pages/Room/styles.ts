@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
     flexBasis: "70%",
-    width: "70%",
+    maxWidth: "max-content",
 
     [theme.breakpoints.down("sm")]: {
       flexBasis: "100%",
@@ -37,21 +37,21 @@ const useStyles = makeStyles((theme) => ({
     color: "#000",
     backgroundColor: "#eee",
     borderRadius: "25px",
-    // '& > p': {
-    //   margin: 0,
-    //   maxWidth: "240px",
-    //   whiteSpace: "normal",
-    //   wordBreak: "break-word",
-    // },
+    '& > p': {
+      margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
+    },
     '& > p > *':{
       maxWidth: "240px",
     },
-    // '& > pre': {
-    //   margin: 0,
-    //   maxWidth: "240px",
-    //   whiteSpace: "normal",
-    //   wordBreak: "break-word",
-    // },
+    '& > pre': {
+      margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
+    },
     '& > pre > *':{
       maxWidth: "240px",
     },
@@ -61,21 +61,21 @@ const useStyles = makeStyles((theme) => ({
     margin: "15px 0",
     color: "#FFF",
     background: theme.palette.primary.main,
-    // '& > p': {
-    //   margin: 0,
-    //   maxWidth: "240px",
-    //   whiteSpace: "normal",
-    //   wordBreak: "break-word",
-    // },
+    '& > p': {
+      margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
+    },
     '& > p > *':{
       maxWidth: "240px",
     },
-    // '& > pre': {
-    //   margin: 0,
-    //   maxWidth: "240px",
-    //   whiteSpace: "normal",
-    //   wordBreak: "break-word",
-    // },
+    '& > pre': {
+      margin: 0,
+      maxWidth: "240px",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
+    },
     '& > pre > *':{
       maxWidth: "240px",
     },

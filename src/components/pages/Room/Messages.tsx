@@ -32,14 +32,14 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
                     key={message_id}
                     message={message}
                     author={getAuthor(message.author)}
-                    showAvatar={message.author !== messages[Object.keys(messages).reverse()[index - 1]]?.author}
+                    displayAvatar={message.author !== messages[Object.keys(messages).reverse()[index - 1]]?.author}
                     isOwned={currentAccount?.id === message.author} />
             })
         }
     </Flex>
 }
 
-const Message = ({ message, author, isOwned, showAvatar }: { message: IMessage, author: IAccount | null, isOwned: boolean, showAvatar: boolean }) => {
+const Message = ({ message, author, isOwned, displayAvatar }: { message: IMessage, author: IAccount | null, isOwned: boolean, displayAvatar: boolean }) => {
     const classes = useStyles();
     const [height, setHeight] = useState(0);
     const ref = useRef(null);
@@ -56,10 +56,10 @@ const Message = ({ message, author, isOwned, showAvatar }: { message: IMessage, 
     useEffect(() => {
         setHeight((ref as any).current.offsetHeight);
     }, [])
-    console.log(showAvatar)
+    console.log(displayAvatar)
 
-    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start"}}>
-        {showAvatar && !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
+    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", paddingLeft: displayAvatar ? "0px" : "34px"}}>
+        {displayAvatar && !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />
         </div>
