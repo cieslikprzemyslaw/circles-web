@@ -2,11 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useStyles from "../Splash/styles";
 import { useStore } from "store/hooks";
-import { CircularProgress, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Messages from "./Messages";
 import MessageForm from "./MessageForm";
 import { useRoom } from "api/hooks";
 import { useMessageSubmit } from "api/messages";
+import MessagesSkeleton from "./MessagesSkeleton";
 
 const RoomView = () => {
     const params = useParams<{id: string}>();
@@ -16,7 +17,7 @@ const RoomView = () => {
     const room = useRoom(params.id);
     const submitMessage = useMessageSubmit(params.id, currentAccount?.id ?? "");
 
-    if(!room || !room.id) return <CircularProgress />
+    if(!room || !room.id) return <MessagesSkeleton />
 
     return <div className={classes.root}>
         <Typography variant="h4">{room.label}</Typography>

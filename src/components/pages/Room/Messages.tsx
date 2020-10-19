@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
-import { CircularProgress, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useMessages } from "api/messages";
 import { IAccount, IMessage } from "types";
 import { useStore } from "store/hooks";
@@ -7,6 +7,7 @@ import useStyles from "./styles";
 import Flex from "components/utils/Flex";
 import cx from "classnames";
 import ReactMarkdown from "react-markdown";
+import MessagesSkeleton from "./MessagesSkeleton";
 
 
 
@@ -17,14 +18,13 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
     const getAuthor = useCallback((author_id) => accounts.find(account => account.id === author_id) ?? null, [accounts]);
     const currentAccount = useStore(state => state.currentAccount ?? null);
 
-    if (!messages) return <CircularProgress />
+    if (!messages) return <MessagesSkeleton/>
 
     if (Object.keys(messages).length === 0) return <Typography variant="h2">Say Hi!</Typography>
 
     return <Flex flexDirection="column-reverse" style={{marginBottom: "15px"}}>
         {
             Object.keys(messages).reverse().map((message_id: string, index: number) => {
-                console.log(messages);
 
                 const message = messages[message_id];
 
@@ -33,13 +33,15 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
                     message={message}
                     author={getAuthor(message.author)}
                     displayAvatar={message.author !== messages[Object.keys(messages).reverse()[index - 1]]?.author}
+                    isOwnedNextMessage = {message.author === messages[Object.keys(messages).reverse()[index - 1]]?.author}
+                    isOwnedPrevMessage = {message.author === messages[Object.keys(messages).reverse()[index + 1]]?.author}
                     isOwned={currentAccount?.id === message.author} />
             })
         }
     </Flex>
 }
 
-const Message = ({ message, author, isOwned, displayAvatar }: { message: IMessage, author: IAccount | null, isOwned: boolean, displayAvatar: boolean }) => {
+const Message = ({ message, author, isOwned, displayAvatar, isOwnedNextMessage, isOwnedPrevMessage }: { message: IMessage, author: IAccount | null, isOwned: boolean, displayAvatar: boolean, isOwnedNextMessage: boolean, isOwnedPrevMessage: boolean }) => {
     const classes = useStyles();
     const [height, setHeight] = useState(0);
     const ref = useRef(null);
@@ -51,18 +53,18 @@ const Message = ({ message, author, isOwned, displayAvatar }: { message: IMessag
         console.log(err);
     }
 
-    const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned, [classes.messageWithManyLines]: height>150 });
+    const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned, [classes.messageWithManyLines]: height>150, [classes.nextMessageNotOwned]: isOwnedNextMessage && !isOwned, [classes.prevMessageNotOwned]: isOwnedPrevMessage && !isOwned, [classes.nextMessageOwned]: isOwnedNextMessage && isOwned, [classes.prevMessageOwned]: isOwnedPrevMessage && isOwned  });
 
     useEffect(() => {
         setHeight((ref as any).current.offsetHeight);
     }, [])
-    console.log(displayAvatar)
 
     return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", paddingLeft: displayAvatar ? "0px" : "34px"}}>
         {displayAvatar && !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />
         </div>
+        {console.log(isOwnedPrevMessage, message.author)}
     </Flex>
 }
 

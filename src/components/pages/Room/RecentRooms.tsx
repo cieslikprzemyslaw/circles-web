@@ -7,12 +7,14 @@ import { useHistory } from "react-router-dom";
 const RecentRooms = ({ currentRoomId }: { currentRoomId: string }) => {
     const currentAccount = useStore(state => state.currentAccount);
 
-    return <div style={{flexBasis: "30%", width: "30%"}}>
+    return <div style={{flexBasis: "30%", width: "30%",}}>
+        <section style={{position: "fixed", top: "0", left: "0"}}>
         {
             (currentAccount?.rooms ?? [])
                 .sort(room => room.id === currentRoomId ? -1 : 1)
                 .map(room => <RecentRoom room={room} currentRoomId={currentRoomId} />)
         }
+        </section>  
     </div>
 }
 

@@ -71,7 +71,21 @@ const useStyles = makeStyles((theme) => ({
     padding: "16px 22px",
     borderRadius: "25px",
   },
-  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-20px", bottom: "-10px", position: "relative", padding: "3px", zIndex: 5 }
+  nextMessageOwned:{
+    borderBottomRightRadius: "0px",
+  },
+  nextMessageNotOwned:{
+    borderBottomLeftRadius: "0px",
+    marginBottom: "3px",
+  },
+  prevMessageOwned: {
+    borderTopRightRadius: "0px",
+  },
+  prevMessageNotOwned: {
+    borderTopLeftRadius: "0px",
+    marginTop: "3px",
+  },
+  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-25px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
 }));
 
 export default useStyles;
