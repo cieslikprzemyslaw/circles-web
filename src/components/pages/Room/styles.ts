@@ -72,17 +72,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "25px",
   },
   nextMessageOwned:{
-    borderBottomRightRadius: "0px",
+    borderBottomRightRadius: "4px",
   },
   nextMessageNotOwned:{
-    borderBottomLeftRadius: "0px",
+    borderBottomLeftRadius: "4px",
     marginBottom: "3px",
   },
   prevMessageOwned: {
-    borderTopRightRadius: "0px",
+    borderTopRightRadius: "4px",
   },
   prevMessageNotOwned: {
-    borderTopLeftRadius: "0px",
+    borderTopLeftRadius: "4px",
     marginTop: "3px",
   },
   avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-25px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
