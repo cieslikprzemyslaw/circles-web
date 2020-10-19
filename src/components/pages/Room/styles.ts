@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     padding: "16px 22px",
     borderRadius: "25px",
+    textAlign: "left",
   },
   nextMessageOwned:{
     borderBottomRightRadius: "4px",
@@ -84,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
   prevMessageNotOwned: {
     borderTopLeftRadius: "4px",
     marginTop: "3px",
+  },
+  equalToLine: {
+    paddingLeft: "34px",
   },
   avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-25px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
 }));

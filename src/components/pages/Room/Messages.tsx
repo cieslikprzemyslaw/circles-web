@@ -53,13 +53,14 @@ const Message = ({ message, author, isOwned, displayAvatar, isOwnedNextMessage, 
         console.log(err);
     }
 
-    const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned, [classes.messageWithManyLines]: height>150, [classes.nextMessageNotOwned]: isOwnedNextMessage && !isOwned, [classes.prevMessageNotOwned]: isOwnedPrevMessage && !isOwned, [classes.nextMessageOwned]: isOwnedNextMessage && isOwned, [classes.prevMessageOwned]: isOwnedPrevMessage && isOwned  });
+    const rootClasses = cx(classes.message, { [classes.ownedMessage]: isOwned, [classes.notOwnedMessage]: !isOwned, [classes.messageWithManyLines]: height>150, [classes.nextMessageNotOwned]: isOwnedNextMessage && !isOwned, [classes.prevMessageNotOwned]: isOwnedPrevMessage && !isOwned, [classes.nextMessageOwned]: isOwnedNextMessage && isOwned, [classes.prevMessageOwned]: isOwnedPrevMessage && isOwned});
+    const bubbleClasses = cx({[classes.ownedMessage]: isOwned ,[classes.messageRoot]: !isOwned ,[classes.equalToLine]: !displayAvatar && !isOwned})
 
     useEffect(() => {
         setHeight((ref as any).current.offsetHeight);
     }, [])
 
-    return <Flex alignItems="flex-end" className={isOwned ? classes.ownedMessage : classes.messageRoot} style={{ alignSelf: isOwned ? "flex-end" : "flex-start", paddingLeft: displayAvatar ? "0px" : "34px"}}>
+    return <Flex alignItems="flex-end" className={bubbleClasses} style={{ alignSelf: isOwned ? "flex-end" : "flex-start"}}>
         {displayAvatar && !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />
