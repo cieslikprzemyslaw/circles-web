@@ -29,14 +29,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   messageRoot: {
-    borderRadius: "10%",
+    borderRadius: "15px",
   },
   ownedMessage: {
     margin: "3px ",
     alignSelf: "flex-end",
     color: "#000",
     backgroundColor: "#eee",
-    borderRadius: "25px",
+    borderRadius: "15px",
     '& > *': {
       margin: 0,
       maxWidth: "240px",
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   message: {
     maxWidth: "450px",
     position: "relative",
-    padding: "16px 22px",
+    padding: "16px 18px",
     borderRadius: "25px",
     textAlign: "left",
   },
@@ -89,7 +89,10 @@ const useStyles = makeStyles((theme) => ({
   equalToLine: {
     paddingLeft: "34px",
   },
-  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-25px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
+  sendMessageArea:{
+    position: "fixed",
+  },
+  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-19px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
 }));
 
 export default useStyles;
