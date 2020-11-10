@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLittera } from "react-littera";
 import useStyles from "./styles";
 import translations from "./trans";
@@ -35,7 +35,7 @@ const Highlights = () => {
           <Typography variant='h2'>{currentAccount?.name}</Typography>
       </section>
       <section className={classes.avatarContainer}>
-        {currentAccount?.avatar_url ? <img className={classes.avatar} src={currentAccount?.avatar_url} alt="account avatar"/>:<Typography variant="h3">{translated.loadImage}</Typography>}
+          {currentAccount?.avatar_url ? <img className={classes.avatar} src={currentAccount?.avatar_url} alt="account avatar"/> : <img className={classes.avatar} src={`https://eu.ui-avatars.com/api/?name=${currentAccount?.name}`} alt="account avatar"/>}
       </section>
       <section>
         {currentAccount && (
