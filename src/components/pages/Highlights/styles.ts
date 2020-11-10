@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { Translate } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,10 +26,11 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
       position: "absolute",
-      top: "20%",
-      right: "20%",
-      height: "200px",
-      width: "200px",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      height: "64px",
+      width: "64px",
       borderRadius: "50%", 
     },
   }));
