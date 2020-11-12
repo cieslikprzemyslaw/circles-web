@@ -7,10 +7,7 @@ import { useAccount } from "api/hooks";
 import { signOut } from "api/auth";
 import { setCurrentAccount } from "store/actions";
 import { useDispatch } from "store/hooks";
-
 import { useStorageSetter } from "storage/hooks";
-
-
 
 /**
  * Profile page component.

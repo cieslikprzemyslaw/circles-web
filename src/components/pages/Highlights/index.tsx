@@ -24,7 +24,7 @@ const Highlights = () => {
           <Typography variant='h2'>{currentAccount?.name}</Typography>
       </section>
       <section className={classes.avatarContainer}>
-          {currentAccount?.avatar_url ? <img className={classes.avatar} src={currentAccount?.avatar_url} alt="account avatar" onClick={() => history.push("/profile")}/> : <img className={classes.avatar} src={`https://eu.ui-avatars.com/api/?name=${currentAccount?.name}`} alt="account avatar" onClick={() => history.push("/profile")}/>}
+          <img className={classes.avatar} src={currentAccount?.avatar_url ? currentAccount?.avatar_url : `https://eu.ui-avatars.com/api/?name=${currentAccount?.name}`} alt="account avatar" onClick={() => history.push("/profile")}/> 
       </section>
       <section>
         
