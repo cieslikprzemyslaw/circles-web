@@ -90,7 +90,17 @@ export class AccountFind extends Command {
     }
 }
 
-
+export class AccountAddContact extends Command {
+    constructor(data: {account_id: string, contact_id: string}) {
+        super(["accountAddContact", data]);
+    }   
+    
+    parse(status: number, data: any) {
+        if(status !== 200) return data;
+        
+        return data;
+    }
+}
 
 export class RoomInfo extends Command {
     constructor(room_id: string, accounts?: boolean) {
