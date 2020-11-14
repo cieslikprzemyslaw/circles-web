@@ -2,9 +2,12 @@ import React from "react";
 import { useLittera } from "react-littera";
 import useStyles from "./styles"
 import translations from "./trans"
-import { CircularProgress, Typography } from "@material-ui/core";
+import { CircularProgress, Typography, Button } from "@material-ui/core";
 import { useAccount } from "api/hooks";
-
+import { signOut } from "api/auth";
+import { setCurrentAccount } from "store/actions";
+import { useDispatch } from "store/hooks";
+import { useStorageSetter } from "storage/hooks";
 
 /**
  * Profile page component.
@@ -12,10 +15,19 @@ import { useAccount } from "api/hooks";
 const Profile = () => {
     const [translated] = useLittera(translations);
     const classes = useStyles();
+    const storageSetter = useStorageSetter();
+    const storeDispatch = useDispatch();
 
     const currentAccount = useAccount(undefined, true);
 
     if(!currentAccount) return <CircularProgress />
+
+    const handleSignOut = async () => {
+        await signOut();
+        storageSetter("accountIdToken");
+        storeDispatch(setCurrentAccount(null));
+        window.location.reload(true);
+      };
 
     return <div className={classes.root}>
         {translated.title}
@@ -26,6 +38,13 @@ const Profile = () => {
         <Typography paragraph>{currentAccount.email}</Typography>
         <br/>
         <Typography variant="h3">Contacts:</Typography>
+        <section>
+        {currentAccount && (
+          <Button variant='contained' onClick={handleSignOut}>
+            Sign out
+          </Button>
+        )}
+      </section>
         {
             currentAccount?.contacts && currentAccount.contacts.map(contact => <Contact key={contact.account_id} {...contact} />)
         }
