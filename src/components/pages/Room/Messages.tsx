@@ -9,8 +9,6 @@ import cx from "classnames";
 import ReactMarkdown from "react-markdown";
 import MessagesSkeleton from "./MessagesSkeleton";
 
-
-
 const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }) => {
     const messages = useMessages(roomId);
 

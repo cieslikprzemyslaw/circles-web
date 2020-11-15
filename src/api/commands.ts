@@ -119,3 +119,18 @@ export class RoomCreate extends Command {
         return data;
     }
 }
+
+export class AccountGetSuggestions extends Command{
+    constructor(account_id: string){
+        super(["accountGetSuggestions", {account_id}]);
+    };
+
+    parse(status: number, data: any){
+        if(status !== 200) return data;
+
+        // TODO: Ensure types.
+        
+        return data;
+    }
+
+}
