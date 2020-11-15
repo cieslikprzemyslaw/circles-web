@@ -4,7 +4,7 @@ import { checkType } from "./utils";
 
 export class AccountInfo extends Command {
     constructor(account_id: string, flags?: boolean, rooms?: boolean, contacts?: boolean) {
-        super(["accountInfo", { account_id, flags: !!flags, rooms: !!rooms, contacts: !!contacts }]);
+        super(["account-accountInfo", { account_id, flags: !!flags, rooms: !!rooms, contacts: !!contacts }]);
     }
 
     parse(status: number, data: IAccount) {
@@ -18,7 +18,7 @@ export class AccountInfo extends Command {
 
 export class AccountChange extends Command {
     constructor(account_id: string, changes: { label?: string, name?: string, surname?: string }) {
-        super(["accountChange", {account_id, changes: JSON.stringify(changes)}]);
+        super(["account-accountChange", {account_id, changes: JSON.stringify(changes)}]);
     }
 
     parse(status: number, data: IAccount) {
@@ -32,7 +32,7 @@ export class AccountChange extends Command {
 
 export class AccountList extends Command {
     constructor(included?: string[], volume?: number) {
-        super(["accountList", { volume, included }]);
+        super(["account-accountList", { volume, included }]);
 
         checkType("volume", volume, "number", "undefined");
         // TODO: Support arrays. Replace "object" with "array".
@@ -50,7 +50,7 @@ export class AccountList extends Command {
 
 export class AccountCreate extends Command {
     constructor(data: {email: string, password: string, label?: string}) {
-        super(["accountCreate", data]);
+        super(["account-accountCreate", data]);
     }
 
     parse(status: number, data: any) {
@@ -64,7 +64,7 @@ export class AccountCreate extends Command {
 
 export class AccountLogin extends Command {
     constructor(token: string) {
-        super(["accountLogin", { token }]);
+        super(["account-accountLogin", { token }]);
     }
 
     parse(status: number, data: any) {
@@ -78,7 +78,7 @@ export class AccountLogin extends Command {
 
 export class AccountFind extends Command {
     constructor(data: { email?: string, label?: string }) {
-        super(["accountFind", data]);
+        super(["account-accountFind", data]);
     }
 
     parse(status: number, data: any) {
@@ -90,11 +90,21 @@ export class AccountFind extends Command {
     }
 }
 
-
+export class AccountAddContact extends Command {
+    constructor(data: {account_id: string, contact_id: string}) {
+        super(["account-accountAddContact", data]);
+    }   
+    
+    parse(status: number, data: any) {
+        if(status !== 200) return data;
+        
+        return data;
+    }
+}
 
 export class RoomInfo extends Command {
     constructor(room_id: string, accounts?: boolean) {
-        super(["roomInfo", { room_id, accounts }]);
+        super(["room-roomInfo", { room_id, accounts }]);
     }
 
     parse(status: number, data: IAccount) {
@@ -108,7 +118,7 @@ export class RoomInfo extends Command {
 
 export class RoomCreate extends Command {
     constructor(account_id: string, label: string, invite: string[]) {
-        super(["roomCreate", { label, invite: [...invite, account_id] }]);
+        super(["room-roomCreate", { label, invite: [...invite, account_id] }]);
     }
 
     parse(status: number, data: any) {
@@ -122,7 +132,7 @@ export class RoomCreate extends Command {
 
 export class AccountGetSuggestions extends Command{
     constructor(account_id: string){
-        super(["accountGetSuggestions", {account_id}]);
+        super(["account-accountGetSuggestions", {account_id}]);
     };
 
     parse(status: number, data: any){
