@@ -1,4 +1,3 @@
-import { Card } from '@material-ui/core';
 import { AccountGetSuggestions } from 'api/commands';
 import { useCommand } from 'api/hooks';
 import React from 'react';
@@ -16,13 +15,10 @@ const AccountSuggestions = () => {
     return (
            <>
            {suggestions?.map((suggestion:any) => {
-               return (
-                    <Card style={{margin: "10px auto", width: "50%"}}>
+               return (                  
                         <Suggestion 
-                        singleData={suggestion}
-                        account={currentAccount}                        
+                        singleData={suggestion}                   
                         />
-                    </Card> 
                )
            })}
            </>

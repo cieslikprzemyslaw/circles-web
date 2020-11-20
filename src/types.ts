@@ -32,4 +32,9 @@ export interface IMessage {
     timestamp: Date;
 }
 
+export interface TSuggestion {
+    type: string;
+    payload?: Dictionary<any>
+}
+
 export type Dictionary<T> = { [key: string]: T };
