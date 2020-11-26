@@ -9,11 +9,11 @@ import translations from "./trans";
 import { useLittera } from "react-littera";
 import { TSuggestion } from "types";
 
-const Suggestion = ({singleData}: {singleData: TSuggestion}) => {
+const Suggestion = ({suggestion}: {suggestion: TSuggestion}) => {
     const currentAccount = useStore(state => state.currentAccount ?? null);
 
     const [translated] = useLittera(translations);
-    const {payload, type} = singleData;
+    const {payload, type} = suggestion;
     const [name, setName] = useState('')
     const [avatar, setAvatar] = useState('')
 

@@ -14,13 +14,13 @@ const AccountSuggestions = () => {
 
     return (
            <>
-           {suggestions?.map((suggestion:any) => {
+           {suggestions?.length !== 0 ? suggestions?.map((suggestion:any) => {
                return (                  
                         <Suggestion 
-                        singleData={suggestion}                   
+                        suggestion={suggestion}                   
                         />
                )
-           })}
+           }): null}
            </>
     );
 };
