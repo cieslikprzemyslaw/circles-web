@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: "wrap",
     },
     welcome: {
+      paddingLeft:"10vw",
       position:"relative",
       margin: "30px 0px 30px 20px",
       flex: "0 1 69%",
@@ -33,6 +34,14 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "50%", 
       cursor: "pointer",
     },
+    welcomeWraper: {
+      width: "100%",
+      height: "25vh",
+      position: "relative",
+      display: "flex",
+      alignContent: "center",
+      justifyContent: "center",
+    }
   }));
 
   export default useStyles;

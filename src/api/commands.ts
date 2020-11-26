@@ -131,6 +131,7 @@ export class RoomCreate extends Command {
 }
 
 export class AccountGetSuggestions extends Command{
+    // deepcode ignore no-any: Type declaration of 'any' loses type-safety
     constructor(account_id: string){
         super(["account-accountGetSuggestions", {account_id}]);
     };
