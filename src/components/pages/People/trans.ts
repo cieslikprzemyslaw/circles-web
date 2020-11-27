@@ -1,9 +1,9 @@
 // * Translations
 const translations = (preset: any) => ({
-    greeting: {
-        en_US: "Hi!",
-        pl_PL: "Witaj!",
-        de_DE: "Hallo!",
+    peopleMessage: {
+        en_US: "You don't have any frients on the list.",
+        pl_PL: "Nie masz nikogo na liście znajomych.",
+        // de_DE: "Hallo!",
     },
     // Example preset use. See src/utils/hooks/locale.ts for more.
 })
