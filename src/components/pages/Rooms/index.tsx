@@ -4,20 +4,23 @@ import { useHistory } from "react-router-dom";
 import { useStore } from "store/hooks";
 import { IRoom } from "types";
 import CreateRoom from "./CreateRoom";
+import useStyles from "./styles";
 
 
 
 const Rooms = () => {
+    const classes = useStyles();
 
     const currentAccount = useStore(state => state.currentAccount);
 
-    return <div>
-        <Typography variant="h2" gutterBottom>Rooms</Typography>
-        {
-            currentAccount?.rooms && currentAccount.rooms.map(room => <RoomLabel key={room.id} {...room} />)
-        }
-        <CreateRoom />
-    </div>
+    return (
+        <div className={classes.roomWraper}>
+            <CreateRoom />
+            {
+                currentAccount?.rooms && currentAccount.rooms.map(room => <RoomLabel key={room.id} {...room} />)
+            }
+        </div>
+    )
 }
 
 const RoomLabel = (props: IRoom) => {
