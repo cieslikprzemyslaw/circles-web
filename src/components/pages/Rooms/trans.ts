@@ -26,6 +26,7 @@ const translations = (preset: any) => ({
         de_DE: "Hallo!",
     },
     // Example preset use. See src/utils/hooks/locale.ts for more.
+    yes: preset.yes
 })
 
 export default translations;
