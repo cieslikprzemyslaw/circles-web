@@ -20,20 +20,18 @@ function Home() {
     }, []);
   
   return(
-    <>
-    <section className={classes.root}>
-      <section className={classes.topMenu}>
-          {/* top Menu */}
-          <Menu/>
-          <Typography variant="h2" gutterBottom>Circles</Typography>
+      <section className={classes.root}>
+          <section className={classes.topMenu}>
+              {/* top Menu */}
+              <Menu/>
+              <Typography className={classes.circles} variant="h2" gutterBottom>Circles</Typography>
+          </section>
+          <main className={classes.mainSection}>
+              {/* new conversation and highlights */}
+              <Rooms/>
+              <Highlights/>
+          </main> 
       </section>
-      <main className={classes.mainSection}>
-          {/* new conversation and highlights */}
-          <Rooms/>
-          <Highlights/>
-      </main> 
-    </section>
-    </>
   );
 }
 

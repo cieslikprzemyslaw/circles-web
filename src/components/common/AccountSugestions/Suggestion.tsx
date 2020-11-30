@@ -8,8 +8,10 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 import translations from "./trans";
 import { useLittera } from "react-littera";
 import { TSuggestion } from "types";
+import useStyles from "./styles";
 
 const Suggestion = ({suggestion}: {suggestion: TSuggestion}) => {
+    const classes = useStyles();
     const currentAccount = useStore(state => state.currentAccount ?? null);
 
     const [translated] = useLittera(translations);
@@ -32,10 +34,10 @@ const Suggestion = ({suggestion}: {suggestion: TSuggestion}) => {
     })
     
     return (
-            <Card style={{margin: "10px auto", width: "50%"}}>
+            <Card className={classes.card} style={{margin: "10px auto", width: "100%"}}>
                 <CardContent>
                     <Typography variant="h3" component="h3">
-                        <img src={avatar} alt="user" style={{height:"64px"}}/> {name}
+                        {name}
                     </Typography>
                     <Typography variant="h4" component="h4">
                         {type === "never-messaged" ? translated.firstMessage : type}

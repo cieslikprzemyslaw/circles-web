@@ -10,6 +10,7 @@ import { Alert } from '@material-ui/lab';
 import { updateCurrentAccount } from 'store/actions';
 import { useLittera } from "react-littera";
 import translations from "./trans";
+import useStyles from "./styles";
 
 const CreateRoom = () => {
     const [error, setError] = React.useState("");
@@ -17,6 +18,7 @@ const CreateRoom = () => {
     const [open, setOpen] = React.useState(false);
     const [selected, setSelected] = React.useState<string[]>([]);
     const [label, setLabel] = React.useState("");
+    const classes = useStyles();
   
     const history = useHistory();
     const currentAccount = useStore(state => state.currentAccount);
@@ -59,7 +61,7 @@ const CreateRoom = () => {
     const isSubmitDisabled = label.length === 0 || selected.length === 0 || loading;
 
     return <div>
-        <Button variant="contained" onClick={handleClickOpen}>{translated.conversation}</Button>
+        <Button variant="contained" onClick={handleClickOpen} className={classes.roomsButton}>{translated.conversation}</Button>
         
         <Dialog fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
           <DialogTitle id="customized-dialog-title">

@@ -10,11 +10,25 @@ const useStyles = makeStyles((theme) => ({
     },
     roomWraper: {
         margin: "20px 10vw",
-        width: "35%",
-        backgroundColor: "White",
-        borderRadius: "10px",
+        width: "400px",
+        backgroundColor: "#f5f5f5",
+        borderRadius: "5px",
         overflowY: "scroll",
-        height: "500px"  
+        height: "80vh"  
+    },
+    roomsButton: {
+        display: "block",
+        width: "100%",
+        height: "100px",
+        backgroundColor: "#f5f5f5",
+        borderRadiusBottom: "1px solid #eee",
+        borderRadius: "0px",
+    },
+    room:{
+        width: "100%",
+        height: "100px",
+        textAlign: "center",
+        lineHeight: "100px",
     },
   }));
 

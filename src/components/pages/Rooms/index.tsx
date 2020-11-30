@@ -25,8 +25,9 @@ const Rooms = () => {
 
 const RoomLabel = (props: IRoom) => {
     const history = useHistory();
+    const classes = useStyles();
 
-    return <Typography onClick={() => history.push(`/room/${props.id}`)}>{props.label}</Typography>
+    return <Typography className={classes.room} onClick={() => history.push(`/room/${props.id}`)}>{props.label}</Typography>
 }
 
 export default Rooms;
