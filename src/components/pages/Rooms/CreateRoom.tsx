@@ -8,6 +8,9 @@ import { RoomCreate } from 'api/commands';
 import Flex from 'components/utils/Flex';
 import { Alert } from '@material-ui/lab';
 import { updateCurrentAccount } from 'store/actions';
+import { useLittera } from "react-littera";
+import translations from "./trans";
+import useStyles from "./styles";
 
 const CreateRoom = () => {
     const [error, setError] = React.useState("");
@@ -15,11 +18,13 @@ const CreateRoom = () => {
     const [open, setOpen] = React.useState(false);
     const [selected, setSelected] = React.useState<string[]>([]);
     const [label, setLabel] = React.useState("");
+    const classes = useStyles();
   
     const history = useHistory();
     const currentAccount = useStore(state => state.currentAccount);
     const dispatchCommand = useDispatchCommand();
     const dispatchStore = useDispatch();
+    const [translated] = useLittera(translations);
 
     const handleClickOpen = () => {
       setOpen(true);
@@ -56,11 +61,11 @@ const CreateRoom = () => {
     const isSubmitDisabled = label.length === 0 || selected.length === 0 || loading;
 
     return <div>
-        <Button variant="contained" onClick={handleClickOpen}>Create Room</Button>
+        <Button variant="contained" onClick={handleClickOpen} className={classes.roomsButton}>{translated.conversation}</Button>
         
         <Dialog fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
           <DialogTitle id="customized-dialog-title">
-            Create room
+            {translated.createRoom}
           </DialogTitle>
           
           <DialogContent dividers>
@@ -68,7 +73,7 @@ const CreateRoom = () => {
 
             <TextField disabled={loading} fullWidth id="outlined-basic" label="Room name" value={label} onChange={handleLabelChange} variant="outlined" />
 
-            <Typography style={{marginTop: "35px"}} variant="h5" >Invite friends</Typography>
+            <Typography style={{marginTop: "35px"}} variant="h5" >{translated.invite}</Typography>
             
             <AccountPicker disabled={loading} style={{margin: "20px 0"}} multiple value={selected} onChange={setSelected} />
           </DialogContent>
