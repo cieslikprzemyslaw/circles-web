@@ -13,10 +13,7 @@ function Home() {
   const [translated] = useLittera(translations);
   
     useEffect(() => {
-      // if(location.pathname === "/home") {
-      //   history.push({pathname: "/home/highlights"});
-      // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      
     }, []);
   
   return(

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+import useStyles from "./styles";
 
 const Menu = () => {
+    const classes = useStyles();
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
     const toggleMenu = () => {
@@ -12,7 +14,7 @@ const Menu = () => {
     return (
         <>
         <section onClick={toggleMenu}>
-            {isOpenMenu ? <MenuOpenIcon/> : <MenuIcon/>}  
+            {isOpenMenu ? <MenuOpenIcon className={classes.menuIcon}/> : <MenuIcon className={classes.menuIcon}/>}  
         </section>
         </>  
     );

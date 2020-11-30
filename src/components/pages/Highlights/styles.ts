@@ -25,11 +25,15 @@ const useStyles = makeStyles((theme) => ({
     greetings: {
       width: "100%",
       lineHeight: "100%",
+      color: "white",
+      textShadow: "2px 2px 0 #111"
     },
     suggestionsInfo: {
       width: "100%",
       lineHeight: "100%",
       margin: "5px 0",
+      color: "white",
+      textShadow: "2px 2px 0 #111"
     },
   }));
 
