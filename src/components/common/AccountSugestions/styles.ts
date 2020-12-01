@@ -2,11 +2,11 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "75%",
-        margin: "10px 0",
+        marginTop: "20px",
     },
     card: {
-       borderRadius: "15px",
+        borderRadius: "8px",
+        margin: "10px auto", width: "100%"
     },
 }));
 

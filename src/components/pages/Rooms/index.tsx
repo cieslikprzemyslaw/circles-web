@@ -14,11 +14,13 @@ const Rooms = () => {
     const currentAccount = useStore(state => state.currentAccount);
 
     return (
-        <div className={classes.roomWraper}>
+        <div className={classes.roomWrapper}>
             <CreateRoom />
-            {
-                currentAccount?.rooms && currentAccount.rooms.map(room => <RoomLabel key={room.id} {...room} />)
-            }
+            <div className={classes.listWrapper}>
+                {
+                    currentAccount?.rooms && currentAccount.rooms.map(room => <RoomLabel key={room.id} {...room} />)
+                }
+            </div>
         </div>
     )
 }
@@ -27,7 +29,10 @@ const RoomLabel = (props: IRoom) => {
     const history = useHistory();
     const classes = useStyles();
 
-    return <Typography className={classes.room} onClick={() => history.push(`/room/${props.id}`)}>{props.label}</Typography>
+    return <div className={classes.roomItemWrapper}>
+        <div className={classes.avatarPlaceholder}></div>
+        <Typography onClick={() => history.push(`/room/${props.id}`)}>{props.label}</Typography>
+    </div>
 }
 
 export default Rooms;

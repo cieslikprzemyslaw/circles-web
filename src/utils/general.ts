@@ -7,3 +7,9 @@ export function validURL(str: string) {
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return !!pattern.test(str);
 }
+
+export function ensureArray(arr: any) {
+  if (Array.isArray(arr)) return arr;
+
+  return [];
+}

@@ -1,45 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { useStore } from 'store/hooks';
-import { AccountList } from 'api/commands';
+import React from 'react';
+import { AccountInfo } from 'api/commands';
 import { useForkedState } from "utils/hooks/general";
 import { isLoaded } from "api/utils";
 import { useCommand } from 'api/hooks';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import translations from "./trans";
 import { useLittera } from "react-littera";
-import { TSuggestion } from "types";
+import { IAccount, TSuggestion } from "types";
 import useStyles from "./styles";
 
 const Suggestion = ({suggestion}: {suggestion: TSuggestion}) => {
     const classes = useStyles();
-    const currentAccount = useStore(state => state.currentAccount ?? null);
 
     const [translated] = useLittera(translations);
-    const {payload, type} = suggestion;
-    const [name, setName] = useState('')
-    const [avatar, setAvatar] = useState('')
+    const { payload, type } = suggestion;
 
-    const accountsRq = useCommand(AccountList, currentAccount?.contacts?.map(contact => contact.account_id));
-    const [accounts] = useForkedState(rq => isLoaded(rq) ? rq.data : null, accountsRq)
-  
-    useEffect(() => {
-        accounts?.forEach((account : any) => {
-            if(account.id === payload?.account_id) {
-                return (
-                    setName(`${account.name} ${account.surname}`),
-                    setAvatar(account.avatar_url)
-                )
-            }
-        })
-    })
-    
+    const accountRq = useCommand(AccountInfo, payload?.account_id);
+    const [account] = useForkedState<any, IAccount>(rq => isLoaded(rq) ? rq.data : null, accountRq);
+
+    if (!account) return null; // TODO: Add a loader...
+
     return (
-            <Card className={classes.card} style={{margin: "10px auto", width: "100%"}}>
+        <Card className={classes.card}>
                 <CardContent>
-                    <Typography variant="h3" component="h3">
-                        {name}
-                    </Typography>
-                    <Typography variant="h4" component="h4">
+                <Typography variant="h5">
+                    {account.name ?? account.label}
+                        </Typography>
+                <Typography>
                         {type === "never-messaged" ? translated.firstMessage : type}
                     </Typography>
                 </CardContent>
