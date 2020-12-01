@@ -18,13 +18,15 @@ const Highlights = () => {
 
   return (
     <div className={classes.root}>
-      <section className={classes.welcomeWraper}>
-        <section className={classes.welcome}>
-          <Typography className={classes.greetings} variant='h2'>{translated.greeting}, {currentAccount?.name}!</Typography>
-          <Typography className={classes.suggestionsInfo} variant='h5'>Here are some suggestions for you</Typography>
+      <div>
+        <section className={classes.welcomeWraper}>
+          <section className={classes.welcome}>
+            <Typography className={classes.greetings} variant='h2'>{translated.greeting}, {currentAccount?.name}!</Typography>
+            <Typography className={classes.suggestionsInfo} variant='h5'>Here are some suggestions for you</Typography>
+          </section>
         </section>
-      </section>
-      <AccountFavContacts />
+        <AccountFavContacts />
+      </div>
       <AccountSuggestions />
     </div>
   );

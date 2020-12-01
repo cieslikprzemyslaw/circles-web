@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
     roomWrapper: {
         position: "relative",
-        margin: "0 10px 0 0",
+        margin: "auto 10px auto 0",
         width: "385px",
         backgroundColor: "#fff",
         boxShadow: "7px 11px 15px rgba(0, 0, 0, .25)",

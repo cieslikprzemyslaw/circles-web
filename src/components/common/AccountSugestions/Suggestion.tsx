@@ -9,7 +9,7 @@ import { useLittera } from "react-littera";
 import { IAccount, TSuggestion } from "types";
 import useStyles from "./styles";
 
-const Suggestion = ({suggestion}: {suggestion: TSuggestion}) => {
+const Suggestion = (suggestion: TSuggestion & { index: number, multiplier: number }) => {
     const classes = useStyles();
 
     const [translated] = useLittera(translations);
@@ -20,8 +20,13 @@ const Suggestion = ({suggestion}: {suggestion: TSuggestion}) => {
 
     if (!account) return null; // TODO: Add a loader...
 
+    const zIndex = suggestion.index;
+    let transform = zIndex * suggestion.multiplier;
+    let elevation = zIndex || 0;
+    if (elevation > 24) elevation = 24;
+
     return (
-        <Card className={classes.card}>
+        <Card elevation={elevation} className={classes.card} style={{ zIndex: zIndex + 5, position: "relative", transform: `translateY(${transform}px)` }}>
                 <CardContent>
                 <Typography variant="h5">
                     {account.name ?? account.label}
