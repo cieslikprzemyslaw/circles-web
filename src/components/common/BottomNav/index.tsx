@@ -18,6 +18,10 @@ const useStyles = makeStyles({
 
   const TABS = ["highlights", "rooms", "people"];
   
+/**
+ *
+ * @deprecated or might be used for mobile in the future.
+ */
   const BottomNav = ({visible}:{visible: boolean}) => {
     const history = useHistory();
     const location = useLocation();

@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         justifyContent: "space-between",
         alignItems: "flex-start",
+        height: "calc(100vh - 72px)" // depends on appbar height.
     },
   }));
 
