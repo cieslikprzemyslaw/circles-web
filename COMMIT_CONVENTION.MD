@@ -1,9 +1,11 @@
+# Commit convention
+
 ## How to create commits
 
 In our project, we create commits in an orderly way, using emoji for this and start the commit content with a capital letter. 
 The commit body complements  „this commit will...". For example ": lipstick: Fix main container height"
 
-# The list
+## List of emojis that we use
 
 | Text | Image | GFM shortcode* | Windows 10 picker name | When to use it |
 |:--:|:-----:|:--------- |:-------------- |:-------------- |
@@ -35,7 +37,7 @@ The commit body complements  „this commit will...". For example ": lipstick: F
 | `⚡` | :zap: | `:zap:` | `high voltage` | when making a backwards-incompatible change** |
 | `🚧` | :construction: | `:construction:` | `construction` | when the change is a work in progress (do not merge)** |
 
-# How to decide which emoji to use:
+## How to decide which emoji to use
 
 In most cases, your change will fit into a pretty obvious emoji category. If it doesn't, you should think hard about whether or not you're making a clean change. 
 
@@ -44,3 +46,22 @@ Often you can break up changes into two or more commits that each accomplish the
 In general, you should use exactly one emoji per commit message. In rare cases, you should use a second emoji (e.g. when using something like ⚡ to signify that whatever you just did — 🐛, 🔥, etc. — was a breaking change). 
 
 Emoji will also depend on your client/user. A back-end API might use ✨ when adding new API endpoints, and the front-end app might use ✨ when using those endpoints to display new content.
+
+## The formula
+
+### Human *WIP*
+`:[EMOJI_NAME]: [THE COMMIT WILL...]`
+- `:sparkles: Add cool animations`
+- `:bug: Fix the flicker`
+
+
+### RegEx
+`[:]([A-Z a-z])\w+[:] [A-Z]\w.*$`
+[RegEx example](regexr.com/5hrd4)
+
+## Examples
+`🐛 Fix the flicker caused by the drawer`
+`✨ Add a super cool animation for the drawer`
+`♻️ Refactor drawer code`
+`🔥 Remove deprecated drawer code`
+`📦 Install react-littera@2.1.4`
