@@ -33,5 +33,5 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Community
 Join our [Discord server](https://discord.gg/k7Kex2v).
 
-## We are looking for programmers!
-We are currently looking for a few people who would like to join our team. There are vacancies for the positions of back-end developer and front-end developer. Let's gain experience together!
+## Looking for long-term contributors
+We are currently looking for passionate open source contributors who would like to join our team and expand the project together. There are vacancies for the back- and front-end developer positions. You are welcome no matter how experienced you are. Maybe you are just starting with programming or maybe you are a veteran who's looking for a cool new side project? Let's gain experience and build amazing projects together!
