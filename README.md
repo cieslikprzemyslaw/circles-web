@@ -1,6 +1,9 @@
-# circles-web
+circles-web
+===========
+Circles is a messaging app designed with family ties in mind. It makes sure that you not forget to catch up with a family member and never forget about their birthday ever again. The app is lightweight, smart and secure, also looks very trendy.
 
-## Available Scripts
+
+## How to build
 
 In the project directory, you can run:
 
@@ -29,3 +32,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Community
 Join our [Discord server](https://discord.gg/k7Kex2v).
+
+## We are looking for programmers!
+We are currently looking for a few people who would like to join our team. There are vacancies for the positions of back-end developer and front-end developer. Let's gain experience together!
