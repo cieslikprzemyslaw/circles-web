@@ -2,20 +2,34 @@ export interface IAccount {
     id: string;
     label: string;
     created_at: Date;
-    avatar_url: string;
     email: string;
-    name: string;
-    surname: string;
-    tokens: string[];
+    avatar_url: string;
+
+    details: TAccountDetails;
 
     flags?: string[];
     rooms?: IRoom[];
-    contacts?: TContact[];
+    friends?: IFriend[];
+}
+
+export type TAccountDetails = {
+    first_name: string;
+    middle_name: string;
+    last_name: string;
+    birthdate: Date;
+    sex: "M" | "F" | "O";
 }
 
 export type TContact = {
     account_id: string;
-    favorite?: boolean
+    favorite?: boolean;
+    last_contacted?: Date;
+}
+
+export interface IFriend {
+    account_id: string;
+    favorite?: boolean;
+    last_contacted?: Date;
 }
 
 export interface IRoom {
@@ -32,9 +46,11 @@ export interface IMessage {
     timestamp: Date;
 }
 
-export interface TSuggestion {
-    type: string;
-    payload?: Dictionary<any>
+export type TSuggestion = {
+    type: "long-not-messaged"
+    | "never-messaged"
+    | "verify-email";
+    payload?: Dictionary<any>;
 }
 
 export type Dictionary<T> = { [key: string]: T };

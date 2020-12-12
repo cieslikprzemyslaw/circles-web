@@ -26,7 +26,7 @@ const AccountPicker = (props: AccountPickerProps) => {
 
     const currentAccount = useStore(state => state.currentAccount);
 
-    const accountsRq = useCommand(AccountList, currentAccount?.contacts?.map(contact => contact.account_id));
+    const accountsRq = useCommand(AccountList, currentAccount?.friends?.map(friend => friend.account_id));
     const [accounts] = useForkedState(rq => isLoaded(rq) ? rq.data : null, accountsRq)
 
     useEffect(() => {

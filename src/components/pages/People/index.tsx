@@ -18,7 +18,7 @@ const People = () => {
         <section className={classes.contacts}>
             {
                 currentAccount ? 
-                currentAccount?.contacts && currentAccount.contacts.map(contact => <ContactLabel key={contact.account_id} {...contact} />) 
+                currentAccount?.friends && currentAccount.friends.map(friend => <ContactLabel key={friend.account_id} {...friend} />) 
                 : <Typography variant="h3" className={classes.text}>{translated.peopleMessage}</Typography>
             }
         </section>

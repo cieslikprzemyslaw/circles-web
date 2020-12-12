@@ -33,8 +33,8 @@ const Profile = () => {
         {translated.title}
         <img  alt="profile" src={currentAccount.avatar_url} style={{width: "220px", height: "auto"}} />
         <Typography paragraph>{currentAccount.label}</Typography>
-        <Typography paragraph>{currentAccount.name}</Typography>
-        <Typography paragraph>{currentAccount.surname}</Typography>
+        <Typography paragraph>{currentAccount.details.first_name}</Typography>
+        <Typography paragraph>{currentAccount.details.last_name}</Typography>
         <Typography paragraph>{currentAccount.email}</Typography>
         <br/>
         <Typography variant="h3">Contacts:</Typography>
@@ -46,7 +46,7 @@ const Profile = () => {
         )}
       </section>
         {
-            currentAccount?.contacts && currentAccount.contacts.map(contact => <Contact key={contact.account_id} {...contact} />)
+        currentAccount?.friends && currentAccount.friends.map(friend => <Contact key={friend.account_id} {...friend} />)
         }
     </div>
 }
@@ -59,7 +59,7 @@ const Contact = (props: { account_id: string, favorite?: boolean }) => {
     return <div style={{border: "1px solid #121212"}}>
         <img  alt="profile" src={account.avatar_url} style={{width: "220px", height: "auto"}} />
         <Typography gutterBottom variant="h4">{account.label}</Typography>
-        <Typography >{account.name} {account.surname}</Typography>
+        <Typography >{account.details.first_name} {account.details.last_name}</Typography>
         <Typography>Is favorite? {props.favorite ? "true" : "false"}</Typography>
     </div>
 }
