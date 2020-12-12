@@ -19,7 +19,7 @@ const AccountFavContacts = (props: AccountFavContactsProps) => {
 
     return <div className={classes.root}>
         {
-            ensureArray(currentAccount?.contacts)
+            ensureArray(currentAccount?.friends)
                 .filter(c => c.favorite)
                 .map(c => <AccountContactBadge {...c} />)
         }
