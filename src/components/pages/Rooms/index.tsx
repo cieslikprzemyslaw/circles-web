@@ -31,7 +31,7 @@ const RoomLabel = (props: IRoom) => {
 
     return <div className={classes.roomItemWrapper}>
         <div className={classes.avatarPlaceholder}></div>
-        <Typography onClick={() => history.push(`/room/${props.id}`)}>{props.label}</Typography>
+        <Typography onClick={() => history.push(`/home/room/${props.id}`)}>{props.label}</Typography>
     </div>
 }
 

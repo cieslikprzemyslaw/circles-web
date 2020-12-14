@@ -29,13 +29,7 @@ function Routes() {
               <Route exact path="/signup"  component={Signup} />
               <Route exact path="/welcome"  component={Welcome} />
               <Route exact path="/login"  component={Login} />
-              <Route exact path="/home"   component={Home} />
-              <Route exact path="/home/highlights" component={Highlights} />
-              <Route exact path="/home/rooms"  component={Rooms} />
-              <Route exact path="/home/people"  component={People} />
-              <Route exact path="/profile"  component={Profile} />
-              <Route path="/room/:id"  component={Room} />
-
+              <Route  path="/home"   component={Home} />
 
               {/* TODO: Move to a file... */}
               <Route exact component={() => <div>Error page <br/> <Button variant="contained" onClick={() => history.push("/")}>Reload</Button></div>} />
