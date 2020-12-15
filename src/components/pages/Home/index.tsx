@@ -15,11 +15,12 @@ function Home() {
 
   useEffect(() => {
     history.push("/home/highlights");
-  }, [])
+  }, [history])
 
-  const toggleView = () => {
-    setIsRoomView(!isRoomsView);
-  }
+  // toggle funcion for future change cards beetwen Rooms and People
+  // const toggleView = () => {
+  //   setIsRoomView(!isRoomsView);
+  // }
   
   return(
     <>

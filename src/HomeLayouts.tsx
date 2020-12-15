@@ -1,6 +1,6 @@
 import { Room } from 'components/pages';
 import React from 'react';
-import { Switch, Route, useLocation, useHistory } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Highlights from './components/pages/Highlights'
 
 const HomeLayouts = () => {

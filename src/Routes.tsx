@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
-import { Home, Splash, Intro, Profile, Login, Signup, Welcome, Room, Rooms, People, Highlights } from 'components/pages';
+import { Home, Splash, Intro, Login, Signup, Welcome } from 'components/pages';
 import { Button } from '@material-ui/core';
 import BottomNav from 'components/common/BottomNav';
 
