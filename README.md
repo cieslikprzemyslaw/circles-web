@@ -1,6 +1,13 @@
 circles-web
 ===========
-Circles is a messaging app designed with family ties in mind. It makes sure that you not forget to catch up with a family member and never forget about their birthday ever again. The app is lightweight, smart and secure, also looks very trendy.
+Circles is a messaging app designed with family ties in mind. It makes sure that you not forget to catch up with a family member and never forget about their birthday ever again. Thanks to this app, your family relationships will be better than ever!
+
+## Features
+- 🚀 Lightweight
+- 🤯 Smart
+- 🔒 Secure
+- 🌟 Looks very trendy
+
 
 
 ## How to build
@@ -34,4 +41,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 Join our [Discord server](https://discord.gg/k7Kex2v).
 
 ## Looking for long-term contributors
-We are currently looking for passionate open source contributors who would like to join our team and expand the project together. There are vacancies for the back- and front-end developer positions. You are welcome no matter how experienced you are. Maybe you are just starting with programming or maybe you are a veteran who's looking for a cool new side project? Let's gain experience and build amazing projects together!
+We are currently looking for passionate open source contributors who would like to join our team and expand the project together. There are vacancies for the back- and front-end developer positions. You are welcome no matter how experienced you are. Maybe you are just starting with programming or maybe you are a veteran who's looking for a cool new side project? Let's gain experience and build amazing projects together! 🤗
