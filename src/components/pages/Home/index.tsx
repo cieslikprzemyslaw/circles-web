@@ -1,17 +1,26 @@
-import React from 'react';
-import { useEffect } from 'react';
-import Highlights from '../Highlights';
+import React, { useState, useEffect } from 'react';
 import Menu from '../Menu';
 import Rooms from '../Rooms'
 import useStyles from "./styles";
 import Logo from 'components/common/Logo';
+import HomeLayouts from 'HomeLayouts';
+import People from '../People';
+import { useHistory } from 'react-router-dom';
 
 function Home() {
   const classes = useStyles();
-  
-    useEffect(() => {
-      
-    }, []);
+  const history = useHistory();
+
+  const [isRoomsView] = useState(true);
+
+  useEffect(() => {
+    history.push("/home/highlights");
+  }, [history])
+
+  // toggle funcion for future change cards beetwen Rooms and People
+  // const toggleView = () => {
+  //   setIsRoomView(!isRoomsView);
+  // }
   
   return(
     <>
@@ -26,8 +35,8 @@ function Home() {
           </section>
           <main className={classes.mainSection}>
             {/* new conversation and highlights */}
-            <Rooms/>
-            <Highlights/>
+            {isRoomsView ? <Rooms/> : <People/>}
+            <HomeLayouts/>
           </main> 
         </div>
       </section>
