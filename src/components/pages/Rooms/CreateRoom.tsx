@@ -42,7 +42,7 @@ const CreateRoom = () => {
         dispatchStore(await updateCurrentAccount(currentAccount?.id ?? ""));
 
         const room_id = newRoom!.data!.room_id;
-        history.push(`/room/${room_id}`)
+        history.push(`/home/room/${room_id}`)
       } else if(newRoom.status === 404) {
         // @ts-ignore
         setError(newRoom?.message ?? "Unexpected error occurred")
