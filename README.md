@@ -4,6 +4,7 @@
 
 ### Clone
 First of all we need to clone the project.
+
 `git clone https://github.com/DRFR0ST/circles-web.git`
 
 ### Setup env variables
@@ -12,10 +13,12 @@ The content of it can be obtained on our [Discord channel called `resources`](ht
 
 ### Install deps
 Now just install projects dependencies like you always do. Since we use [`yarn`](https://yarnpkg.com/), please install it, if you didn't yet.
+
 `yarn install` or just `yarn`
 
 ### Start server
 Last thing is to start the development server.
+
 Type in `yarn start`, hit enter, wait a few seconds/minutes and you are ready to write code!
 Have fun!
 
