@@ -11,7 +11,7 @@ function Home() {
   const classes = useStyles();
   const history = useHistory();
 
-  const [isRoomsView, setIsRoomView] = useState(true);
+  const [isRoomsView] = useState(true);
 
   useEffect(() => {
     history.push("/home/highlights");
