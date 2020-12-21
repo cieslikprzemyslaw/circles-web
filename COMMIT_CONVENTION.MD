@@ -60,8 +60,8 @@ Emoji will also depend on your client/user. A back-end API might use ✨ when ad
 [RegEx example](regexr.com/5hrd4)
 
 ## Examples
-`🐛 Fix the flicker caused by the drawer`
-`✨ Add a super cool animation for the drawer`
-`♻️ Refactor drawer code`
-`🔥 Remove deprecated drawer code`
-`📦 Install react-littera@2.1.4`
+- `🐛 Fix the flicker caused by the drawer`
+- `✨ Add a super cool animation for the drawer`
+- `♻️ Refactor drawer code`
+- `🔥 Remove deprecated drawer code`
+- `📦 Install react-littera@2.1.4`
