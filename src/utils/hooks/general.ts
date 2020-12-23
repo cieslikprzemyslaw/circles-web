@@ -50,5 +50,6 @@ export const useRestrictedPageForCurrentAccount = (path: string = "/home") => {
 
 export const useSignal = () => {
     const [, updateState] = useState();
+    // @ts-ignore
     return useCallback(() => updateState({}), []);
 }

@@ -27,3 +27,11 @@ export const updateCurrentAccount = async (account_id: string) => {
 
     return ({ type: "SET_CURRENT_ACCOUNT", payload });
 }
+
+/**
+ * Set background theme.
+ * @param theme 
+ */
+export const setBackgroundTheme = (theme: { id: string, url: string, label: string }) => {
+    return ({ type: "SET_BACKGROUND_THEME", payload: theme });
+}

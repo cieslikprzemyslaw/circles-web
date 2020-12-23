@@ -6,12 +6,18 @@ import Logo from 'components/common/Logo';
 import HomeLayouts from 'HomeLayouts';
 import People from '../People';
 import { useHistory } from 'react-router-dom';
+import SettingsDrawer from 'components/common/SettingsDrawer';
+import { useStore } from 'store/hooks';
+import { backgroundThemes } from 'utils/backgroundThemes';
 
 function Home() {
   const classes = useStyles();
   const history = useHistory();
 
   const [isRoomsView] = useState(true);
+
+  // @ts-ignore
+  const bgTheme = useStore(state => state?.preferences?.backgroundTheme || backgroundThemes[0])
 
   useEffect(() => {
     history.push("/home/highlights");
@@ -32,6 +38,9 @@ function Home() {
           <section className={classes.topMenu}>
             {/* top Menu */}
             <Logo style={{ fontSize: "56px", margin: "16px 0" }} />
+            <div>
+              <SettingsDrawer />
+            </div>
           </section>
           <main className={classes.mainSection}>
             {/* new conversation and highlights */}
@@ -41,7 +50,7 @@ function Home() {
         </div>
       </section>
       <div className={classes.backgroundImageBacklit} ></div>
-      <div className={classes.backgroundImage} ></div>
+      <div className={classes.backgroundImage} style={{ backgroundImage: `url(${bgTheme?.url}${window.innerWidth}x${window.innerHeight})` }} ></div>
     </>
   );
 }

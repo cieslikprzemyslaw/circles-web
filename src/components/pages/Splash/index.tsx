@@ -6,10 +6,11 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'store/hooks';
 import { useStorage } from 'storage/hooks';
 import { AccountInfo, AccountLogin, AccountChange } from 'api/commands';
-import { setCurrentAccount } from 'store/actions';
+import { setBackgroundTheme, setCurrentAccount } from 'store/actions';
 import { useDispatchCommand } from 'api/hooks';
 import firebase from "firebase/app"
 import { useSnackbar } from "notistack";
+import { backgroundThemes } from 'utils/backgroundThemes';
 
 const Splash = () => {
     const history = useHistory();
@@ -38,6 +39,12 @@ const Splash = () => {
                 const accountInfo = (await dispatchCommand(AccountInfo, account_id, true, true, true));
                 if(accountInfo.status === 200) {
                     dispatch(setCurrentAccount(accountInfo.data));
+
+                    // Initialize bgTheme.
+                    const bgThemeId = localStorage.getItem('background-theme') || '1922729';
+                    const bgTheme = (backgroundThemes.find(bgT => bgT.id.toString() === bgThemeId.toString()) ?? backgroundThemes[0]) as { id: string, url: string, label: string };
+
+                    dispatch(setBackgroundTheme(bgTheme));
 
                     if(accountInfo.data?.flags?.includes("needs_init")) {
                         // Navigate to welcome page.
