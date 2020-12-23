@@ -19,7 +19,7 @@ function Home() {
   const openProfileDrawer = () => setShownProfileDrawer(true);
   const closeProfileDrawer = () => setShownProfileDrawer(false);
 
-  const [isRoomsView, setIsRoomView] = useState(true);
+  const [isRoomsView] = useState(true);
 
   useEffect(() => {
     history.push("/home/highlights");
