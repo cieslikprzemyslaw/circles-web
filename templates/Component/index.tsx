@@ -5,6 +5,8 @@ import { useLittera } from "react-littera";
 import cx from "classnames";
 
 // Project scoped imports.
+
+// Component scoped imports.
 import styles from "./styles";
 import translations from "./trans";
 
