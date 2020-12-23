@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLittera } from "react-littera";
 import useStyles from "./styles";
 import translations from "./trans";
@@ -13,6 +13,10 @@ import AccountFavContacts from "components/common/AccountFavContacts";
 const Highlights = () => {
   const [translated] = useLittera(translations);
   const classes = useStyles();
+
+  useEffect(()=> {
+
+  }, [])
 
   const currentAccount = useStore(state => state.currentAccount);
 

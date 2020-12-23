@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useLittera } from "react-littera";
 import useStyles from "./styles"
 import translations from "./trans"
@@ -8,6 +8,7 @@ import { signOut } from "api/auth";
 import { setCurrentAccount } from "store/actions";
 import { useDispatch } from "store/hooks";
 import { useStorageSetter } from "storage/hooks";
+import gsap from 'gsap';
 
 /**
  * Profile page component.
@@ -27,28 +28,30 @@ const Profile = () => {
         storageSetter("accountIdToken");
         storeDispatch(setCurrentAccount(null));
         window.location.reload(true);
-      };
+    };
 
-    return <div className={classes.root}>
-        {translated.title}
-        <img  alt="profile" src={currentAccount.avatar_url} style={{width: "220px", height: "auto"}} />
-        <Typography paragraph>{currentAccount.label}</Typography>
-        <Typography paragraph>{currentAccount.details.first_name}</Typography>
-        <Typography paragraph>{currentAccount.details.last_name}</Typography>
-        <Typography paragraph>{currentAccount.email}</Typography>
-        <br/>
-        <Typography variant="h3">Contacts:</Typography>
-        <section>
-        {currentAccount && (
-          <Button variant='contained' onClick={handleSignOut}>
-            Sign out
-          </Button>
-        )}
-      </section>
-        {
-        currentAccount?.friends && currentAccount.friends.map(friend => <Contact key={friend.account_id} {...friend} />)
-        }
-    </div>
+    return (
+      <div className={classes.root}>
+          {translated.title}
+          <img  alt="profile" src={currentAccount.avatar_url} style={{width: "220px", height: "auto"}} />
+          <Typography paragraph>{currentAccount.label}</Typography>
+          <Typography paragraph>{currentAccount.details.first_name}</Typography>
+          <Typography paragraph>{currentAccount.details.last_name}</Typography>
+          <Typography paragraph>{currentAccount.email}</Typography>
+          <br/>
+          <Typography variant="h3">Contacts:</Typography>
+          <section>
+          {currentAccount && (
+            <Button variant='contained' onClick={handleSignOut}>
+              Sign out
+            </Button>
+          )}
+        </section>
+          {
+          currentAccount?.friends && currentAccount.friends.map(friend => <Contact key={friend.account_id} {...friend} />)
+          }
+      </div>
+    )
 }
 
 const Contact = (props: { account_id: string, favorite?: boolean }) => {

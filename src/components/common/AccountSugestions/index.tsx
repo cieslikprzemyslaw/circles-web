@@ -25,7 +25,8 @@ const AccountSuggestions = () => {
                return (                  
                         <Suggestion 
                         suggestion={suggestion}  
-                        index={suggestions.indexOf(suggestion)}    
+                        index={suggestions.indexOf(suggestion)} 
+                        key={suggestions.indexOf(suggestion)}   
                         />
                )
            }): null}

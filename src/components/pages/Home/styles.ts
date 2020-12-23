@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         justifyContent: "flex-start",
         alignItems: "center",
-        color:"white",
+        color: "white",
     },
     mainSection: {
         display: "flex",
@@ -66,6 +66,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "flex-start",
     },
-  }));
+    avatar: {
+        position: "fixed",
+        top: "50px",
+        right: "50px",
+        zIndex: 99,
+        cursor: "pointer",
+    },
+    drawer: {
+        width: "60%"
+    }
+}));
 
-  export default useStyles;
+export default useStyles;
