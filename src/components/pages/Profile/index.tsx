@@ -8,7 +8,6 @@ import { signOut } from "api/auth";
 import { setCurrentAccount } from "store/actions";
 import { useDispatch } from "store/hooks";
 import { useStorageSetter } from "storage/hooks";
-import gsap from 'gsap';
 
 /**
  * Profile page component.
@@ -38,12 +37,10 @@ const Profile = () => {
           <Typography paragraph>{currentAccount.details.first_name}</Typography>
           <Typography paragraph>{currentAccount.details.last_name}</Typography>
           <Typography paragraph>{currentAccount.email}</Typography>
-          <br/>
-          <Typography variant="h3">Contacts:</Typography>
           <section>
           {currentAccount && (
             <Button variant='contained' onClick={handleSignOut}>
-              Sign out
+              {translated.signOut}
             </Button>
           )}
         </section>
