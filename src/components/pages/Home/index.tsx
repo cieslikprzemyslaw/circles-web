@@ -9,6 +9,7 @@ import { useStore } from 'store/hooks';
 import { Avatar, Drawer } from '@material-ui/core';
 import Profile from '../Profile';
 import Menu from '../Menu';
+import Flex from 'components/utils/Flex';
 
 function Home() {
   const classes = useStyles();
@@ -27,7 +28,9 @@ function Home() {
 
   return (
     <>
-      <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer}/>
+      <Flex flexDirection='row'>
+          <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer}/>
+      </Flex>
       
       <section className={classes.root}>
         <div className={classes.sidebar}>

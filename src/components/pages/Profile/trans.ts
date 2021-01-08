@@ -3,10 +3,13 @@ const translations = (preset: any) => ({
     title: {
         en_US: "Profile",
         pl_PL: "Profil",
-        de_DE: "Profil"
+        de_DE: "Profil",
     },
-    // Example preset use. See src/utils/hooks/locale.ts for more.
-    yes: preset.yes
+    signOut: {
+        en_US: "Sign Out",
+        pl_PL: "Wyloguj się",
+        de_DE: "Ausloggen",
+    },
 })
 
 export default translations;
