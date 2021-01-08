@@ -21,10 +21,11 @@ function Home() {
   const closeProfileDrawer = () => setShownProfileDrawer(false);
 
   const [isRoomsView] = useState(true);
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     history.push("/home/highlights");
-    // @ts-ignore
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
