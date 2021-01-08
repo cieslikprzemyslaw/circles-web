@@ -14,10 +14,6 @@ const Highlights = () => {
   const [translated] = useLittera(translations);
   const classes = useStyles();
 
-  useEffect(()=> {
-
-  }, [])
-
   const currentAccount = useStore(state => state.currentAccount);
 
   return (
