@@ -24,7 +24,7 @@ function Home() {
 
   useEffect(() => {
     history.push("/home/highlights");
-  }, [])
+  })
 
   return (
     <>
