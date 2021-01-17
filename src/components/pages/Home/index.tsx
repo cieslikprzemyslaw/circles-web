@@ -9,7 +9,6 @@ import { useStore } from 'store/hooks';
 import { Avatar, Drawer } from '@material-ui/core';
 import Profile from '../Profile';
 import Menu from '../Menu';
-import Flex from 'components/utils/Flex';
 
 function Home() {
   const classes = useStyles();
@@ -21,10 +20,12 @@ function Home() {
   const closeProfileDrawer = () => setShownProfileDrawer(false);
 
   const [isRoomsView] = useState(true);
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     history.push("/home/highlights");
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
