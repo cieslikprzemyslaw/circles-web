@@ -28,9 +28,7 @@ function Home() {
 
   return (
     <>
-      <Flex flexDirection='row'>
-          <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer}/>
-      </Flex>
+      
       
       <section className={classes.root}>
         <div className={classes.sidebar}>
@@ -40,6 +38,7 @@ function Home() {
           <section className={classes.topMenu}>
             {/* top Menu */}
             <Logo style={{ fontSize: "56px", margin: "16px 0" }} />
+            <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer} />
           </section>
           <main className={classes.mainSection}>
             {/* new conversation and Layouts for home screen */}

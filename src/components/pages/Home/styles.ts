@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         height: "72px",
         width: "100%",
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
         alignItems: "center",
         color: "white",
     },
@@ -67,10 +67,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "flex-start",
     },
     avatar: {
-        position: "fixed",
-        top: "50px",
-        right: "50px",
-        zIndex: 99,
+        marginRight: "50px",
         cursor: "pointer",
     },
     drawer: {
