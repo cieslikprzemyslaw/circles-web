@@ -8,7 +8,7 @@ Circles is a messaging app designed with family ties in mind. It makes sure that
 - 🚀 Lightweight
 - 🤯 Smart
 - 🔒 Secure
-- 🌟 Looks very trendy
+- 🌟 Modern design
 
 
 ## How to start?
