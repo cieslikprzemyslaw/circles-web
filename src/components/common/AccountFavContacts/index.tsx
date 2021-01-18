@@ -26,13 +26,13 @@ const AccountFavContacts = (props: AccountFavContactsProps) => {
     </div>
 }
 
-type AccountContactBadge = {
+type AccountContactBadgeProps = {
     account_id: string;
     favorite: boolean;
     last_contacted?: string;
 }
 
-const AccountContactBadge = (props: AccountContactBadge) => {
+const AccountContactBadge = (props: AccountContactBadgeProps) => {
     const classes = useStyles();
     const accountRq = useCommand(AccountInfo, props.account_id);
     const [account] = useForkedState(rq => isLoaded(rq) ? rq.data : null, accountRq);

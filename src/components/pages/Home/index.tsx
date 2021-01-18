@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Rooms from '../Rooms'
 import useStyles from "./styles";
 import Logo from 'components/common/Logo';
-import HomeLayouts from 'HomeLayouts';
 import People from '../People';
-import { useHistory } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 import SettingsDrawer from 'components/common/SettingsDrawer';
 import { useStore } from 'store/hooks';
 import { backgroundThemes } from 'utils/backgroundThemes';
@@ -12,6 +11,7 @@ import { Avatar, Drawer } from '@material-ui/core';
 import Profile from '../Profile';
 import Menu from '../Menu';
 import Flex from 'components/utils/Flex';
+import { Highlights, Room } from '..';
 
 function Home() {
   const classes = useStyles();
@@ -53,7 +53,8 @@ function Home() {
           <main className={classes.mainSection}>
             {/* new conversation and Layouts for home screen */}
             {isRoomsView ? <Rooms /> : <People />}
-            <HomeLayouts />
+            <Route path="/home/highlights" component={Highlights} />
+            <Route path="/home/room/:id" component={Room} /> 
           </main>
         </div>
       </section>
