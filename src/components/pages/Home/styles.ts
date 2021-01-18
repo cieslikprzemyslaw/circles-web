@@ -69,8 +69,8 @@ const useStyles = makeStyles((theme) => ({
         height: "calc(100vh - 72px)" // depends on appbar height.
     },
     avatar: {
-        marginRight: "50px",
         cursor: "pointer",
+        marginLeft: "15px"
     },
     drawer: {
         width: "60%"

@@ -11,6 +11,7 @@ import { backgroundThemes } from 'utils/backgroundThemes';
 import { Avatar, Drawer } from '@material-ui/core';
 import Profile from '../Profile';
 import Menu from '../Menu';
+import Flex from 'components/utils/Flex';
 
 function Home() {
   const classes = useStyles();
@@ -44,10 +45,10 @@ function Home() {
           <section className={classes.topMenu}>
             {/* top Menu */}
             <Logo style={{ fontSize: "56px", margin: "16px 0" }} />
-            <div>
+            <Flex justifyContent="flex-end" alignItems="center">
               <SettingsDrawer />
               <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer} />
-            </div>
+            </Flex>
           </section>
           <main className={classes.mainSection}>
             {/* new conversation and Layouts for home screen */}
