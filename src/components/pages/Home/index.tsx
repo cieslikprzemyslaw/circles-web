@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Menu from '../Menu';
 import Rooms from '../Rooms'
 import useStyles from "./styles";
 import Logo from 'components/common/Logo';
@@ -9,27 +8,34 @@ import { useHistory } from 'react-router-dom';
 import SettingsDrawer from 'components/common/SettingsDrawer';
 import { useStore } from 'store/hooks';
 import { backgroundThemes } from 'utils/backgroundThemes';
+import { Avatar, Drawer } from '@material-ui/core';
+import Profile from '../Profile';
+import Menu from '../Menu';
 
 function Home() {
   const classes = useStyles();
   const history = useHistory();
+  const currentAccount = useStore(state => state.currentAccount);
 
-  const [isRoomsView] = useState(true);
+  const [shownProfileDrawer, setShownProfileDrawer] = useState(false);
+  const openProfileDrawer = () => setShownProfileDrawer(true);
+  const closeProfileDrawer = () => setShownProfileDrawer(false);
 
   // @ts-ignore
   const bgTheme = useStore(state => state?.preferences?.backgroundTheme || backgroundThemes[0])
 
+  const [isRoomsView] = useState(true);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     history.push("/home/highlights");
-  }, [history])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  // toggle funcion for future change cards beetwen Rooms and People
-  // const toggleView = () => {
-  //   setIsRoomView(!isRoomsView);
-  // }
-  
-  return(
+  return (
     <>
+
+
       <section className={classes.root}>
         <div className={classes.sidebar}>
           <Menu />
@@ -40,17 +46,24 @@ function Home() {
             <Logo style={{ fontSize: "56px", margin: "16px 0" }} />
             <div>
               <SettingsDrawer />
+              <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer} />
             </div>
           </section>
           <main className={classes.mainSection}>
-            {/* new conversation and highlights */}
-            {isRoomsView ? <Rooms/> : <People/>}
-            <HomeLayouts/>
-          </main> 
+            {/* new conversation and Layouts for home screen */}
+            {isRoomsView ? <Rooms /> : <People />}
+            <HomeLayouts />
+          </main>
         </div>
       </section>
       <div className={classes.backgroundImageBacklit} ></div>
       <div className={classes.backgroundImage} style={{ backgroundImage: `url(${bgTheme?.url}${window.innerWidth}x${window.innerHeight})` }} ></div>
+
+      <Drawer anchor="right" open={shownProfileDrawer} onClose={closeProfileDrawer}>
+        <div style={{ width: "55vw", height: "100vh", backgroundColor: "#FFF" }}>
+          <Profile />
+        </div>
+      </Drawer>
     </>
   );
 }
