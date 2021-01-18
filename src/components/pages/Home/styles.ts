@@ -56,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         height: "72px",
         width: "100%",
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
         alignItems: "center",
-        color:"white",
+        color: "white",
     },
     mainSection: {
         display: "flex",
@@ -67,6 +67,13 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "flex-start",
         height: "calc(100vh - 72px)" // depends on appbar height.
     },
-  }));
+    avatar: {
+        marginRight: "50px",
+        cursor: "pointer",
+    },
+    drawer: {
+        width: "60%"
+    }
+}));
 
-  export default useStyles;
+export default useStyles;
