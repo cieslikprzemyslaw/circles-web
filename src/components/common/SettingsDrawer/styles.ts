@@ -1,7 +1,9 @@
 // Here we define styles for the component.
 
+import { Theme } from "@material-ui/core";
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ((theme: any) => ({
+export default ((theme: Theme) => ({
     root: {
         // Container styles...
     },
