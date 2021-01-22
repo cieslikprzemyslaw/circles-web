@@ -1,5 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 
+const sidebarWidth = 114;
+const sidebarMargin = 20;
+
 const useStyles = makeStyles((theme) => ({
     root: {
         position: "relative",
@@ -13,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexWrap: "wrap",
         flexGrow: 2,
-        width: "auto",
+        width: `calc(100% - ${sidebarWidth + sidebarMargin}px)`,
         height: "100%"
     },
     sidebar: {
@@ -21,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "flex-start",
-        width: "114px",
-        marginRight: "20px",
+        width: sidebarWidth,
+        marginRight: sidebarMargin,
         height: "100vh",
         padding: "15px 0",
         background: "linear-gradient(to right, rgba(0, 0, 0, 0.35), transparent)"

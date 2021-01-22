@@ -5,13 +5,40 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
     flexBasis: "70%",
+    width: "70%",
+    minWidth: "70%",
     maxWidth: "max-content",
-
+    display: "flex",
+    flexDirection: "column",
+    height: "calc(100vh - 72px)",
+    justifyContent: "space-between",
+    backdropFilter: "blur(10px)",
+    borderTopLeftRadius: theme.shape.borderRadius,
+    borderTopRightRadius: theme.shape.borderRadius,
+    
     [theme.breakpoints.down("sm")]: {
       flexBasis: "100%",
+      minWidth: "100%",
       width: "100%",
-
+      
+    },
+    [theme.breakpoints.down("md")]: {
+      flexBasis: "50%",
+      minWidth: "50%",
+      width: "50%",
     }
+  },
+  inputContainer: {
+    backgroundColor: theme.palette.background.default,
+    borderRadius: theme.shape.borderRadius,
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start"
+  },
+  roomTitle: {
+    marginLeft: "12px",
+    marginTop: "12px"
   },
   messagesRoot: {
     minWidth: "70vw",

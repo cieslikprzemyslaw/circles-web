@@ -90,7 +90,7 @@ const Splash = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return <Flex alignItems="center" justifyContent="center" width="100%" height="100vh">
+    return <Flex alignItems="center" justifyContent="center" width="100%" height="100vh" className={classes.root}>
             <img src={logo} alt="logo" className={classes.logo} />
         </Flex>
 }

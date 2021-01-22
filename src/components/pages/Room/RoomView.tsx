@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import useStyles from "../Splash/styles";
 import { useStore } from "store/hooks";
 import { Typography } from "@material-ui/core";
 import Messages from "./Messages";
@@ -8,7 +7,9 @@ import MessageForm from "./MessageForm";
 import { useRoom } from "api/hooks";
 import { useMessageSubmit } from "api/messages";
 import MessagesSkeleton from "./MessagesSkeleton";
+import useStyles from './styles';
 
+// TODO: Show skeleton when switching rooms.
 const RoomView = () => {
     const params = useParams<{id: string}>();
     const classes = useStyles();
@@ -17,13 +18,18 @@ const RoomView = () => {
     const room = useRoom(params.id);
     const submitMessage = useMessageSubmit(params.id, currentAccount?.id ?? "");
 
-    if(!room || !room.id) return <MessagesSkeleton />
-
     return <div className={classes.root}>
-        <Typography variant="h4">{room.label}</Typography>
-        
-        <Messages accounts={room?.accounts ?? []} roomId={room.id} />
-        <MessageForm onSubmit={submitMessage} />
+        {(!room || !room.id) ?
+            <MessagesSkeleton />
+            :
+            <>
+                <Typography variant="h4" className={classes.roomTitle}>{room.label}</Typography>
+            
+                <div>
+                    <Messages accounts={room?.accounts ?? []} roomId={room.id} />
+                    <MessageForm onSubmit={submitMessage} />
+                </div>
+            </>}
     </div>
 }
 

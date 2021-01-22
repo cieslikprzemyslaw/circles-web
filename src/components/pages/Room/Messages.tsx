@@ -10,18 +10,17 @@ import ReactMarkdown from "react-markdown";
 import MessagesSkeleton from "./MessagesSkeleton";
 
 const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }) => {
-    const messages = useMessages(roomId);
-
+    const messages = useMessages(roomId) || {};
 
     const getAuthor = useCallback((author_id) => accounts.find(account => account.id === author_id) ?? null, [accounts]);
     const currentAccount = useStore(state => state.currentAccount ?? null);
 
-    if (!messages) return <MessagesSkeleton/>
+    const hasMessages = Object.keys(messages).length !== 0;
 
-    if (Object.keys(messages).length === 0) return <Typography variant="h2">Say Hi!</Typography>
-
-    return <Flex flexDirection="column-reverse" style={{marginBottom: "15px", overflowY: "scroll", height:"85vh"}}>
-        {
+    return <Flex flexDirection="column-reverse" style={{ marginBottom: "15px", overflowY: "scroll", height: "calc(90vh - 122px)" }}>
+        {messages && !hasMessages ?
+            <Typography variant="h2">Say Hi!</Typography>
+            :
             Object.keys(messages).reverse().map((message_id: string, index: number) => {
 
                 const message = messages[message_id];

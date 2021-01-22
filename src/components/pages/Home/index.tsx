@@ -46,7 +46,7 @@ function Home() {
         <div className={classes.container}>
           <section className={classes.topMenu}>
             {/* top Menu */}
-            <Logo style={{ fontSize: "56px", margin: "16px 0" }} onClick={handleNavigation('/home/')} />
+            <Logo style={{ fontSize: "56px", margin: "16px 0" }} onClick={handleNavigation('/home/highlights')} />
             <Flex justifyContent="flex-end" alignItems="center" className={classes.menuBar}>
               <SettingsDrawer />
               <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer} />

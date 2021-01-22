@@ -2,10 +2,11 @@ import React, { useState, useRef } from 'react';
 import { IconButton, Icon } from '@material-ui/core';
 import MessageInput from 'components/common/MessageInput';
 import { sendPushNotification } from "api/fcm";
+import useStyles from './styles';
 
 const MessageForm = (props: { onSubmit: (value: string) => void }) => {
     const [input, setInput] = useState("");
-
+    const classes = useStyles();
     const ref = useRef<HTMLInputElement | undefined>();
 
     const handleTextFieldFocus = () => {
@@ -35,7 +36,7 @@ const MessageForm = (props: { onSubmit: (value: string) => void }) => {
         setInput(event.target?.value ?? "");
     }
 
-    return <form id="message-form" style={{width: "100%", minHeight:"36px", position: "relative", display: "flex", alignItems: "center"}} onSubmit={handleSubmit}>
+    return <form id="message-form" className={classes.inputContainer} onSubmit={handleSubmit}>
         <MessageInput inputRef={ref} value={input} onChange={handleChange} onSubmit={handleSubmit} />
         <IconButton onClick={() => handleSubmit()}>
             <Icon color="primary">send</Icon>
