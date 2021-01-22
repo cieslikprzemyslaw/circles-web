@@ -35,8 +35,6 @@ function Home() {
 
   return (
     <>
-
-
       <section className={classes.root}>
         <div className={classes.sidebar}>
           <Menu />
@@ -45,7 +43,7 @@ function Home() {
           <section className={classes.topMenu}>
             {/* top Menu */}
             <Logo style={{ fontSize: "56px", margin: "16px 0" }} />
-            <Flex justifyContent="flex-end" alignItems="center">
+            <Flex justifyContent="flex-end" alignItems="center" className={classes.menuBar}>
               <SettingsDrawer />
               <Avatar className={classes.avatar} alt="user" src={currentAccount?.avatar_url} onClick={openProfileDrawer} />
             </Flex>

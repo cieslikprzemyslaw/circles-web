@@ -28,8 +28,6 @@ const useStyles = makeStyles((theme) => ({
         background: "linear-gradient(to right, rgba(0, 0, 0, 0.35), transparent)"
     },
     backgroundImage: {
-        // TODO: Replace source with api.
-        //backgroundImage: "url(https://source.unsplash.com/1r5gu_0mcUM/1600x900)", //"url(https://source.unsplash.com/collection/935527/1600x900)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -55,11 +53,14 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         display: "flex",
         height: "72px",
-        width: "95%",
+        width: "100%",
         margin: "0 auto",
         justifyContent: "space-between",
         alignItems: "center",
         color: "white",
+    },
+    menuBar: {
+        marginRight: "3vw"
     },
     mainSection: {
         display: "flex",

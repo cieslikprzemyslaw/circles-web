@@ -1,5 +1,5 @@
 import * as firebase from "firebase/app";
-import { messaging } from "firebase";
+import { messaging } from "config/firebase";
 import { setLocalStorageValue } from "storage/storage";
 
 export const signInWithPopup = async () => {

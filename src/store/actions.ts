@@ -1,5 +1,5 @@
 import { IAccount } from "types";
-import config from "config";
+import config from "config/config";
 import { AccountInfo } from "api/commands";
 import { Client } from "api/client";
 

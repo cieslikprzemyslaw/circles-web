@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { Client } from './client';
 import { useSignal } from '../utils/hooks/general';
-import config from '../config';
+import config from '../config/config';
 import { IAccount, IRoom } from 'types';
 import { AccountInfo, RoomInfo } from './commands';
 import { useStore, useDispatch } from 'store/hooks';
