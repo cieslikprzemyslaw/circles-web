@@ -30,7 +30,7 @@ const SettingsDrawer = (props: SettingsDrawerProps) => {
     const openDrawer = () => setIsOpen(true);
 
     return <div className={cx(classes.root, props.className)} style={props.style}>
-        <Drawer open={isOpen} anchor="right" onClose={closeDrawer} className={classes.drawer}>
+        <Drawer open={isOpen} anchor="right" onClose={closeDrawer} className={classes.drawer} keepMounted>
             <div className={classes.paperDrawer}>
                 <Flex alignItems="center" justifyContent="space-between">
                     <h2 className={classes.h2}>{translated.title}</h2>
