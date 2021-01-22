@@ -6,8 +6,6 @@ import { IRoom } from "types";
 import CreateRoom from "./CreateRoom";
 import useStyles from "./styles";
 
-
-
 const Rooms = () => {
     const classes = useStyles();
 
@@ -29,9 +27,12 @@ const RoomLabel = (props: IRoom) => {
     const history = useHistory();
     const classes = useStyles();
 
-    return <div className={classes.roomItemWrapper}>
+    const roomUri = `/home/room/${props.id}`;
+    const handleNavigation = () => history.push(roomUri);
+
+    return <div onClick={handleNavigation} className={classes.roomItemWrapper}>
         <div className={classes.avatarPlaceholder}></div>
-        <Typography onClick={() => history.push(`/home/room/${props.id}`)}>{props.label}</Typography>
+        <Typography>{props.label}</Typography>
     </div>
 }
 
