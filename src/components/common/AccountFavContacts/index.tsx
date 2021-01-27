@@ -1,9 +1,10 @@
+import { Avatar } from "@material-ui/core";
 import { AccountInfo } from "api/commands";
 import { useCommand } from "api/hooks";
 import { isLoaded } from "api/utils";
 import React from "react";
 import { useStore } from "store/hooks";
-import { ensureArray } from "utils/general";
+import { ensureArray, makeFullName, makeInitials } from "utils/general";
 import { useForkedState } from "utils/hooks/general";
 import useStyles from "./styles";
 
@@ -20,7 +21,7 @@ const AccountFavContacts = (props: AccountFavContactsProps) => {
     return <div className={classes.root}>
         {
             ensureArray(currentAccount?.friends)
-                .filter(c => c.favorite)
+                .filter(c => !!c.favorite)
                 .map(c => <AccountContactBadge {...c} />)
         }
     </div>
@@ -37,9 +38,12 @@ const AccountContactBadge = (props: AccountContactBadgeProps) => {
     const accountRq = useCommand(AccountInfo, props.account_id);
     const [account] = useForkedState(rq => isLoaded(rq) ? rq.data : null, accountRq);
 
-    if (!account) return null; // TODO: Add loader...
+    if (!account || account.flags?.includes("needs_init")) return null; // TODO: Add loader...
 
-    return <img className={classes.image} src={account.avatar_url} alt="avatar" />
+    const accountFullName = makeFullName(account.details?.first_name, account.details?.last_name, account.label);
+    const accountInitials = makeInitials(account.details?.first_name, account.details?.last_name, account.label);
+
+    return <Avatar className={classes.image} src={account.avatar_url} alt={accountFullName}>{accountInitials}</Avatar>
 }
 
 export default AccountFavContacts

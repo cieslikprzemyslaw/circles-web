@@ -3,7 +3,7 @@ export interface IAccount {
     label: string;
     created_at: Date;
     email: string;
-    avatar_url: string;
+    avatar_url?: string;
 
     details: TAccountDetails;
 

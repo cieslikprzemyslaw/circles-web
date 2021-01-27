@@ -13,3 +13,17 @@ export function ensureArray(arr: any) {
 
   return [];
 }
+
+export function makeInitials(first_name: string | undefined, last_name: string | undefined, fallback: string) {
+  if (first_name && last_name)
+    return (`${first_name[0]}${last_name[0]}`).toUpperCase();
+
+  return fallback[0].toUpperCase();
+}
+
+export function makeFullName(first_name: string | undefined, last_name: string | undefined, fallback: string) {
+  if (first_name && last_name)
+    return (`${first_name[0]} ${last_name[0]}`);
+
+  return fallback;
+}

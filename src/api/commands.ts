@@ -3,8 +3,8 @@ import { IAccount } from "types";
 import { checkType } from "./utils";
 
 export class AccountInfo extends Command {
-    constructor(account_id: string, flags?: boolean, rooms?: boolean, contacts?: boolean) {
-        super(["account-accountInfo", { account_id, flags: !!flags, rooms: !!rooms, contacts: !!contacts }]);
+    constructor(account_id: string, flags?: boolean, rooms?: boolean, friends?: boolean) {
+        super(["account-accountInfo", { account_id, flags: !!flags, rooms: !!rooms, friends: !!friends }]);
     }
 
     parse(status: number, data: IAccount) {
