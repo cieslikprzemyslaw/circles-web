@@ -34,13 +34,15 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "0px",
     },
     roomItemWrapper: {
+        overflow: "hidden",
+        width: "100%",
         padding: "30px 24px",
         textAlign: "left",
         backgroundColor: "#fff",
         cursor: "pointer",
         transition: "backgroundColor 255ms ease",
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: "baseline",
         alignItems: "center",
         "&:hover": {
             backgroundColor: "#f5f5f5",
@@ -52,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "42px",
         backgroundColor: "#9C6",
         marginRight: "20px"
-    }
+    },
+    lastMessageTypography: { fontSize: "14px", opacity: 0.45, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap" }
   }));
 
   export default useStyles;
