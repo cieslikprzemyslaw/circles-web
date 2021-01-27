@@ -23,7 +23,7 @@ export function makeInitials(first_name: string | undefined, last_name: string |
 
 export function makeFullName(first_name: string | undefined, last_name: string | undefined, fallback: string) {
   if (first_name && last_name)
-    return (`${first_name[0]} ${last_name[0]}`);
+    return (`${first_name} ${last_name}`);
 
   return fallback;
 }
