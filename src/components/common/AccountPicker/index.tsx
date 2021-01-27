@@ -8,6 +8,7 @@ import { IAccount } from "types";
 import { CircularProgress, Avatar, Typography, Icon } from "@material-ui/core";
 import { useStore } from "store/hooks";
 import Flex from "components/utils/Flex";
+import { makeFullName, makeInitials } from "utils/general";
 
 type AccountPickerProps = {
     onChange: React.Dispatch<React.SetStateAction<string[]>> | React.Dispatch<React.SetStateAction<string>>;
@@ -74,12 +75,15 @@ const SingleAccount = ({ account, onClick, selected }: { account: IAccount, onCl
         onClick(account.id);
     }
 
+    const accountFullName = makeFullName(account.details?.first_name, account.details?.last_name, account.label)
+    const accountInitials = makeInitials(account.details?.first_name, account.details?.last_name, account.label)
+
     return <Flex style={{paddingTop: "12px", cursor: "pointer"}} onClick={handleClick} justifyContent="flex-start" alignItems="center">
             <Avatar 
-                style={{width: "54px", height: "54px", backgroundColor: selected ? "green" : "initial"}} 
-                alt={account.label}  
+            style={{ width: "54px", height: "54px", backgroundColor: selected ? "green" : undefined }}
+            alt={accountFullName}  
                 src={selected ? undefined : account.avatar_url }>
-                    {selected ? <Icon>check</Icon> : account.label}
+            {selected ? <Icon>check</Icon> : accountInitials}
                 </Avatar>
 
             <div style={{margin: "0 0 0 20px"}}>
