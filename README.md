@@ -35,6 +35,8 @@ The last thing is to start the development server.
 Type in `yarn start`, hit enter, wait a few seconds/minutes and you are ready to write code!
 Have fun!
 
+Check out our wiki for more specific info about this project: https://github.com/Assembless/circles-web/wiki/General-project-structure
+
 ## Available Scripts
 
 In the project directory, you can run:
