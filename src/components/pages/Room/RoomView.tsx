@@ -20,7 +20,7 @@ const RoomView = () => {
     const submitMessage = useMessageSubmit(params.id, currentAccount?.id ?? "");
 
     const roomMembers = ensureArray(room?.accounts).filter(acc => acc.id !== currentAccount?.id);
-    const roomName = roomMembers.length > 1 ? room?.label : makeFullName(roomMembers[0]?.details?.first_name, roomMembers[0]?.details?.last_name, roomMembers[0]?.label);
+    const roomName = roomMembers.length > 1 ? room?.label : makeFullName(roomMembers?.[0]?.details?.first_name, roomMembers?.[0]?.details?.last_name, roomMembers?.[0]?.label ?? "Unknown");
 
     return <div className={classes.root}>
         {(!room || !room.id) ?

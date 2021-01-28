@@ -52,7 +52,7 @@ const RoomLabel = (props: IRoom) => {
     }
 
     const roomMembers = ensureArray(room?.accounts).filter(acc => acc.id !== account?.id);
-    const roomName = roomMembers.length > 1 ? props.label : makeFullName(roomMembers[0].details?.first_name, roomMembers[0].details?.last_name, roomMembers[0].label);
+    const roomName = roomMembers.length > 1 ? props.label : makeFullName(roomMembers?.[0]?.details?.first_name, roomMembers?.[0]?.details?.last_name, roomMembers?.[0]?.label ?? "Unknown");
 
     return <Box onClick={handleNavigation} className={classes.roomItemWrapper}>
         <Box style={{ marginRight: "10px", maxWidth: "220px" }}>
@@ -66,8 +66,8 @@ const RoomLabel = (props: IRoom) => {
 }
 
 const accountsMap = (account: IAccount) => {
-    const accountFullName = makeFullName(account.details?.first_name, account.details?.last_name, account.label);
-    const accountInitials = makeInitials(account.details?.first_name, account.details?.last_name, account.label);
+    const accountFullName = makeFullName(account?.details?.first_name, account?.details?.last_name, account?.label ?? "Unknown");
+    const accountInitials = makeInitials(account?.details?.first_name, account?.details?.last_name, account?.label ?? "Unknown");
 
     return <Avatar alt={accountFullName} src={account.avatar_url}>
         {accountInitials}
