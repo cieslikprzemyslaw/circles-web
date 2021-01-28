@@ -17,9 +17,9 @@ const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }
 
     const hasMessages = Object.keys(messages).length !== 0;
 
-    return <Flex flexDirection="column-reverse" style={{ marginBottom: "15px", overflowY: "scroll", height: "calc(90vh - 122px)" }}>
+    return <Flex flexDirection="column-reverse" style={{ marginBottom: "15px", overflowY: "scroll", height: "calc(90vh - 152px)" }}>
         {messages && !hasMessages ?
-            <Typography variant="h2">Say Hi!</Typography>
+            <Typography variant="h2" style={{ marginLeft: "30px" }}>Say Hi!</Typography>
             :
             Object.keys(messages).reverse().map((message_id: string, index: number) => {
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { IconButton, Icon } from '@material-ui/core';
+import { IconButton, Icon, Box } from '@material-ui/core';
 import MessageInput from 'components/common/MessageInput';
 import { sendPushNotification } from "api/fcm";
 import useStyles from './styles';
@@ -37,10 +37,12 @@ const MessageForm = (props: { onSubmit: (value: string) => void }) => {
     }
 
     return <form id="message-form" className={classes.inputContainer} onSubmit={handleSubmit}>
-        <MessageInput inputRef={ref} value={input} onChange={handleChange} onSubmit={handleSubmit} />
-        <IconButton onClick={() => handleSubmit()}>
-            <Icon color="primary">send</Icon>
-        </IconButton>
+        <Box className={classes.inputBackground}>
+            <MessageInput inputRef={ref} value={input} onChange={handleChange} onSubmit={handleSubmit} />
+            <IconButton onClick={() => handleSubmit()}>
+                <Icon color="primary">send</Icon>
+            </IconButton>
+        </Box>
     </form>
 }
 

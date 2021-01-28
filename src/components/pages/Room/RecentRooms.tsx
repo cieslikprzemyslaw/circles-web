@@ -3,7 +3,9 @@ import { useStore } from "store/hooks";
 import { IRoom } from "types";
 import { useHistory } from "react-router-dom";
 
-
+/**
+ * @deprecated since we changed the layout.
+ */
 const RecentRooms = ({ currentRoomId }: { currentRoomId: string }) => {
     const currentAccount = useStore(state => state.currentAccount);
 
@@ -18,6 +20,9 @@ const RecentRooms = ({ currentRoomId }: { currentRoomId: string }) => {
     </div>
 }
 
+/**
+ * @deprecated since we changed the layout.
+ */
 const RecentRoom = ({ room, currentRoomId }: { room: IRoom, currentRoomId: string }) => {
     const history = useHistory();
 

@@ -4,9 +4,7 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    flexBasis: "70%",
-    width: "70%",
-    minWidth: "70%",
+    minWidth: "calc(100% - 385px)",
     maxWidth: "max-content",
     display: "flex",
     flexDirection: "column",
@@ -20,25 +18,27 @@ const useStyles = makeStyles((theme) => ({
       flexBasis: "100%",
       minWidth: "100%",
       width: "100%",
-      
     },
-    [theme.breakpoints.down("md")]: {
-      flexBasis: "50%",
-      minWidth: "50%",
-      width: "50%",
-    }
   },
   inputContainer: {
-    backgroundColor: theme.palette.background.default,
-    borderRadius: theme.shape.borderRadius,
     position: "relative",
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "center",
+    marginBottom: theme.spacing(1)
+  },
+  inputBackground: {
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: 200,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "95%",
   },
   roomTitle: {
+  },
+  roomTitleBox: {
     marginLeft: "12px",
-    marginTop: "12px"
   },
   messagesRoot: {
     minWidth: "70vw",
@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
 
     }
   },
-
   messageRoot: {
     borderRadius: "15px",
   },
@@ -119,7 +118,12 @@ const useStyles = makeStyles((theme) => ({
   sendMessageArea:{
     position: "fixed",
   },
-  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", color: "#242424", right: "-19px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
+  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", color: "#242424", right: "-19px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 },
+  chatBoxHeader: {
+    width: "100%",
+    height: "100px",
+    backgroundColor: theme.palette.background.paper
+  }
 }));
 
 export default useStyles;

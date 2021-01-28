@@ -24,7 +24,15 @@ const useStyles = makeStyles((theme) => ({
         height: "80vh",
         overflow: "hidden",
         minWidth: "296px",
-
+        transition: "all 255ms ease"
+    },
+    roomWrapperExpanded: {
+        margin: "auto 0px auto 0",
+        width: "385px",
+        boxShadow: "7px 11px 15px rgba(0, 0, 0, .25)",
+        borderRadius: "20px 0px 0 20px",
+        height: "100%",
+        minWidth: "296px",
     },
     roomsButton: {
         display: "block",
