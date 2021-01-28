@@ -7,7 +7,7 @@ import { IAccount, IRoom } from "types";
 import CreateRoom from "./CreateRoom";
 import useStyles from "./styles";
 import { useAccount, useRoom } from 'api/hooks';
-import { makeFullName, makeInitials } from 'utils/general';
+import { ensureArray, makeFullName, makeInitials } from 'utils/general';
 import { useMessages } from 'api/messages';
 
 const Rooms = () => {
@@ -51,9 +51,12 @@ const RoomLabel = (props: IRoom) => {
         console.log(err);
     }
 
+    const roomMembers = ensureArray(room?.accounts).filter(acc => acc.id !== account?.id);
+    const roomName = roomMembers.length > 1 ? props.label : makeFullName(roomMembers[0].details?.first_name, roomMembers[0].details?.last_name, roomMembers[0].label);
+
     return <Box onClick={handleNavigation} className={classes.roomItemWrapper}>
         <Box style={{ marginRight: "10px", maxWidth: "220px" }}>
-            <Typography variant="h6" style={{ fontSize: "20px" }}>{props.label}</Typography>
+            <Typography variant="h6" style={{ fontSize: "20px" }}>{roomName}</Typography>
             {lastMessageValue && <Typography className={classes.lastMessageTypography}>{lastMessageValue}</Typography>}
         </Box>
         <AvatarGroup style={{}} max={3} spacing={16}>

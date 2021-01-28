@@ -23,7 +23,9 @@ export function makeInitials(first_name: string | undefined, last_name: string |
 
 export function makeFullName(first_name: string | undefined, last_name: string | undefined, fallback: string) {
   if (first_name && last_name)
-    return (`${first_name} ${last_name}`);
+    return (`${capitalizeFirstLetter(first_name)} ${capitalizeFirstLetter(last_name)}`);
 
   return fallback;
 }
+
+export const capitalizeFirstLetter = (value: string) => `${value[0].toUpperCase()}${value.substring(1, value.length).toLowerCase()}`
