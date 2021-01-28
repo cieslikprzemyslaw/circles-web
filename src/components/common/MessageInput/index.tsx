@@ -13,7 +13,7 @@ const MessageInput = (props: { inputRef?: any, value: string, onChange: (event: 
         }
     }
 
-    return <TextField onKeyPress={handleKeyPress} ref={props.inputRef} fullWidth value={props.value} onChange={props.onChange} placeholder="Write your message..." className={classes.root} variant="outlined" />
+    return <TextField onKeyPress={handleKeyPress} ref={props.inputRef} fullWidth value={props.value} onChange={props.onChange} placeholder="Write your message..." classes={{ root: classes.root }} variant="outlined" />
 }
 
 export default MessageInput;

@@ -9,14 +9,18 @@ import useStyles from "./styles";
 import { useAccount, useRoom } from 'api/hooks';
 import { ensureArray, makeFullName, makeInitials } from 'utils/general';
 import { useMessages } from 'api/messages';
+import cx from "classnames";
 
 const Rooms = () => {
     const classes = useStyles();
+    const history = useHistory();
+
+    const isRoomOpen = history.location.pathname.includes("/room/");
 
     const currentAccount = useStore(state => state.currentAccount);
 
     return (
-        <Box className={classes.roomWrapper}>
+        <Box className={cx(classes.roomWrapper, { [classes.roomWrapperExpanded]: isRoomOpen })}>
             <CreateRoom />
             <Box className={classes.listWrapper}>
                 {
