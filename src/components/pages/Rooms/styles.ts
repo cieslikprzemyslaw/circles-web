@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "20px",
         height: "80vh",
         overflow: "hidden",
+        minWidth: "296px",
 
     },
     roomsButton: {
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         cursor: "pointer",
         transition: "backgroundColor 255ms ease",
         display: "flex",
-        justifyContent: "baseline",
+        justifyContent: "space-between",
         alignItems: "center",
         "&:hover": {
             backgroundColor: "#f5f5f5",

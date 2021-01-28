@@ -10,7 +10,10 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         width: "100vw",
         maxWidth: "100%",
-        overflow: "hidden"
+        overflow: "hidden",
+        [theme.breakpoints.down("sm")]: {
+            height: "auto"
+        }
     },
     container: {
         display: "flex",
@@ -70,7 +73,12 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         justifyContent: "space-between",
         alignItems: "flex-start",
-        height: "calc(100vh - 72px)" // depends on appbar height.
+        height: "calc(100vh - 72px)", // depends on appbar height.
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: "column-reverse",
+            justifyContent: "flex-start",
+            alignItems: "center"
+        }
     },
     avatar: {
         cursor: "pointer",

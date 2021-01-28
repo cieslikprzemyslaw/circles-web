@@ -52,13 +52,13 @@ const RoomLabel = (props: IRoom) => {
     }
 
     return <Box onClick={handleNavigation} className={classes.roomItemWrapper}>
-        <AvatarGroup style={{ flexBasis: "104px" }} max={3} spacing={16}>
-            {room.accounts?.filter(acc => acc.id !== account?.id).map(accountsMap)}
-        </AvatarGroup>
-        <Box style={{ marginLeft: "10px", width: "181px" }}>
+        <Box style={{ marginRight: "10px", maxWidth: "220px" }}>
             <Typography variant="h6" style={{ fontSize: "20px" }}>{props.label}</Typography>
             {lastMessageValue && <Typography className={classes.lastMessageTypography}>{lastMessageValue}</Typography>}
         </Box>
+        <AvatarGroup style={{}} max={3} spacing={16}>
+            {room.accounts?.filter(acc => acc.id !== account?.id).map(accountsMap)}
+        </AvatarGroup>
     </Box>
 }
 

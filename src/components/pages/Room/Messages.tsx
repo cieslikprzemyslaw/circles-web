@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Avatar } from "@material-ui/core";
 import { useMessages } from "api/messages";
 import { IAccount, IMessage } from "types";
 import { useStore } from "store/hooks";
@@ -7,6 +7,7 @@ import useStyles from "./styles";
 import Flex from "components/utils/Flex";
 import cx from "classnames";
 import ReactMarkdown from "react-markdown";
+import { makeFullName, makeInitials } from "utils/general";
 
 const Messages = ({ roomId, accounts }: { roomId: string, accounts: IAccount[] }) => {
     const messages = useMessages(roomId) || {};
@@ -56,8 +57,11 @@ const Message = ({ message, author, isOwned, displayAvatar, isOwnedNextMessage, 
         setHeight((ref as any).current.offsetHeight);
     }, [])
 
+    const authorFullName = makeFullName(author?.details?.first_name, author?.details?.last_name, author?.label ?? "Unknown")
+    const authorInitials = makeInitials(author?.details?.first_name, author?.details?.last_name, author?.label ?? "Unknown")
+
     return <Flex alignItems="flex-end" className={bubbleClasses} style={{ alignSelf: isOwned ? "flex-end" : "flex-start"}}>
-        {displayAvatar && !isOwned && author?.avatar_url && <img alt="author avatar" src={author.avatar_url} className={classes.avatar} />}
+        {displayAvatar && !isOwned && author && <Avatar alt={authorFullName} className={classes.avatar} src={author.avatar_url}>{authorInitials}</Avatar>}
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />
         </div>

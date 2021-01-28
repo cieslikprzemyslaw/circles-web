@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
   sendMessageArea:{
     position: "fixed",
   },
-  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", right: "-19px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
+  avatar: { borderRadius: "28px", width: "28px", height: "28px", backgroundColor: "white", color: "#242424", right: "-19px", bottom: "0px", position: "relative", padding: "3px", zIndex: 5 }
 }));
 
 export default useStyles;
