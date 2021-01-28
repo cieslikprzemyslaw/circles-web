@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Settings drawer will be kept mounted to avoid expensive refetching of background thumbnails.
 - Display full name for rooms with only 2 members.
+- Room view aesthetics.
 
 ### Fixed
 - Room list items clickable area expanded to full button instead of just text.
