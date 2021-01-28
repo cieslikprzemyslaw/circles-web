@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Logo is now clickable, redirects to the home view.
+- Version displayed in the settings drawer.
+- Room avatars.
 
 ### Changed
 - Settings drawer will be kept mounted to avoid expensive refetching of background thumbnails.
@@ -14,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Room list items clickable area expanded to full button instead of just text.
 - Chat box drifted away from the viewport.
+- Fetching accounts friends.
 
 ## [1.0.0-alpha.1] - 2021-01-18
 ### Added
