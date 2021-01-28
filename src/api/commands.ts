@@ -1,18 +1,38 @@
 import { Command } from "./client";
 import { IAccount } from "types";
-import { checkType } from "./utils";
+import { checkField, checkType } from "./utils";
 
 export class AccountInfo extends Command {
     constructor(account_id: string, flags?: boolean, rooms?: boolean, friends?: boolean) {
         super(["account-accountInfo", { account_id, flags: !!flags, rooms: !!rooms, friends: !!friends }]);
+
+        checkType("account_id", account_id, "string");
+
+        checkType("flags", flags, "boolean", "undefined");
+        checkType("rooms", rooms, "boolean", "undefined");
+        checkType("friends", friends, "boolean", "undefined");
     }
 
-    parse(status: number, data: IAccount) {
+    parse(status: number, data: IAccount): IAccount {
         if(status !== 200) return data;
 
-        // TODO: Ensure types.
+        checkType("data", data, "object");
+
+        checkField(data, "id", "string");
+        checkField(data, "label", "string");
+        checkField(data, "created_at", "string");
+        checkField(data, "avatar_url", "string", "undefined");
+
+        checkField(data, "contact", "object");
+        if (data.contact)
+            checkField(data.contact, "email", "string");
+
+        checkField(data, "details", "object");
+        checkField(data, "flags", "object", "undefined");
+        checkField(data, "friends", "array", "undefined");
+        checkField(data, "rooms", "array", "undefined");
         
-        return data;
+        return { ...data, created_at: new Date(data.created_at) };
     }
 }
 
@@ -35,8 +55,7 @@ export class AccountList extends Command {
         super(["account-accountList", { volume, included }]);
 
         checkType("volume", volume, "number", "undefined");
-        // TODO: Support arrays. Replace "object" with "array".
-        checkType("included", included, "object", "undefined");
+        checkType("included", included, "array", "undefined");
     }
 
     parse(status: number, data: any) {

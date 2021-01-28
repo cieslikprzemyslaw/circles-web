@@ -36,7 +36,7 @@ const Profile = () => {
           <Typography paragraph>{currentAccount.label}</Typography>
           <Typography paragraph>{currentAccount.details.first_name}</Typography>
           <Typography paragraph>{currentAccount.details.last_name}</Typography>
-          <Typography paragraph>{currentAccount.email}</Typography>
+        <Typography paragraph>{currentAccount.contact?.email}</Typography>
           <section>
           {currentAccount && (
             <Button variant='contained' onClick={handleSignOut}>

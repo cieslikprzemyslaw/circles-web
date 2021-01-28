@@ -87,8 +87,8 @@ const SingleAccount = ({ account, onClick, selected }: { account: IAccount, onCl
                 </Avatar>
 
             <div style={{margin: "0 0 0 20px"}}>
-                <Typography style={{margin: "0"}} variant="h6">{account.label}</Typography>
-                <Typography style={{margin: "0", opacity: ".6"}}>{account.email}</Typography>
+            <Typography style={{ margin: "0" }} variant="h6">{accountFullName}</Typography>
+            <Typography style={{ margin: "0", opacity: ".6" }}>{account.contact?.email}</Typography>
             </div>
         </Flex>
 }

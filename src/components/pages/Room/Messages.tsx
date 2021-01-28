@@ -65,7 +65,6 @@ const Message = ({ message, author, isOwned, displayAvatar, isOwnedNextMessage, 
         <div className={rootClasses} ref={ref}>
             <ReactMarkdown source={value} />
         </div>
-        {console.log(isOwnedPrevMessage, message.author)}
     </Flex>
 }
 

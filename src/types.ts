@@ -2,7 +2,7 @@ export interface IAccount {
     id: string;
     label: string;
     created_at: Date;
-    email: string;
+    contact: Dictionary<string>;
     avatar_url?: string;
 
     details: TAccountDetails;
@@ -14,10 +14,10 @@ export interface IAccount {
 
 export type TAccountDetails = {
     first_name: string;
-    middle_name: string;
+    middle_name?: string;
     last_name: string;
-    birthdate: Date;
-    sex: "M" | "F" | "O";
+    birthdate?: Date;
+    sex?: "M" | "F" | "O";
 }
 
 export type TContact = {

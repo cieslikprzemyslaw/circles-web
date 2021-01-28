@@ -1,14 +1,14 @@
 import * as firebase from "firebase/app";
 import { useState, useEffect, useCallback } from "react";
 import { IMessage } from "types";
-import { useAudio } from "utils/hooks/sound";
+//import { useAudio } from "utils/hooks/sound";
 
 const makeRefPath = (room_id: string) => {
     return `rooms/${room_id}/messages`;
 }
 
 export const useMessages = (room_id: string) => {
-    const [, toggle] = useAudio("https://cdn-02.anonfiles.com/B4z8W9Bbo8/14878adc-1592945278/notification_sound.mp3");
+    //const [, toggle] = useAudio("https://cdn-02.anonfiles.com/B4z8W9Bbo8/14878adc-1592945278/notification_sound.mp3");
     const [messages, setMessages] = useState<any>(null);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export const useMessages = (room_id: string) => {
             const msgs = snapshot.val() ?? [];
 
             setMessages((m: any) => {
-                if(m !== null && typeof toggle === "function") toggle();
+                //if(m !== null && typeof toggle === "function") toggle();
                 return msgs;
             });
         })
