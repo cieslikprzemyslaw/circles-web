@@ -21,7 +21,7 @@ const RoomView = () => {
 
     const roomMembers = ensureArray(room?.accounts).filter(acc => acc.id !== currentAccount?.id);
     const reducedRoomMembers = roomMembers.map(acc => makeFullName(acc?.details?.first_name, acc?.details?.last_name, acc?.label))
-    const roomName = roomMembers.length > 1 ? room?.label : reducedRoomMembers[0];
+    const roomName = roomMembers.length > 1 ? room?.label : makeFullName(roomMembers?.[0]?.details?.first_name, roomMembers?.[0]?.details?.last_name, roomMembers?.[0]?.label ?? "Unknown");
 
     const membersEl = useMemo(() => {
         let result = reducedRoomMembers.slice(0, 3).join(", ");
