@@ -11,7 +11,6 @@ import { SnackbarProvider } from 'notistack';
 
 function App() {
   const [language, setLanguage, preset] = useLocale();
-  console.log("Build Time:", process.env, process.env.REACT_APP_BUILD_TIME);
 
   return (
     <StoreProvider>

@@ -1,6 +1,6 @@
 // Deps scoped imports.
 import React, { useState } from "react";
-import { Drawer, IconButton, makeStyles } from "@material-ui/core";
+import { Drawer, IconButton, makeStyles, Typography } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings"
 import CloseIcon from "@material-ui/icons/Close"
 import { useLittera } from "react-littera";
@@ -32,16 +32,26 @@ const SettingsDrawer = (props: SettingsDrawerProps) => {
     return <div className={cx(classes.root, props.className)} style={props.style}>
         <Drawer open={isOpen} anchor="right" onClose={closeDrawer} className={classes.drawer} keepMounted>
             <div className={classes.paperDrawer}>
-                <Flex alignItems="center" justifyContent="space-between">
-                    <h2 className={classes.h2}>{translated.title}</h2>
+                <Flex alignItems="center" justifyContent="space-between" style={{ marginBottom: "10px" }}>
+                    <Typography variant="h4">{translated.title}</Typography>
                     <IconButton onClick={closeDrawer}><CloseIcon /></IconButton>
                 </Flex>
 
                 <ThemeSettings />
+                <VersionSettings />
             </div>
         </Drawer>
 
         <IconButton onClick={openDrawer}><SettingsIcon style={{ color: "#FFF" }} /></IconButton>
+    </div>
+}
+
+const VersionSettings = () => {
+
+    return <div style={{ margin: "20px 0" }}>
+        <Typography variant="h5" gutterBottom>Version</Typography>
+        <Typography>{process.env.REACT_APP_VERSION ?? "0.0.0-dev.0"}</Typography>
+        <Typography>{process.env.REACT_APP_BUILD_TIME ?? new Date().toDateString()}</Typography>
     </div>
 }
 
@@ -55,8 +65,8 @@ const ThemeSettings = () => {
         localStorage.setItem('background-theme', backgroundThemes[index].id)
     }
 
-    return <div>
-        <h3>Theme</h3>
+    return <div style={{ margin: "20px 0" }}>
+        <Typography variant="h5" gutterBottom>Theme</Typography>
 
         <Flex flexWrap="wrap">
             {backgroundThemes.map((theme, index) => <ThemePanel key={theme.id} setTheme={() => setTheme(index)} active={(bgTheme?.id?.toString() || '1922729') === theme.id} {...theme} />)}
