@@ -8,10 +8,10 @@ import { useLocale } from './utils/hooks/locale';
 import StoreProvider from 'store/StoreProvider';
 import { SnackbarProvider } from 'notistack';
 
-console.log("Build Time:", process.env.REACT_APP_BUILD_TIME);
 
 function App() {
   const [language, setLanguage, preset] = useLocale();
+  console.log("Build Time:", process.env, process.env.REACT_APP_BUILD_TIME);
 
   return (
     <StoreProvider>
