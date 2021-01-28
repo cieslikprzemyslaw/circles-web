@@ -92,7 +92,7 @@ const MenuPopover = (props: MenuPopoverProps) => {
                     <Typography style={{ opacity: 0.6 }}>{currentAccount?.contact?.email}</Typography>
                 </Box>
 
-                <List aria-label="profile signout">
+                <List aria-label="profile settings signout" style={{ width: "88%" }}>
                     <ListItem button onClick={() => { openProfileDrawer(); handleClose(); }}>
                         <ListItemIcon>
                             <Icon>person</Icon>
