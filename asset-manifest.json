@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.b00bd0d6.chunk.js",
-    "main.js.map": "/static/js/main.b00bd0d6.chunk.js.map",
+    "main.js": "/static/js/main.a502f890.chunk.js",
+    "main.js.map": "/static/js/main.a502f890.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1d426fbd.js",
     "runtime-main.js.map": "/static/js/runtime-main.1d426fbd.js.map",
-    "static/js/2.d9b5473a.chunk.js": "/static/js/2.d9b5473a.chunk.js",
-    "static/js/2.d9b5473a.chunk.js.map": "/static/js/2.d9b5473a.chunk.js.map",
+    "static/js/2.351ec905.chunk.js": "/static/js/2.351ec905.chunk.js",
+    "static/js/2.351ec905.chunk.js.map": "/static/js/2.351ec905.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.d9b5473a.chunk.js.LICENSE.txt": "/static/js/2.d9b5473a.chunk.js.LICENSE.txt",
+    "static/js/2.351ec905.chunk.js.LICENSE.txt": "/static/js/2.351ec905.chunk.js.LICENSE.txt",
     "static/media/celebration.9e01a526.svg": "/static/media/celebration.9e01a526.svg",
     "static/media/circles-logo.420d4698.svg": "/static/media/circles-logo.420d4698.svg",
     "static/media/intro00.6588dfdc.svg": "/static/media/intro00.6588dfdc.svg",
@@ -19,7 +19,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1d426fbd.js",
-    "static/js/2.d9b5473a.chunk.js",
-    "static/js/main.b00bd0d6.chunk.js"
+    "static/js/2.351ec905.chunk.js",
+    "static/js/main.a502f890.chunk.js"
   ]
 }
