@@ -1,20 +1,19 @@
 // Deps scoped imports.
 import React, { useState } from "react";
-import { Drawer, IconButton, makeStyles, Typography } from "@material-ui/core";
-import SettingsIcon from "@material-ui/icons/Settings"
+import { Drawer, Icon, IconButton, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close"
 import { useLittera } from "react-littera";
 import cx from "classnames";
 
 // Project scoped imports.
+import { useDispatch, useStore } from "store/hooks";
+import { setBackgroundTheme } from "store/actions";
 import Flex from "components/utils/Flex";
 import { backgroundThemes } from "utils/backgroundThemes";
 
 // Component scoped imports.
 import styles from "./styles";
 import translations from "./trans";
-import { useDispatch, useStore } from "store/hooks";
-import { setBackgroundTheme } from "store/actions";
 
 /**
  * Settings drawer component.
@@ -25,24 +24,18 @@ const SettingsDrawer = (props: SettingsDrawerProps) => {
     const [translated] = useLittera(translations);
     const classes = useStyles();
 
-    const [isOpen, setIsOpen] = useState(false);
-    const closeDrawer = () => setIsOpen(false);
-    const openDrawer = () => setIsOpen(true);
-
     return <div className={cx(classes.root, props.className)} style={props.style}>
-        <Drawer open={isOpen} anchor="right" onClose={closeDrawer} className={classes.drawer} keepMounted>
+        <Drawer open={props.open} anchor="right" onClose={props.onClose} className={classes.drawer} keepMounted>
             <div className={classes.paperDrawer}>
                 <Flex alignItems="center" justifyContent="space-between" style={{ marginBottom: "10px" }}>
                     <Typography variant="h4">{translated.title}</Typography>
-                    <IconButton onClick={closeDrawer}><CloseIcon /></IconButton>
+                    <IconButton onClick={props.onClose}><CloseIcon /></IconButton>
                 </Flex>
 
                 <ThemeSettings />
                 <VersionSettings />
             </div>
         </Drawer>
-
-        <IconButton onClick={openDrawer}><SettingsIcon style={{ color: "#FFF" }} /></IconButton>
     </div>
 }
 
@@ -92,6 +85,9 @@ const useStyles = makeStyles(styles);
 type SettingsDrawerProps = {
     className?: string;
     style?: React.CSSProperties
+    open: boolean;
+    onOpen: () => void;
+    onClose: () => void;
 }
 
 // Time to export! 🚚

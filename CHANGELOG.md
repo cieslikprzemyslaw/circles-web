@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Logo is now clickable, redirects to the home view.
 - Version displayed in the settings drawer.
 - Room avatars.
+- Menu popover for quick options in the upper right corner.
 
 ### Changed
 - Settings drawer will be kept mounted to avoid expensive refetching of background thumbnails.

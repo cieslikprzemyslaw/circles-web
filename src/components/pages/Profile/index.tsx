@@ -45,7 +45,7 @@ const Profile = () => {
           )}
         </section>
           {
-          currentAccount?.friends && currentAccount.friends.map(friend => <Contact key={friend.account_id} {...friend} />)
+            currentAccount?.friends && currentAccount.friends.map(friend => <Contact key={friend.account_id} {...friend} />)
           }
       </div>
     )

@@ -55,19 +55,6 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         backgroundColor: "rgba(0, 0, 0, .2)"
     },
-    topMenu: {
-        position: "relative",
-        display: "flex",
-        height: "72px",
-        width: "100%",
-        margin: "0 auto",
-        justifyContent: "space-between",
-        alignItems: "center",
-        color: "white",
-    },
-    menuBar: {
-        marginRight: "3vw"
-    },
     mainSection: {
         display: "flex",
         width: "100%",
@@ -80,10 +67,7 @@ const useStyles = makeStyles((theme) => ({
             alignItems: "center"
         }
     },
-    avatar: {
-        cursor: "pointer",
-        marginLeft: "15px"
-    },
+
     drawer: {
         width: "60%"
     }
