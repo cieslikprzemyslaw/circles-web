@@ -28,6 +28,7 @@ jobs:
         run: |
           echo "${{ secrets.ENCODED_ENV }}" | base64 -d 2> nul > './.env'
           echo "REACT_APP_BUILD_TIME=$(date)" >> './.env'
+          echo "REACT_APP_BUILD_TIME=$(date)"
           yarn install
           yarn test
           yarn build
