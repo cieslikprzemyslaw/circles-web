@@ -44,24 +44,8 @@ const Profile = () => {
             </Button>
           )}
         </section>
-        {/*
-            currentAccount?.friends && currentAccount.friends.map(friend => <Contact key={friend.account_id} {...friend} />)
-          */}
       </div>
     )
 }
-
-// const Contact = (props: { account_id: string, favorite?: boolean }) => {
-//     const account = useAccount(props.account_id, false, { flags: true, rooms: true, contacts: true });
-
-//     if(!account) return <div>...</div>
-
-//     return <div style={{border: "1px solid #121212"}}>
-//         <img  alt="profile" src={account.avatar_url} style={{width: "220px", height: "auto"}} />
-//         <Typography gutterBottom variant="h4">{account.label}</Typography>
-//       <Typography >{account?.details?.first_name} {account?.details?.last_name}</Typography>
-//         <Typography>Is favorite? {props.favorite ? "true" : "false"}</Typography>
-//     </div>
-// }
 
 export default Profile;
