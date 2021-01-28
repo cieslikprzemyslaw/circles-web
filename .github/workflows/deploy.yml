@@ -24,10 +24,15 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Get package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           echo "${{ secrets.ENCODED_ENV }}" | base64 -d 2> nul > './.env'
           ( echo "" ; echo "REACT_APP_BUILD_TIME=$(date)" ) >> './.env'
+          ( echo "" ; echo "REACT_APP_VERSION=${{ steps.package-version.outputs.current-version}}" ) >> './.env'
           cat './.env'
           yarn install
           yarn test
