@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
-import { Home, Splash, Intro, Login, Signup, Welcome } from 'components/pages';
 import { Button } from '@material-ui/core';
 import BottomNav from 'components/common/BottomNav';
 
 const homeSubpages = [ "highlights", "rooms", "people" ];
+
+const HomeLazy = React.lazy(() => import("components/pages/Home/"))
+const LoginLazy = React.lazy(() => import("components/pages/Login/"))
+const IntroLazy = React.lazy(() => import("components/pages/Intro/"))
+const SplashLazy = React.lazy(() => import("components/pages/Splash/"))
+const WelcomeLazy = React.lazy(() => import("components/pages/Welcome/"))
+const SignupLazy = React.lazy(() => import("components/pages/Signup/"))
 
 function Routes() {
   const history = useHistory();
@@ -22,20 +28,22 @@ function Routes() {
   }, []);
   
   return (
-        <>
-          <Switch>
-              <Route exact path="/"       component={Splash} />
-              <Route exact path="/intro"  component={Intro} />
-              <Route exact path="/signup"  component={Signup} />
-              <Route exact path="/welcome"  component={Welcome} />
-              <Route exact path="/login"  component={Login} />
-              <Route  path="/home"   component={Home} />
+  <>
+      <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+          <Route exact path="/" component={SplashLazy} />
+          <Route exact path="/intro" component={IntroLazy} />
+          <Route exact path="/signup" component={SignupLazy} />
+          <Route exact path="/welcome" component={WelcomeLazy} />
+          <Route exact path="/login" component={LoginLazy} />
+          <Route path="/home" component={HomeLazy} />
 
-              {/* TODO: Move to a file... */}
-              <Route exact component={() => <div>Error page <br/> <Button variant="contained" onClick={() => history.push("/")}>Reload</Button></div>} />
-          </Switch>
-          <BottomNav visible={bottomNavVisible} />
-        </>
+          {/* TODO: Move to a file... */}
+          <Route exact component={() => <div>Error page <br/> <Button variant="contained" onClick={() => history.push("/")}>Reload</Button></div>} />
+      </Switch>
+      </Suspense>
+    <BottomNav visible={bottomNavVisible} />
+  </>
   );
 }
 
