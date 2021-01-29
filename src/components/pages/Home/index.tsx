@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Rooms from '../Rooms'
 import useStyles from "./styles";
-import People from '../People';
 import { Route, useHistory } from 'react-router-dom';
 import { useStore } from 'store/hooks';
 import { backgroundThemes } from 'utils/backgroundThemes';
 import Menu from '../Menu';
-import { Highlights, Room } from '..';
 import TopMenu from 'components/common/TopMenu';
+
+const HighlightsLazy = React.lazy(() => import("../Highlights/"));
+const RoomLazy = React.lazy(() => import("../Room/"));
+
+const RoomsLazy = React.lazy(() => import("../Rooms/"));
+const PeopleLazy = React.lazy(() => import("../People/"));
 
 function Home() {
   const classes = useStyles();
@@ -35,9 +38,9 @@ function Home() {
           <TopMenu />
           <main className={classes.mainSection}>
             {/* new conversation and Layouts for home screen */}
-            {isRoomsView ? <Rooms /> : <People />}
-            <Route path="/home/highlights" component={Highlights} />
-            <Route path="/home/room/:id" component={Room} /> 
+            {isRoomsView ? <RoomsLazy /> : <PeopleLazy />}
+            <Route path="/home/highlights" component={HighlightsLazy} />
+            <Route path="/home/room/:id" component={RoomLazy} /> 
           </main>
         </div>
       </section>
