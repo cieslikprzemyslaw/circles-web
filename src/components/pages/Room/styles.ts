@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "3px",
   },
   equalToLine: {
-    paddingLeft: "34px",
+    paddingLeft: "28px",
   },
   sendMessageArea:{
     position: "fixed",
