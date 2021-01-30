@@ -3,7 +3,7 @@
 ## How to create commits
 
 In our project, we create commits in an orderly way, using emoji for this and start the commit content with a capital letter. 
-The commit body complements  „this commit will...". For example ": lipstick: Fix main container height"
+The commit body complements  „this commit will...". For example ":lipstick: Fix main container height"
 
 ## List of emojis that we use
 
