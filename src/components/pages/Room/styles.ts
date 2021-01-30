@@ -39,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
   },
   roomTitleBox: {
     marginLeft: "12px",
+    display: "flex",
+    alignItems: "center"
   },
   messagesRoot: {
     minWidth: "70vw",
@@ -62,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "flex-end",
     color: "#000",
     backgroundColor: "#eee",
-    borderRadius: "15px",
+    borderRadius: "25px",
     '& > *': {
       margin: 0,
       maxWidth: "240px",
@@ -123,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100px",
     backgroundColor: theme.palette.background.paper
-  }
+  },
 }));
 
 export default useStyles;

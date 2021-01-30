@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useStore } from "store/hooks";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, IconButton } from "@material-ui/core";
 import Messages from "./Messages";
 import MessageForm from "./MessageForm";
 import { useRoom } from "api/hooks";
@@ -9,11 +9,14 @@ import { useMessageSubmit } from "api/messages";
 import MessagesSkeleton from "./MessagesSkeleton";
 import useStyles from './styles';
 import { ensureArray, makeFullName } from "utils/general";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useHistory } from 'react-router-dom';
 
 // TODO: Show skeleton when switching rooms.
 const RoomView = () => {
     const params = useParams<{id: string}>();
     const classes = useStyles();
+    const history = useHistory();
 
     const currentAccount = useStore(state => state.currentAccount);
     const room = useRoom(params.id);
@@ -35,6 +38,8 @@ const RoomView = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reducedRoomMembers.length]);
 
+    const closeRoomView = () => {history.push("/home/highlights");}
+
     return <Box className={classes.root}>
         {(!room || !room.id) ?
             <MessagesSkeleton />
@@ -42,8 +47,16 @@ const RoomView = () => {
             <>
                 <Box className={classes.chatBoxHeader} display="flex" justifyContent="space-between" alignItems="center">
                     <Box className={classes.roomTitleBox}>
-                        <Typography variant="h5" className={classes.roomTitle}>{roomName}</Typography>
-                        {roomMembers.length > 1 && <Typography style={{ opacity: 0.65 }}>{membersEl}</Typography>}
+                        <Box>
+                            <IconButton onClick={() => closeRoomView()} >
+                                <ArrowBackIcon style={{fontSize: "2rem"}}/>
+                            </IconButton>
+                            
+                        </Box>
+                        <Box>
+                            <Typography variant="h5" className={classes.roomTitle}>{roomName}</Typography>
+                            {roomMembers.length > 1 && <Typography style={{ opacity: 0.65 }}>{membersEl}</Typography>}
+                        </Box>      
                     </Box>
                 </Box>
             
