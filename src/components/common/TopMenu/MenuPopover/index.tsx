@@ -117,12 +117,7 @@ const MenuPopover = (props: MenuPopoverProps) => {
             </Box>
         </Popover>
 
-        <Drawer anchor="right" open={shownProfileDrawer} onClose={closeProfileDrawer}>
-            <Box style={{ width: "55vw", height: "100vh", backgroundColor: "#FFF" }}>
-                <Profile />
-            </Box>
-        </Drawer>
-
+        <Profile open={shownProfileDrawer} onClose={closeProfileDrawer} onOpen={openProfileDrawer} />
         <SettingsDrawer open={shownSettingsDrawer} onClose={closeSettingsDrawer} onOpen={openSettingsDrawer} />
     </>
 }
