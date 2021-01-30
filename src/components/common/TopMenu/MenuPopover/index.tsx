@@ -1,6 +1,6 @@
 // Deps scoped imports.
 import React, { useState } from "react";
-import { Avatar, Box, Drawer, Icon, List, ListItem, ListItemIcon, ListItemText, makeStyles, Popover, Typography } from "@material-ui/core";
+import { Avatar, Box, Icon, List, ListItem, ListItemIcon, ListItemText, makeStyles, Popover, Typography } from "@material-ui/core";
 import cx from "classnames";
 import { useDispatch, useStore } from "store/hooks";
 import { useLittera } from "react-littera";
