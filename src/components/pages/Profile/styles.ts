@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
   head: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
+    alignItems: "center",
   },
 
   imgContainer: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   name: {
-    fontSize: '18px',
+    marginTop: theme.spacing(2),
     fontWeight: 500,
   },
 
@@ -72,16 +73,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '14px',
     color: '#fc2626',
 
-  },
-
-  footer: {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingBottom: '40px',
-  },
-
-  edit: {
-    color: '#fff',
   },
 }));
 
