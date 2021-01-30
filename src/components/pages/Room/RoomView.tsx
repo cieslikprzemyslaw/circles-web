@@ -49,7 +49,7 @@ const RoomView = () => {
                     <Box className={classes.roomTitleBox}>
                         <Box>
                             <IconButton onClick={() => closeRoomView()} >
-                                <ArrowBackIcon style={{fontSize: "2rem"}}/>
+                                <ArrowBackIcon style={{fontSize: "1.8rem"}}/>
                             </IconButton>
                             
                         </Box>
