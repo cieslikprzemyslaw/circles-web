@@ -33,21 +33,21 @@ const AccountPicker = (props: AccountPickerProps) => {
     useEffect(() => {
         // @ts-ignore
         props.onChange((prevValue: any) => ([]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleChange = (account_id: string) => {
-        if(props.disabled) return;
+        if (props.disabled) return;
 
         // TODO: Ugly code, refactor that!!
         // @ts-ignore
         props.onChange((value: any) => {
-            if(props.multiple && Array.isArray(value)) {
+            if (props.multiple && Array.isArray(value)) {
                 let arr = [...value];
 
-                if(arr.includes(account_id)) arr.splice(value.indexOf(account_id), 1);
+                if (arr.includes(account_id)) arr.splice(value.indexOf(account_id), 1);
                 else arr.push(account_id);
-    
+
                 return [...arr];
             } else {
                 return value === account_id ? "" : account_id;
@@ -55,12 +55,12 @@ const AccountPicker = (props: AccountPickerProps) => {
         });
     }
 
-    if(!accounts) return <Flex width="100%" height="60px" alignItems="center" justifyContent="center"><CircularProgress /></Flex>
+    if (!accounts) return <Flex width="100%" height="60px" alignItems="center" justifyContent="center"><CircularProgress /></Flex>
 
     return <div className={classes.root} style={props.style}>
         {
-            accounts.map((account: IAccount) =>
-                <SingleAccount key={account.id} account={account} onClick={(account_id) => handleChange(account_id)} selected={props.value.includes(account.id)} /> )
+            accounts.filter((acc: IAccount) => acc.id !== currentAccount?.id).map((account: IAccount) =>
+                <SingleAccount key={account.id} account={account} onClick={(account_id) => handleChange(account_id)} selected={props.value.includes(account.id)} />)
         }
     </div>
 }
@@ -78,19 +78,19 @@ const SingleAccount = ({ account, onClick, selected }: { account: IAccount, onCl
     const accountFullName = makeFullName(account.details?.first_name, account.details?.last_name, account.label)
     const accountInitials = makeInitials(account.details?.first_name, account.details?.last_name, account.label)
 
-    return <Flex style={{paddingTop: "12px", cursor: "pointer"}} onClick={handleClick} justifyContent="flex-start" alignItems="center">
-            <Avatar 
+    return <Flex style={{ paddingTop: "12px", cursor: "pointer" }} onClick={handleClick} justifyContent="flex-start" alignItems="center">
+        <Avatar
             style={{ width: "54px", height: "54px", backgroundColor: selected ? "green" : undefined }}
-            alt={accountFullName}  
-                src={selected ? undefined : account.avatar_url }>
+            alt={accountFullName}
+            src={selected ? undefined : account.avatar_url}>
             {selected ? <Icon>check</Icon> : accountInitials}
-                </Avatar>
+        </Avatar>
 
-            <div style={{margin: "0 0 0 20px"}}>
+        <div style={{ margin: "0 0 0 20px" }}>
             <Typography style={{ margin: "0" }} variant="h6">{accountFullName}</Typography>
             <Typography style={{ margin: "0", opacity: ".6" }}>{account.contact?.email}</Typography>
-            </div>
-        </Flex>
+        </div>
+    </Flex>
 }
 
 export default AccountPicker;
