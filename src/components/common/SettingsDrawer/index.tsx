@@ -1,5 +1,5 @@
 // Deps scoped imports.
-import React, { useEffect } from "react";
+import React from "react";
 import { Drawer, IconButton, makeStyles, Typography } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close"
 import { useLittera } from "react-littera";
@@ -54,27 +54,15 @@ const ThemeSettings = () => {
     const dispatch = useDispatch();
 
     const setTheme = (index: number) => {
-
         dispatch(setBackgroundTheme(backgroundThemes[index]))
         localStorage.setItem('background-theme', backgroundThemes[index].id)
-    }
-
-    const storageId = localStorage.getItem('background-theme')
-    const themeId = backgroundThemes.findIndex(el => el.id === storageId);
-
-    if (bgTheme === null) {
-        if (storageId) {
-            dispatch(setBackgroundTheme(backgroundThemes[themeId]))
-        } else {
-            dispatch(setBackgroundTheme(backgroundThemes[0]))
-        }
     }
 
     return <div style={{ margin: "20px 0" }}>
         <Typography variant="h5" gutterBottom>Theme</Typography>
 
         <Flex flexWrap="wrap">
-            {backgroundThemes.map((theme, index) => <ThemePanel key={theme.id} setTheme={() => setTheme(index)} active={(bgTheme?.id?.toString() || storageId) === theme.id} {...theme} />)}
+            {backgroundThemes.map((theme, index) => <ThemePanel key={theme.id} setTheme={() => setTheme(index)} active={(bgTheme?.id?.toString() || '1922729') === theme.id} {...theme} />)}
         </Flex>
     </div>
 }
