@@ -16,7 +16,7 @@ Circles is a messaging app designed with family ties in mind. It makes sure that
 ## How to start?
 
 ### 1. Requirements
-You need to have the following items installed to be able to run the web client:
+You need the following programs installed to be able to run this project:
 - [NodeJS (+ npm)](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - [Git](https://git-scm.com/downloads)
 - [Yarn](https://yarnpkg.com/getting-started/install)
