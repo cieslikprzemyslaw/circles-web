@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import useStyles from "./styles";
 import { useCommand } from "api/hooks";
 import { AccountList } from "api/commands";
 import { useForkedState } from "utils/hooks/general";
@@ -23,7 +22,6 @@ type AccountPickerProps = {
  * describe this function...
  */
 const AccountPicker = (props: AccountPickerProps) => {
-    const classes = useStyles();
 
     const currentAccount = useStore(state => state.currentAccount);
 
@@ -55,14 +53,18 @@ const AccountPicker = (props: AccountPickerProps) => {
         });
     }
 
+    const mapAccounts = (currentAccount_id: string | undefined) => (account: IAccount) => {
+        if (account.id === currentAccount_id) return null;
+        return <SingleAccount key={account.id} account={account} onClick={(account_id) => handleChange(account_id)} selected={props.value.includes(account.id)} />
+    }
+
     if (!accounts) return <Flex width="100%" height="60px" alignItems="center" justifyContent="center"><CircularProgress /></Flex>
 
-    return <div className={classes.root} style={props.style}>
+    return <>
         {
-            accounts.filter((acc: IAccount) => acc.id !== currentAccount?.id).map((account: IAccount) =>
-                <SingleAccount key={account.id} account={account} onClick={(account_id) => handleChange(account_id)} selected={props.value.includes(account.id)} />)
+            accounts.map(mapAccounts(currentAccount?.id))
         }
-    </div>
+    </>
 }
 
 /**
