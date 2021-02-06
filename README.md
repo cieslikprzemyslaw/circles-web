@@ -28,7 +28,7 @@ You need to clone the project.
 
 ### 3. Setup env variables
 In order to run the project and make it communicate with our development server, you have to add an `.env` file in the root.
-The content of it can be obtained on our [Discord channel called `resources`](https://discord.gg/JyPFtzPa) but it's available only for the `contributor` role.
+The content of it can be obtained on our Discord channel called `resources` but it's available only for the `project-circles` role.
 
 ### 4. Install dependencies
 Now just install projects dependencies like you always do. Since we use [`yarn`](https://yarnpkg.com/), please install it, if you didn't yet.
@@ -70,8 +70,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Community
-Join our [Discord server](https://discord.gg/k7Kex2v).
 
 ## Looking for long-term contributors
 We are currently looking for passionate open source contributors who would like to join our team and expand the project together. There are vacancies for the back- and front-end developer positions. You are welcome no matter how experienced you are. Maybe you are just starting with programming or maybe you are a veteran who's looking for a cool new side project? Let's gain experience and build amazing projects together! 🤗
