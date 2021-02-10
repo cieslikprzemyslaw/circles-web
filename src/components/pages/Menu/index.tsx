@@ -6,7 +6,7 @@ import { Box, IconButton } from '@material-ui/core';
 import PeopleIcon from "@material-ui/icons/People";
 import ChatIcon from "@material-ui/icons/Chat";
 
-const Menu = ({parentCallback}: {parentCallback: Function}) => {
+const Menu = ({ parentCallback }: { parentCallback: Function }) => {
     const classes = useStyles();
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
