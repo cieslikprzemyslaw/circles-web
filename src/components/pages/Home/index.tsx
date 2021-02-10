@@ -20,7 +20,7 @@ function Home() {
   // @ts-ignore
   const bgTheme = useStore(state => state?.preferences?.backgroundTheme || backgroundThemes[0])
 
-  const [isRoomsView] = useState(true);
+  const [isRoomsView, setIsRoomsView] = useState(true);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -28,11 +28,17 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const changeView = (childData: boolean) => {
+    setIsRoomsView(childData)
+  }
+
   return (
     <>
       <section className={classes.root}>
         <div className={classes.sidebar}>
-          <Menu />
+          <Menu 
+            parentCallback={changeView}
+          />
         </div>
         <div className={classes.container}>
           <TopMenu />
