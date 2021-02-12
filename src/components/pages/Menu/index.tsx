@@ -26,11 +26,11 @@ const Menu = ({ parentCallback }: { parentCallback: Function }) => {
         <>
         <section onClick={toggleMenu}>
             {isOpenMenu ? <MenuOpenIcon className={classes.menuIcon}/> : <MenuIcon className={classes.menuIcon}/>}
-            {isOpenMenu && <Box>
-                <IconButton onClick={showPeople}>
+            {isOpenMenu && <Box className={classes.menu}>
+                <IconButton className={classes.icon} onClick={showPeople}>
                   <PeopleIcon/>
                 </IconButton>
-                <IconButton onClick={showRooms}>
+                <IconButton className={classes.icon} onClick={showRooms}>
                   <ChatIcon/>
                 </IconButton>
             </Box>}
