@@ -29,6 +29,7 @@ function Home() {
   }, [])
 
   const changeView = (childData: boolean) => {
+    history.push("/home/highlights");
     setIsRoomsView(childData)
   }
 
