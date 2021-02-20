@@ -1,45 +1,33 @@
-import React, { useState } from 'react';
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+import React from "react";
 import useStyles from "./styles";
-import { Box, IconButton } from '@material-ui/core';
+import { Box, IconButton } from "@material-ui/core";
 import PeopleIcon from "@material-ui/icons/People";
 import ChatIcon from "@material-ui/icons/Chat";
 import { useHistory } from "react-router-dom";
 
-const Menu = ({ parentCallback }: { parentCallback: Function }) => {
-    const history = useHistory();
+const Menu = () => {
+  const history = useHistory();
 
-    const classes = useStyles();
-    const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const classes = useStyles();
 
-    const toggleMenu = () => {
-        setIsOpenMenu(!isOpenMenu);
-    };
+  const changePeopleView = () => {
+    history.push("/home/People");
+  };
 
-    const showRooms = () => {
-      parentCallback(true)
-    }
+  const changeRoomsView = () => {
+    history.push("/home/Rooms/highlights");
+  };
 
-    const showPeople = () => {
-      parentCallback(false)
-    }
-
-    return (
-        <>
-        <section onClick={toggleMenu}>
-            {isOpenMenu ? <MenuOpenIcon className={classes.menuIcon}/> : <MenuIcon className={classes.menuIcon}/>}
-            {isOpenMenu && <Box className={classes.menu}>
-                <IconButton className={classes.icon} onClick={showPeople}>
-                  <PeopleIcon/>
-                </IconButton>
-                <IconButton className={classes.icon} onClick={showRooms}>
-                  <ChatIcon/>
-                </IconButton>
-            </Box>}
-        </section>
-        </>  
-    );
+  return (
+    <Box className={classes.menu}>
+      <IconButton className={classes.icon} onClick={changePeopleView}>
+        <PeopleIcon />
+      </IconButton>
+      <IconButton className={classes.icon} onClick={changeRoomsView}>
+        <ChatIcon />
+      </IconButton>
+    </Box>
+  );
 };
 
 export default Menu;

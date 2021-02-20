@@ -20,39 +20,38 @@ function Home() {
   // @ts-ignore
   const bgTheme = useStore(state => state?.preferences?.backgroundTheme || backgroundThemes[0])
 
-  const [isRoomsView, setIsRoomsView] = useState(true);
+  const [isRoomsView, setIsRoomView] = useState(true);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    history.push("/home/highlights");
+    history.push("/home/Rooms/highlights");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const changeView = (childData: boolean) => {
-    history.push("/home/highlights");
-    setIsRoomsView(childData)
-  }
 
   return (
     <>
       <section className={classes.root}>
         <div className={classes.sidebar}>
-          <Menu 
-            parentCallback={changeView}
-          />
+          <Menu/>
         </div>
         <div className={classes.container}>
           <TopMenu />
           <main className={classes.mainSection}>
             {/* new conversation and Layouts for home screen */}
-            {isRoomsView ? <RoomsLazy /> : <PeopleLazy />}
-            <Route path="/home/highlights" component={HighlightsLazy} />
-            <Route path="/home/room/:id" component={RoomLazy} /> 
+            <Route path="/home/Rooms" component={RoomsLazy} />
+            <Route path="/home/People" component={PeopleLazy} />
+            <Route path="/home/Rooms/highlights" component={HighlightsLazy} />
+            <Route path="/home/Rooms/room/:id" component={RoomLazy} />
           </main>
         </div>
       </section>
-      <div className={classes.backgroundImageBacklit} ></div>
-      <div className={classes.backgroundImage} style={{ backgroundImage: `url(${bgTheme?.url}${window.innerWidth}x${window.innerHeight})` }} ></div>
+      <div className={classes.backgroundImageBacklit}></div>
+      <div
+        className={classes.backgroundImage}
+        style={{
+          backgroundImage: `url(${bgTheme?.url}${window.innerWidth}x${window.innerHeight})`,
+        }}
+      ></div>
     </>
   );
 }
