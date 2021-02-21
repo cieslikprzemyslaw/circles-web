@@ -11,20 +11,20 @@ const Menu = () => {
   const classes = useStyles();
 
   const changePeopleView = () => {
-    history.push("/home/People");
+    history.push("/home/people");
   };
 
   const changeRoomsView = () => {
-    history.push("/home/Rooms/highlights");
+    history.push("/home/rooms");
   };
 
   return (
     <Box className={classes.menu}>
       <IconButton className={classes.icon} onClick={changePeopleView}>
-        <PeopleIcon />
+        <PeopleIcon fontSize="large" />
       </IconButton>
       <IconButton className={classes.icon} onClick={changeRoomsView}>
-        <ChatIcon />
+        <ChatIcon fontSize="large" />
       </IconButton>
     </Box>
   );

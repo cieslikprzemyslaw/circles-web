@@ -24,24 +24,28 @@ function Home() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    history.push("/home/Rooms/highlights");
+    history.push("/home/rooms");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const changeView = (isRooms : boolean) => {
+    setIsRoomView(isRooms)
+  }
 
   return (
     <>
       <section className={classes.root}>
         <div className={classes.sidebar}>
-          <Menu/>
+          <Menu />
         </div>
         <div className={classes.container}>
           <TopMenu />
           <main className={classes.mainSection}>
             {/* new conversation and Layouts for home screen */}
-            <Route path="/home/Rooms" component={RoomsLazy} />
-            <Route path="/home/People" component={PeopleLazy} />
-            <Route path="/home/Rooms/highlights" component={HighlightsLazy} />
-            <Route path="/home/Rooms/room/:id" component={RoomLazy} />
+            <Route path="/home/rooms" component={RoomsLazy} />
+            <Route path="/home/people" component={PeopleLazy} />
+            <HighlightsLazy />
+            <Route path="/home/rooms/room/:id" component={RoomLazy} />
           </main>
         </div>
       </section>

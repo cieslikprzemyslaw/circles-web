@@ -35,7 +35,7 @@ const RoomLabel = (props: IRoom) => {
     const history = useHistory();
     const classes = useStyles();
 
-    const roomUri = `/home/room/${props.id}`;
+    const roomUri = `/home/rooms/room/${props.id}`;
     const handleNavigation = () => history.push(roomUri);
 
     const account = useAccount();
