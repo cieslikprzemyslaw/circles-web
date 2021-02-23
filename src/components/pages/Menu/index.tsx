@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 import useStyles from "./styles";
 import { Box, IconButton } from "@material-ui/core";
 import PeopleIcon from "@material-ui/icons/People";
@@ -13,14 +14,16 @@ const Menu = () => {
     history.push(path);
   }
 
+  const checkActive = (label: "people" | "rooms") => history.location.pathname.includes(label);
+
   return (
     <Box className={classes.menu}>
 
-      <IconButton className={classes.icon} onClick={handleNavigation("/home/people")}>
+      <IconButton className={cx(classes.icon, { [classes.iconActive]: checkActive("people") })} onClick={handleNavigation("/home/people")}>
         <PeopleIcon />
       </IconButton>
 
-      <IconButton className={classes.icon} onClick={handleNavigation("/home/rooms")}>
+      <IconButton className={cx(classes.icon, { [classes.iconActive]: checkActive("rooms") })} onClick={handleNavigation("/home/rooms")}>
         <ChatIcon />
       </IconButton>
 

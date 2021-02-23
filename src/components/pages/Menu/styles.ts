@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     margin: "10px auto",
   },
+  iconActive: {
+    color: theme.palette.primary.main
+  }
 }));
 
 export default useStyles;

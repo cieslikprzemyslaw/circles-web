@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   avatar: {
-    margin: "0 20px",
   },
   text: {
     width: "100%",
