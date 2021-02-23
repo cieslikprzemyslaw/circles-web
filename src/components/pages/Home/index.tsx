@@ -16,21 +16,13 @@ function Home() {
   const classes = useStyles();
   const history = useHistory();
 
-
   // @ts-ignore
   const bgTheme = useStore(state => state?.preferences?.backgroundTheme || backgroundThemes[0])
 
-  const [isRoomsView, setIsRoomView] = useState(true);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     history.push("/home/rooms");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const changeView = (isRooms : boolean) => {
-    setIsRoomView(isRooms)
-  }
 
   return (
     <>
@@ -45,7 +37,7 @@ function Home() {
             <Route path="/home/rooms" component={RoomsLazy} />
             <Route path="/home/people" component={PeopleLazy} />
             <HighlightsLazy />
-            <Route path="/home/rooms/room/:id" component={RoomLazy} />
+            <Route path={["/home/rooms/room/:id", "/home/people/room/:id"]} component={RoomLazy} />
           </main>
         </div>
       </section>

@@ -6,26 +6,24 @@ import ChatIcon from "@material-ui/icons/Chat";
 import { useHistory } from "react-router-dom";
 
 const Menu = () => {
+  const classes = useStyles();
   const history = useHistory();
 
-  const classes = useStyles();
-
-  const changePeopleView = () => {
-    history.push("/home/people");
-  };
-
-  const changeRoomsView = () => {
-    history.push("/home/rooms");
-  };
+  const handleNavigation = (path: string) => () => {
+    history.push(path);
+  }
 
   return (
     <Box className={classes.menu}>
-      <IconButton className={classes.icon} onClick={changePeopleView}>
-        <PeopleIcon fontSize="large" />
+
+      <IconButton className={classes.icon} onClick={handleNavigation("/home/people")}>
+        <PeopleIcon />
       </IconButton>
-      <IconButton className={classes.icon} onClick={changeRoomsView}>
-        <ChatIcon fontSize="large" />
+
+      <IconButton className={classes.icon} onClick={handleNavigation("/home/rooms")}>
+        <ChatIcon />
       </IconButton>
+
     </Box>
   );
 };

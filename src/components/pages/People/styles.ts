@@ -20,11 +20,19 @@ const useStyles = makeStyles((theme) => ({
     transition: "all 255ms ease",
   },
   personData: {
+    overflow: "hidden",
+    width: "100%",
+    padding: "30px 24px",
+    textAlign: "left",
+    backgroundColor: "#fff",
+    cursor: "pointer",
+    transition: "backgroundColor 255ms ease",
     display: "flex",
-    width: "50%",
-    margin: "15px auto",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    "&:hover": {
+      backgroundColor: "#f5f5f5",
+    }
   },
   contacts: {
     width: "100%",
@@ -36,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     textAlign: "center",
   },
+  subtitle: { fontSize: "14px", opacity: 0.45, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap" }
 }));
 
   export default useStyles;
